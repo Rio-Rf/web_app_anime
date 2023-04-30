@@ -13,17 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->String('icon');
-            $table->date('birthday');
+        Schema::create('anime_voice_actors', function (Blueprint $table) {
+            $table->foreignId('anime_id')->constrained();
+            $table->foreignId('voice_actor_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
+            $table->primary(['anime_id', 'voice_actor_id']);
         });
     }
 
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('anime_voice_actors');
     }
 };
