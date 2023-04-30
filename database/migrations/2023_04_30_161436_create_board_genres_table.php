@@ -13,17 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->String('icon');
-            $table->date('birthday');
+        Schema::create('board_genres', function (Blueprint $table) {
+            $table->foreignId('board_id')->constrained();
+            $table->foreignId('genre_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
+            $table->primary(['board_id', 'genre_id']);
         });
     }
 
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('board_genres');
     }
 };
