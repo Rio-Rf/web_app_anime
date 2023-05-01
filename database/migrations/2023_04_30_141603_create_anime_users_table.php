@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('hours');
             $table->integer('minutes');
             $table->String('medium', 20);
+            $table->String('official_url');
             $table->timestamps();
             $table->softDeletes();
             $table->primary(['anime_id', 'user_id']);
