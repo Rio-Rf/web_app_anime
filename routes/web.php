@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/', function() {
+    return view('anime_users/index');
+});
+Route::get('/search', function() {
+    return view('anime_users/search');
+});
+Route::get('/ranking', function() {
+    return view('anime_users/ranking');
+});
+Route::get('/board', function() {
+    return view('anime_users/board');
+});
