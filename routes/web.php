@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AnimeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,20 @@ Route::get('/', function () {
 Route::get('/', function() {
     return view('anime_users/index');
 });
-Route::get('/search', function() {
-    return view('anime_users/search');
-});
+//Route::get('/search', function() {
+  //  return view('anime_users/search');
+//});
 Route::get('/ranking', function() {
     return view('anime_users/ranking');
 });
 Route::get('/board', function() {
     return view('anime_users/board');
 });
+Route::get('/edit', function() {
+    return view('anime_users/edit');
+});
+
+Route::get('/edit/{anime}', [AnimeController::class, 'edit'])->name('animes.edit');
+Route::get('/search', [AnimeController::class, 'search'])->name('animes.search');
+Route::get('/search/re', [AnimeController::class, 'search_session'])->name('search.session');
+Route::post('search/re', [AnimeController::class,'search'])->name('search.post');

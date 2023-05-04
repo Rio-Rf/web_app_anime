@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->String('title', 50);
             $table->String('on_air_season', 20);
-            $table->String('img_file_name');
-            $table->String('img_file_pass');
+            $table->String('img_pass', 200);
             $table->timestamps();
             $table->softDeletes();
         });
