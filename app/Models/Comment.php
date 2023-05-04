@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class voice_actors extends Model
+class Comment extends Model
 {
     use HasFactory;
     
-    public function animes(){
-        return $this->belongsToMany(Anime::class);
+    public function board()
+    {
+        return $this->belongsTo(Board::class);
     }
 }
