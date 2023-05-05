@@ -9,7 +9,7 @@
     <body>
         <header>
             <a href="/">アニメナビ</a>
-            <a href="{{ route('animes.search')}}">検索</a>
+            <a href="{{route('animes.search_get')}}">検索</a>
             <a href="/ranking">ランキング</a>
             <a href="/board">掲示板</a>
         </header>
