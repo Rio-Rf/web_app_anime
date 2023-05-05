@@ -34,6 +34,7 @@ Route::get('/edit', function() {
 });
 
 Route::get('/edit/{anime}', [AnimeController::class, 'edit'])->name('animes.edit');
-Route::get('/search', [AnimeController::class, 'search'])->name('animes.search');
+Route::get('/search', [AnimeController::class, 'search_get'])->name('animes.search_get');
+Route::post('/search', [AnimeController::class, 'search_post'])->name('animes.search_post');
 Route::get('/search/re', [AnimeController::class, 'search_session'])->name('search.session');
 Route::post('search/re', [AnimeController::class,'search'])->name('search.post');
