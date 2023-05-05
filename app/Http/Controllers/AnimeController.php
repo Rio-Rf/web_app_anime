@@ -25,7 +25,7 @@ class AnimeController extends Controller
             //
         }
         $animes = $query->get();
-        //$request->session()->flush();//セッションを全て削除する．
+        //$request->session()->flush();//ここでセッションを全て削除すると連続で検索ができなくなる．．
         $request->session()->push('animes', $animes);
         $request->session()->push('keyword', $keyword);
         //dd($animes);
