@@ -7,7 +7,24 @@ use App\Models\Anime;
 
 class AnimeController extends Controller
 {
-    public function search_get(){
+    public function index()
+    {
+        return view('anime_users/index');
+    }
+    public function ranking()
+    {
+        return view('anime_users/ranking');
+    }
+    public function board()
+    {
+        return view('anime_users/board');
+    }
+    public function edit(Anime $anime)
+    {
+        return view('anime_users/edit', compact('anime'));
+    }
+    public function search_get()
+    {
         $keyword = "タイトルを入力してください．";
         //$animes = array();
         $query = Anime::query();
@@ -32,11 +49,7 @@ class AnimeController extends Controller
         //dd($SessionData);
         return view('anime_users/search', compact('keyword', 'animes'));
     }
-    public function edit(Anime $anime)
-    {
-        return view('anime_users/edit', compact('anime'));
-    }
-     public function search_session(Request $request)
+    public function search_session(Request $request)
     {
         $keyword = $request->session()->get('keyword');
         $animes = $request->session()->get('animes');

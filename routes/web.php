@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimeController;
 
@@ -9,32 +10,35 @@ use App\Http\Controllers\AnimeController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', function() {
-    return view('anime_users/index');
-});
-//Route::get('/search', function() {
-  //  return view('anime_users/search');
-//});
-Route::get('/ranking', function() {
-    return view('anime_users/ranking');
-});
-Route::get('/board', function() {
-    return view('anime_users/board');
-});
-Route::get('/edit', function() {
-    return view('anime_users/edit');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/edit/{anime}', [AnimeController::class, 'edit'])->name('animes.edit');
-Route::get('/search', [AnimeController::class, 'search_get'])->name('animes.search_get');
-Route::post('/search', [AnimeController::class, 'search_post'])->name('animes.search_post');
-Route::get('/search/re', [AnimeController::class, 'search_session'])->name('search.session');
-Route::post('search/re', [AnimeController::class,'search'])->name('search.post');
+
+Route::controller(AnimeController::class)->middleware(['auth'])->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::get('/ranking', 'ranking')->name('ranking');
+    Route::get('/board', 'board')->name('board');
+    Route::get('/edit/{anime}', 'edit')->name('animes.edit');
+    Route::get('/search', 'search_get')->name('animes.search_get');
+    Route::post('/search', 'search_post')->name('animes.search_post');
+    Route::get('/search/re', 'search_session')->name('search.session');
+    Route::post('search/re', 'search')->name('search.post');
+});
+
+require __DIR__.'/auth.php';
