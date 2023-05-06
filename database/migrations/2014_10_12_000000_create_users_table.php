@@ -22,10 +22,11 @@ return new class extends Migration
             $table->rememberToken();
             $table->String('icon_file_name');
             $table->String('icon_file_pass');
-            $table->date('birthday');
+            $table->String('birthday');
             $table->timestamps();
             $table->softDeletes();
         });
+        
     }
 
     /**
