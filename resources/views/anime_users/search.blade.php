@@ -35,9 +35,9 @@
             <div class="table-responsive">
               <table class="table">
                     <tr>
-                      @forelse ($animes as $anime)
+                      @forelse($animes as $anime)
                       <td><a href="{{ route('animes.edit' , $anime) }}">
-                        <div><img width = "200", src="../storage/images/{{$anime->img_pass}}"></div>
+                        <div><img width = "200", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"></div>
                         <div>{{ $anime->title }}</div>
                       </a></td>
                       @empty

@@ -26,7 +26,6 @@ class AnimeController extends Controller
     public function search_get()
     {
         $keyword = "タイトルを入力してください．";
-        //$animes = array();
         $query = Anime::query();
         $animes = $query->get();//検索ボックスが空の時にはすべてを表示する．
         return view('anime_users/search', compact('keyword', 'animes'));
@@ -46,17 +45,22 @@ class AnimeController extends Controller
         $request->session()->push('animes', $animes);
         $request->session()->push('keyword', $keyword);
         //dd($animes);
-        //dd($SessionData);
         return view('anime_users/search', compact('keyword', 'animes'));
     }
     public function search_session(Request $request)
     {
         $keyword = $request->session()->get('keyword');
         $animes = $request->session()->get('animes');
+        //dd($animes);
+        //dd($keyword);
         $num = count($animes)-1;
         for($i = $num; $i>=0; $i--){
             if($keyword[$i] != null && $animes[$i] != null){
                 $keyword = $keyword[$i];
+                $animes = $animes[$i];
+                break;
+            }else if($keyword[$i] == null && $animes[$i] != null){
+                $keyword = "タイトルを入力してください．";
                 $animes = $animes[$i];
                 break;
             }else{
@@ -66,7 +70,6 @@ class AnimeController extends Controller
         }
         //dd($animes);
         //dd($keyword);
-        
         return view('anime_users/search', compact('keyword', 'animes'));
     }
 }
