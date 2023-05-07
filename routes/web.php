@@ -38,7 +38,7 @@ Route::controller(AnimeController::class)->middleware(['auth'])->group(function(
     Route::get('/search', 'search_get')->name('animes.search_get');
     Route::post('/search', 'search_post')->name('animes.search_post');
     Route::get('/search/re', 'search_session')->name('search.session');
-    Route::post('search/re', 'search')->name('search.post');
+    Route::post('/search/re', 'search')->name('search.post');
 });
 
 require __DIR__.'/auth.php';

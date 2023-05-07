@@ -40,8 +40,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'icon_file_name'=>'default_value',
-            'icon_file_pass'=>'default_value',
+            'icon_file_path'=>"default_value",
             'birthday'=>"default_value",
         ]);
 

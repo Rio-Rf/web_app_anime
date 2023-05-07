@@ -13,7 +13,7 @@
             <div>
               <h1>編集機能</h1>
               <div>
-                  <img width = "400", src="../storage/images/{{$anime->img_pass}}">
+                  <div><img width = "200", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"></div>
                   <h1>{{$anime->title}}</h1>
                   <a href="{{route('search.session')}}">戻る</a>
               </div>

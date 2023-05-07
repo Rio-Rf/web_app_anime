@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->String('edit_title', 50);
             $table->String('edit_on_air_season', 15);
-            $table->String('edit_img_pass',200);
+            $table->String('edit_img_path',200);
             $table->String('day_of_week', 5);
             $table->integer('hours');
             $table->integer('minutes');

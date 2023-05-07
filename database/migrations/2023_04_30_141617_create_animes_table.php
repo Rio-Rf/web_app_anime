@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->String('title', 50)->unique();
             $table->String('on_air_season', 20);
-            $table->String('img_pass', 200);
+            $table->String('img_path', 200);
             $table->String('official_url', 200);
             $table->timestamps();
             $table->softDeletes();
