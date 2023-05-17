@@ -17,8 +17,8 @@ class AnimeSeeder extends Seeder
     public function run()
     {
         $now = new \DateTime();
-        
-        DB::table('animes')->insert([
+        //キービジュアル = メインビジュアル != ティザービジュアル
+        /*DB::table('animes')->insert([
             'title'=>'鬼滅の刃刀鍛冶の里偏',
             'on_air_season'=>'2023年春アニメ',
             'img_path'=>'img_katanakaji.jpg',
@@ -57,7 +57,30 @@ class AnimeSeeder extends Seeder
             'official_url'=>'https://tdm-anime.com/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
+        ]);*/
+        DB::table('animes')->insert([
+            'title'=>'機動戦士ガンダム 水星の魔女 Season2',
+            'on_air_season'=>'2023年春アニメ',
+            'img_path'=>'suiseinomajo_2.jfif',
+            'official_url'=>'https://g-witch.net/',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
         ]);
-        
+        DB::table('animes')->insert([
+            'title'=>'スパイ教室',
+            'on_air_season'=>'2023年冬アニメ',
+            'img_path'=>'supaikyousitsu.jpg',
+            'official_url'=>'https://spyroom-anime.com/',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
+        ]);
+        DB::table('animes')->insert([
+            'title'=>'機動戦士ガンダム 水星の魔女',
+            'on_air_season'=>'2022年秋アニメ',
+            'img_path'=>'suiseinomajo.jpg',
+            'official_url'=>'https://g-witch.net/',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
+        ]);
     }
 }

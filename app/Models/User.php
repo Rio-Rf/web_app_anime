@@ -48,7 +48,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Notice::class);
     }
     public function animes(){
-        return $this->belongsToMany(Anime::class);
+        return $this->belongsToMany(Anime::class, 'anime_users')->withPivot('is_active');
     }
     public function board()
     {

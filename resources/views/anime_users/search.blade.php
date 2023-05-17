@@ -37,7 +37,7 @@
                     <tr>
                       @forelse($animes as $anime)
                       <td><a href="{{ route('animes.edit' , $anime) }}">
-                        <div><img width = "200", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"></div>
+                        <div><img class="image" width = "200", height = "282", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"></div>
                         <div>{{ $anime->title }}</div>
                       </a></td>
                       @empty
