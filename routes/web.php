@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimeController;
+use App\Http\Controllers\Anime_userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,11 +35,12 @@ Route::controller(AnimeController::class)->middleware(['auth'])->group(function(
     Route::get('/', 'index')->name('index');
     Route::get('/ranking', 'ranking')->name('ranking');
     Route::get('/board', 'board')->name('board');
-    Route::get('/edit/{anime}', 'edit')->name('animes.edit');
     Route::get('/search', 'search_get')->name('animes.search_get');
     Route::post('/search', 'search_post')->name('animes.search_post');
     Route::get('/search/re', 'search_session')->name('search.session');
     Route::post('/search/re', 'search')->name('search.post');
+    Route::get('/edit/{anime}', 'edit')->name('animes.edit');
+    Route::post('/edit', 'edit_post')->name('animes.edit_post');
 });
 
 require __DIR__.'/auth.php';

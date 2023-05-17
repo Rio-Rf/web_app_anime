@@ -10,7 +10,7 @@ class Anime extends Model
     use HasFactory;
     
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'anime_users')->withPivot('is_active');
     }
     public function genres(){
         return $this->belongsToMany(Genre::class);
