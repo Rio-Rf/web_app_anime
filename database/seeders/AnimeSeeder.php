@@ -58,7 +58,7 @@ class AnimeSeeder extends Seeder
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
         ]);
-        DB::table('animes')->insert([
+        /*DB::table('animes')->insert([
             'title'=>'機動戦士ガンダム 水星の魔女 Season2',
             'on_air_season'=>'2023年春アニメ',
             'img_path'=>'suiseinomajo_2.jfif',
@@ -81,6 +81,6 @@ class AnimeSeeder extends Seeder
             'official_url'=>'https://g-witch.net/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
-        ]);
+        ]);*/
     }
 }
