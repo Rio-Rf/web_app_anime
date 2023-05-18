@@ -18,7 +18,7 @@ class AnimeSeeder extends Seeder
     {
         $now = new \DateTime();
         //キービジュアル = メインビジュアル != ティザービジュアル
-        /*DB::table('animes')->insert([
+        DB::table('animes')->insert([
             'title'=>'鬼滅の刃刀鍛冶の里偏',
             'on_air_season'=>'2023年春アニメ',
             'img_path'=>'img_katanakaji.jpg',
@@ -57,7 +57,7 @@ class AnimeSeeder extends Seeder
             'official_url'=>'https://tdm-anime.com/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
-        ]);*/
+        ]);
         DB::table('animes')->insert([
             'title'=>'機動戦士ガンダム 水星の魔女 Season2',
             'on_air_season'=>'2023年春アニメ',
