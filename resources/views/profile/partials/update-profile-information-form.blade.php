@@ -1,12 +1,20 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+            {{ __('プロフィール') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+            <!--{{ __("Update your account's profile information and email address.") }}-->
         </p>
+        @if (Auth::id() == 1)
+        <style>
+        .text-danger {
+            color: red;
+        }
+        </style>
+            <p class="text-danger" color = red>※ゲストユーザーは、ユーザー名を編集できません。</p>
+        @endif
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -18,15 +26,22 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('ユーザー名')" />
+            @if (Auth::id()==1)
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" readonly />
+            @else
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            @endif
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            @if (Auth::id()==1)
+            @else
+            <x-input-label for="email" :value="__('Emailアドレス')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
+            @endif
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
@@ -48,7 +63,10 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            @if (Auth::id()==1)
+            @else
+            <x-primary-button>{{ __('保存する') }}</x-primary-button>
+            @endif
 
             @if (session('status') === 'profile-updated')
                 <p

@@ -10,33 +10,34 @@ use Carbon\Carbon;
 
 class AnimeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $anime_users_non = Anime_user::where('day_of_week', 'non')->get();//曜日がnonのレコードを取得
+        $user_id = $request->user()->id;
+        $anime_users_non = Anime_user::where('day_of_week', 'non')->where('user_id', $user_id)->get();//曜日がnonかつログイン中のuser_idのレコードを取得
         $anime_ids_non = $anime_users_non->pluck('anime_id');//anime_idの配列を取得
         $animes_non = Anime::whereIn('id', $anime_ids_non)->get();//animesテーブルのidが$anime_idsに一致するものを取得
-        $anime_users_mon = Anime_user::where('day_of_week', 'mon')->get();
+        $anime_users_mon = Anime_user::where('day_of_week', 'mon')->where('user_id', $user_id)->get();
         $anime_ids_mon = $anime_users_mon->pluck('anime_id');
         $animes_mon = Anime::whereIn('id', $anime_ids_mon)->get();
-        $anime_users_tue = Anime_user::where('day_of_week', 'tue')->get();
+        $anime_users_tue = Anime_user::where('day_of_week', 'tue')->where('user_id', $user_id)->get();
         $anime_ids_tue = $anime_users_tue->pluck('anime_id');
         $animes_tue = Anime::whereIn('id', $anime_ids_tue)->get();
-        $anime_users_wed = Anime_user::where('day_of_week', 'wed')->get();
+        $anime_users_wed = Anime_user::where('day_of_week', 'wed')->where('user_id', $user_id)->get();
         $anime_ids_wed = $anime_users_wed->pluck('anime_id');
         $animes_wed = Anime::whereIn('id', $anime_ids_wed)->get();
-        $anime_users_thu = Anime_user::where('day_of_week', 'thu')->get();
+        $anime_users_thu = Anime_user::where('day_of_week', 'thu')->where('user_id', $user_id)->get();
         $anime_ids_thu = $anime_users_thu->pluck('anime_id');
         $animes_thu = Anime::whereIn('id', $anime_ids_thu)->get();
-        $anime_users_fri = Anime_user::where('day_of_week', 'fri')->get();
+        $anime_users_fri = Anime_user::where('day_of_week', 'fri')->where('user_id', $user_id)->get();
         $anime_ids_fri = $anime_users_fri->pluck('anime_id');
         $animes_fri = Anime::whereIn('id', $anime_ids_fri)->get();
-        $anime_users_sat = Anime_user::where('day_of_week', 'sat')->get();
+        $anime_users_sat = Anime_user::where('day_of_week', 'sat')->where('user_id', $user_id)->get();
         $anime_ids_sat = $anime_users_sat->pluck('anime_id');
         $animes_sat = Anime::whereIn('id', $anime_ids_sat)->get();
-        $anime_users_sun = Anime_user::where('day_of_week', 'sun')->get();
+        $anime_users_sun = Anime_user::where('day_of_week', 'sun')->where('user_id', $user_id)->get();
         $anime_ids_sun = $anime_users_sun->pluck('anime_id');
         $animes_sun = Anime::whereIn('id', $anime_ids_sun)->get();
-        //dd($animes_mon);
+        //dd($animes_non);
         return view('anime_users/index', compact('animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun'));
     }
     public function ranking()
@@ -150,28 +151,28 @@ class AnimeController extends Controller
             //
         }
         
-        $anime_users_non = Anime_user::where('day_of_week', 'non')->get();//曜日がnonのレコードを取得
+        $anime_users_non = Anime_user::where('day_of_week', 'non')->where('user_id', $user_id)->get();//曜日がnonかつログイン中のuser_idのレコードを取得
         $anime_ids_non = $anime_users_non->pluck('anime_id');//anime_idの配列を取得
         $animes_non = Anime::whereIn('id', $anime_ids_non)->get();//animesテーブルのidが$anime_idsに一致するものを取得
-        $anime_users_mon = Anime_user::where('day_of_week', 'mon')->get();
+        $anime_users_mon = Anime_user::where('day_of_week', 'mon')->where('user_id', $user_id)->get();
         $anime_ids_mon = $anime_users_mon->pluck('anime_id');
         $animes_mon = Anime::whereIn('id', $anime_ids_mon)->get();
-        $anime_users_tue = Anime_user::where('day_of_week', 'tue')->get();
+        $anime_users_tue = Anime_user::where('day_of_week', 'tue')->where('user_id', $user_id)->get();
         $anime_ids_tue = $anime_users_tue->pluck('anime_id');
         $animes_tue = Anime::whereIn('id', $anime_ids_tue)->get();
-        $anime_users_wed = Anime_user::where('day_of_week', 'wed')->get();
+        $anime_users_wed = Anime_user::where('day_of_week', 'wed')->where('user_id', $user_id)->get();
         $anime_ids_wed = $anime_users_wed->pluck('anime_id');
         $animes_wed = Anime::whereIn('id', $anime_ids_wed)->get();
-        $anime_users_thu = Anime_user::where('day_of_week', 'thu')->get();
+        $anime_users_thu = Anime_user::where('day_of_week', 'thu')->where('user_id', $user_id)->get();
         $anime_ids_thu = $anime_users_thu->pluck('anime_id');
         $animes_thu = Anime::whereIn('id', $anime_ids_thu)->get();
-        $anime_users_fri = Anime_user::where('day_of_week', 'fri')->get();
+        $anime_users_fri = Anime_user::where('day_of_week', 'fri')->where('user_id', $user_id)->get();
         $anime_ids_fri = $anime_users_fri->pluck('anime_id');
         $animes_fri = Anime::whereIn('id', $anime_ids_fri)->get();
-        $anime_users_sat = Anime_user::where('day_of_week', 'sat')->get();
+        $anime_users_sat = Anime_user::where('day_of_week', 'sat')->where('user_id', $user_id)->get();
         $anime_ids_sat = $anime_users_sat->pluck('anime_id');
         $animes_sat = Anime::whereIn('id', $anime_ids_sat)->get();
-        $anime_users_sun = Anime_user::where('day_of_week', 'sun')->get();
+        $anime_users_sun = Anime_user::where('day_of_week', 'sun')->where('user_id', $user_id)->get();
         $anime_ids_sun = $anime_users_sun->pluck('anime_id');
         $animes_sun = Anime::whereIn('id', $anime_ids_sun)->get();
         //dd($animes_mon);
