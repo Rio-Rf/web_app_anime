@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Anime;
 
 class AnimeSeeder extends Seeder
 {
@@ -16,6 +17,9 @@ class AnimeSeeder extends Seeder
      
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Anime::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $now = new \DateTime();
         //キービジュアル = メインビジュアル != ティザービジュアル
         DB::table('animes')->insert([
@@ -58,7 +62,7 @@ class AnimeSeeder extends Seeder
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
         ]);
-        /*DB::table('animes')->insert([
+        DB::table('animes')->insert([
             'title'=>'機動戦士ガンダム 水星の魔女 Season2',
             'on_air_season'=>'2023年春アニメ',
             'img_path'=>'suiseinomajo_2.jfif',
@@ -81,6 +85,6 @@ class AnimeSeeder extends Seeder
             'official_url'=>'https://g-witch.net/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
-        ]);*/
+        ]);
     }
 }

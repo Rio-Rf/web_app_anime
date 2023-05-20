@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call(Anime_userSeeder::class);
         $this->call(AnimeSeeder::class);
         $this->call(UserSeeder::class);
        
