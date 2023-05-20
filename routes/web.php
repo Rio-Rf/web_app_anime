@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\Anime_userController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,7 @@ Route::controller(AnimeController::class)->middleware(['auth'])->group(function(
     Route::post('/edit', 'edit_post')->name('animes.edit_post');
 });
 
+Route::get('Auth/login', [AuthenticatedSessionController::class, "guestLogin"])->name('login.guest');
+
 require __DIR__.'/auth.php';
+

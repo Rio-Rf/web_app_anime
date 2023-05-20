@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\Anime_user;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -43,6 +44,17 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
+        return redirect('/');
+    }
+    
+    private const GUEST_USER_ID = 1;
+    public function guestLogin()
+    {
+        //anime_usersテーブルのゲストユーザーのレコードを全て削除する
+        Anime_user::where('user_id', self::GUEST_USER_ID)->forceDelete();//delete()だと論理削除になる．
+        if(Auth::loginUsingId(self::GUEST_USER_ID)){
+            return redirect('/');
+        }
         return redirect('/');
     }
 }

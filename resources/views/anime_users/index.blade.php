@@ -26,7 +26,7 @@
                                     <div><img class="image" width = "100", height = "113", src="{{ Storage::disk('s3')->temporaryUrl($anime_mon->img_path, now()->addDay()) }}" alt = "Image"></div>
                                 </a>
                                 @empty
-                                検索条件に一致する作品はデータベースに登録されておりません.
+                                <td></td>
                                 @endforelse
                                 </td>
                                 <td>
