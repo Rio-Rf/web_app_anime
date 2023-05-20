@@ -18,9 +18,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        User::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        User::chunk(100, function ($records) {//チャンクごとにまとめて削除，すべてのレコードを削除
+            foreach ($records as $record) {
+                $record->delete();
+            }
+        });
         
         DB::table('users')->insert([
             'id' => 1,

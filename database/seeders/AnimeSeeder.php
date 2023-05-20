@@ -17,9 +17,11 @@ class AnimeSeeder extends Seeder
      
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        Anime::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        Anime::chunk(100, function ($records) {//チャンクごとにまとめて削除，すべてのレコードを削除
+            foreach ($records as $record) {
+                $record->delete();
+            }
+        });
         $now = new \DateTime();
         //キービジュアル = メインビジュアル != ティザービジュアル
         DB::table('animes')->insert([
