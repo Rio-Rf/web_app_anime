@@ -48,9 +48,17 @@ class AnimeController extends Controller
     {
         return view('anime_users/board');
     }
-    public function edit(Anime $anime)
+    public function edit(Anime $anime, Request $request)
     {
-        return view('anime_users/edit', compact('anime'));
+        $anime_id = $anime->id;
+        $user_id = $request->user()->id;
+        $anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();
+        if($anime_user->isEmpty()){
+            $anime_user = new Anime_user;
+        }else{
+            $anime_user = $anime_user[0];
+        }
+        return view('anime_users/edit', compact('anime', 'anime_user'));
     }
     public function search_get()
     {
@@ -177,5 +185,22 @@ class AnimeController extends Controller
         $animes_sun = Anime::whereIn('id', $anime_ids_sun)->get();
         //dd($animes_mon);
         return view('anime_users/index', compact('animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun'));
+    }
+    public function detail(Anime $anime, Request $request)
+    {
+        $anime_id = $anime->id;
+        $user_id = $request->user()->id;
+        $anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();
+        $anime_user = $anime_user[0];
+        //dd($anime_user);
+        return view('anime_users/detail', compact('anime', 'anime_user'));
+    }
+    public function delete(Anime $anime, Request $request)
+    {
+        $anime_id = $anime->id;
+        $user_id = $request->user()->id;
+        Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->forceDelete();
+        //dd($anime_user);
+        return $this->index($request);
     }
 }

@@ -37,7 +37,7 @@
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_mon as $anime_mon)
                                     <div style="display: inline-block; margin-right: 10px;">
-                                        <a href="{{ route('animes.edit' , $anime_mon) }}">
+                                        <a href="{{ route('animes.detail' , $anime_mon) }}">
                                             <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_mon->img_path, now()->addDay()) }}" alt = "Image">
                                         </a>
                                     </div>
@@ -53,7 +53,7 @@
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_tue as $anime_tue)
                                     <div style="display: inline-block; margin-right: 10px;">
-                                        <a href="{{ route('animes.edit' , $anime_tue) }}">
+                                        <a href="{{ route('animes.detail' , $anime_tue) }}">
                                             <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_tue->img_path, now()->addDay()) }}" alt = "Image">
                                         </a>
                                     </div>
@@ -69,7 +69,7 @@
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_wed as $anime_wed)
                                     <div style="display: inline-block; margin-right: 10px;">
-                                        <a href="{{ route('animes.edit' , $anime_wed) }}">
+                                        <a href="{{ route('animes.detail' , $anime_wed) }}">
                                             <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_wed->img_path, now()->addDay()) }}" alt = "Image">
                                         </a>
                                     </div>
@@ -85,7 +85,7 @@
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_thu as $anime_thu)
                                     <div style="display: inline-block; margin-right: 10px;">
-                                        <a href="{{ route('animes.edit' , $anime_thu) }}">
+                                        <a href="{{ route('animes.detail' , $anime_thu) }}">
                                             <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_thu->img_path, now()->addDay()) }}" alt = "Image">
                                         </a>
                                     </div>
@@ -101,7 +101,7 @@
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_fri as $anime_fri)
                                     <div style="display: inline-block; margin-right: 10px;">
-                                        <a href="{{ route('animes.edit' , $anime_fri) }}">
+                                        <a href="{{ route('animes.detail' , $anime_fri) }}">
                                             <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_fri->img_path, now()->addDay()) }}" alt = "Image">
                                         </a>
                                     </div>
@@ -117,7 +117,7 @@
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_sat as $anime_sat)
                                     <div style="display: inline-block; margin-right: 10px;">
-                                        <a href="{{ route('animes.edit' , $anime_sat) }}">
+                                        <a href="{{ route('animes.detail' , $anime_sat) }}">
                                             <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_sat->img_path, now()->addDay()) }}" alt = "Image">
                                         </a>
                                     </div>
@@ -133,7 +133,7 @@
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_sun as $anime_sun)
                                     <div style="display: inline-block; margin-right: 10px;">
-                                        <a href="{{ route('animes.edit' , $anime_sun) }}">
+                                        <a href="{{ route('animes.detail' , $anime_sun) }}">
                                             <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_sun->img_path, now()->addDay()) }}" alt = "Image">
                                         </a>
                                     </div>
@@ -149,7 +149,7 @@
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_non as $anime_non)
                                     <div style="display: inline-block; margin-right: 10px;">
-                                        <a href="{{ route('animes.edit' , $anime_non) }}">
+                                        <a href="{{ route('animes.detail' , $anime_non) }}">
                                             <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_non->img_path, now()->addDay()) }}" alt = "Image">
                                         </a>
                                     </div>
