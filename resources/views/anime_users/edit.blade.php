@@ -11,9 +11,16 @@
             <header>
             </header>
             <div>
-              <h1>編集機能</h1>
-              <div>
-                <img width = "300", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"　align="left" style="float: left; margin-right: 10px;">
+              <div style="margin-top: 30px;">
+                <img width = "300", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"　align="left" style="float: left; margin-right: 50px; margin-left: 30px;">
+                <style>
+                    table, td, th {
+                        border: 1px solid black; /* 枠線のスタイルを設定 */
+                        border-collapse: collapse; /* セルの境界線を結合 */
+                        padding: 10px;
+                        background-color: #FFFFFF;
+                    }
+                </style>
                 <table>
                      <form action="{{ route('animes.edit_post') }}" method="POST">
                         @csrf
@@ -77,13 +84,13 @@
                                 <td><a href = {{$anime->official_url}}>{{$anime->official_url}}</a></td>
                             </tr> 
                         </tbody>
-                        <input type="hidden" name = "anime_id" value = "{{$anime->id}}">
-                        <input type="submit" value="下記の内容で登録する">
-                     </form>
-                </table>
+                    </table>
+                    <input type="hidden" name = "anime_id" value = "{{$anime->id}}">
+                    <input type="submit" style="margin-top: 20px; margin-right: 30px; float: right;" value="上記の内容で登録する">
+                </form>
                 </div>
                 <br clear="both"><!-- 回り込みの解除 -->
-                <div>
+                <div style="margin-top: 30px; margin-left: 30px;">
                     <a href="{{route('search.session')}}">戻る</a>
                 </div>
             </div>
