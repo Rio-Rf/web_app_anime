@@ -12,7 +12,7 @@
             </header>
             <div>
               <div style="margin-top: 30px;">
-                <img width = "300", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"　align="left" style="float: left; margin-right: 50px; margin-left: 30px;">
+                <img width = "300", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"　align="left" style="float: left; margin-right: 50px; margin-left: 30px; border: 1px solid #000000;">
                 <style>
                     table, td, th {
                         border: 1px solid black; /* 枠線のスタイルを設定 */
@@ -41,14 +41,14 @@
                                 <th>曜日</th>
                                 <td>
                                     <select name = "day_of_week">
-                                        <option value = "non">指定なし</option>
-                                        <option value = "mon">月曜日</option>
-                                        <option value = "tue">火曜日</option>
-                                        <option value = "wed">水曜日</option>
-                                        <option value = "thu">木曜日</option>
-                                        <option value = "fri">金曜日</option>
-                                        <option value = "sat">土曜日</option>
-                                        <option value = "sun">日曜日</option>
+                                        <option value = "non"{{ $anime_user->day_of_week == 'non' ? 'selected' : '' }}>指定なし</option><!--day_of_weekがnonだったらselected属性を追加-->
+                                        <option value = "mon"{{ $anime_user->day_of_week == 'mon' ? 'selected' : '' }}>月曜日</option>
+                                        <option value = "tue"{{ $anime_user->day_of_week == 'tue' ? 'selected' : '' }}>火曜日</option>
+                                        <option value = "wed"{{ $anime_user->day_of_week == 'wed' ? 'selected' : '' }}>水曜日</option>
+                                        <option value = "thu"{{ $anime_user->day_of_week == 'thu' ? 'selected' : '' }}>木曜日</option>
+                                        <option value = "fri"{{ $anime_user->day_of_week == 'fri' ? 'selected' : '' }}>金曜日</option>
+                                        <option value = "sat"{{ $anime_user->day_of_week == 'sat' ? 'selected' : '' }}>土曜日</option>
+                                        <option value = "sun"{{ $anime_user->day_of_week == 'sun' ? 'selected' : '' }}>日曜日</option>
                                     </select>
                                 </td>
                             </tr> 
@@ -86,7 +86,7 @@
                         </tbody>
                     </table>
                     <input type="hidden" name = "anime_id" value = "{{$anime->id}}">
-                    <input type="submit" style="margin-top: 20px; margin-right: 30px; float: right;" value="上記の内容で登録する">
+                    <input type="submit" style="margin-top: 20px; margin-right: 30px; float: left; background-color: #3490dc; border: none; border-radius: 4px;" value="上記の内容で登録する">
                 </form>
                 </div>
                 <br clear="both"><!-- 回り込みの解除 -->

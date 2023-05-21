@@ -42,6 +42,8 @@ Route::controller(AnimeController::class)->middleware(['auth'])->group(function(
     Route::post('/search/re', 'search')->name('search.post');
     Route::get('/edit/{anime}', 'edit')->name('animes.edit');
     Route::post('/edit', 'edit_post')->name('animes.edit_post');
+    Route::get('/detail/{anime}', 'detail')->name('animes.detail');
+    Route::delete('/detail/{anime}', 'delete')->name('animes.delete');
 });
 
 Route::get('Auth/login', [AuthenticatedSessionController::class, "guestLogin"])->name('login.guest');
