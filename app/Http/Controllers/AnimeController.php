@@ -165,6 +165,7 @@ class AnimeController extends Controller
         $animes = $query->get();//検索ボックスが空の時にはすべてを表示する．
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
+        
         return view('anime_users/search', compact('keyword', 'animes', 'anime_users'));
     }
     public function search_post(Request $request)
@@ -223,10 +224,33 @@ class AnimeController extends Controller
     {
         $anime_id = $anime->id;
         $user_id = $request->user()->id;
+        $user = User::find($user_id);
         //dd($anime);
-        Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
-                    ->where('user_id', $user_id)
-                    ->update(['like' => 1]);
+        $check = $anime->users()
+                ->newPivotQuery()
+                ->where('anime_id', $anime_id)
+                ->where('user_id', $user_id)
+                ->get('*');
+        //dd($check);
+        if($check->isEmpty()){//該当のanime_userレコードが存在しないときはlike=1で初期化
+            $anime->users()->attach($user->id, [
+                'edit_title' => 'none', 
+                'edit_on_air_season' => 'none', 
+                'edit_img_path' => 'none', 
+                'day_of_week' => 'none', 
+                'hours' => 0, 
+                'minutes' => 0, 
+                'medium' => 'none', 
+                'official_url' => 'none', 
+                'created_at' => now(), 
+                'updated_at' => now(),
+                'like' => 1
+                ]);
+        }else{        
+            Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
+                        ->where('user_id', $user_id)
+                        ->update(['like' => 1]);
+        }
         $keyword = "タイトルを入力してください．";
         $query = Anime::query();
         $animes = $query->get();//検索ボックスが空の時にはすべてを表示する．
