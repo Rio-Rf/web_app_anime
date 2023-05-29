@@ -13,22 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::create('anime_users', function (Blueprint $table) {
-            $table->foreignId('anime_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->String('edit_title', 50);
-            $table->String('edit_on_air_season', 15);
-            $table->String('edit_img_path',200);
-            $table->String('day_of_week', 5);
-            $table->integer('hours');
-            $table->integer('minutes');
-            $table->String('medium', 20);
-            $table->String('official_url');
-            $table->timestamps();
-            $table->softDeletes();
-            $table->primary(['anime_id', 'user_id']);
-        });
+        if (!Schema::hasTable('anime_users')) {
+            Schema::disableForeignKeyConstraints();
+            Schema::create('anime_users', function (Blueprint $table) {
+                $table->foreignId('anime_id')->constrained();
+                $table->foreignId('user_id')->constrained();
+                $table->String('edit_title', 50);
+                $table->String('edit_on_air_season', 15);
+                $table->String('edit_img_path',200);
+                $table->String('day_of_week', 5);
+                $table->integer('hours');
+                $table->integer('minutes');
+                $table->String('medium', 20);
+                $table->String('official_url');
+                $table->timestamps();
+                $table->softDeletes();
+                $table->primary(['anime_id', 'user_id']);
+            });
+        }
     }
 
     /**

@@ -6,26 +6,57 @@
             <title>AnimeNavi</title>
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+            <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
         </head>
         <body>
+            <style>
+            table, td, th {
+                border: 1px solid black; /* 枠線のスタイルを設定 */
+                border-collapse: collapse; /* セルの境界線を結合 */
+                padding: 10px;
+                background-color: #FFFFFF;
+            }
+            .like-btn {
+                 width:50px;
+                 height: 60px;
+                 font-size: 50px;
+                 color: #808080; 
+                 margin-left: 20px;
+             }
+            .unlike-btn {
+                 width: 50px;
+                 height: 60px;
+                 font-size: 50px;
+                 color: #e54747;
+                 margin-left: 20px;
+            }
+            </style>
             <header>
             </header>
             <div>
               <div style="margin-top: 30px;">
-                <img width = "300", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"　align="left" style="float: left; margin-right: 50px; margin-left: 30px; border: 1px solid #000000;">
-                <style>
-                    table, td, th {
-                        border: 1px solid black; /* 枠線のスタイルを設定 */
-                        border-collapse: collapse; /* セルの境界線を結合 */
-                        padding: 10px;
-                        background-color: #FFFFFF;
-                    }
-                </style>
+                <div style="position: relative; float: left; margin-right: 30px; margin-left: 5px;">
+                    <img width = "300", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"　align="left" style="float: left; margin-right: 50px; margin-left: 30px; border: 1px solid #000000;">
+                    @if($anime_user->like == 1)
+                    <a href="{{ route('animes.detail_unlike' , ['anime'=>$anime])}}" style="position: absolute; bottom: 0; right: 60px;">
+                        <i class="fas fa-heart unlike-btn"></i>
+                        <span style="font-size: 50px; color: white;">{{$like_count}}</span>
+                    </a>
+                    @else
+                    <a href="{{ route('animes.detail_like' , ['anime'=>$anime])}}" style="position: absolute; bottom: 0; right: 60px;">
+                        <i class="far fa-heart like-btn"></i>
+                        <span style="font-size: 50px; color: white;">{{$like_count}}</span>
+                    </a>
+                    @endif
+                </div>
                 <table>
                         <tbody>
                             <tr>
                                 <th>タイトル</th>
-                                <td>{{$anime->title}}</td>
+                                <td style="font-family: 'Kaisei Decol', serif; font-size: 30px;">{{$anime->title}}</td>
                             </tr> 
                             <tr>
                                 <th>放送クール</th>
@@ -51,6 +82,7 @@
                                     @elseif ($anime_user->day_of_week == "non")
                                     指定なし
                                     @else
+                                    指定なし
                                     @endif
                                     
                                 </td>

@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notice_users', function (Blueprint $table) {
-            $table->foreignId('notice_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->timestamps();
-            $table->softDeletes();
-            $table->primary(['notice_id', 'user_id']);
-        });
+        if (!Schema::hasTable('notice_users')) {
+            Schema::create('notice_users', function (Blueprint $table) {
+                $table->foreignId('notice_id')->constrained();
+                $table->foreignId('user_id')->constrained();
+                $table->timestamps();
+                $table->softDeletes();
+                $table->primary(['notice_id', 'user_id']);
+            });
+        }
     }
 
     /**
