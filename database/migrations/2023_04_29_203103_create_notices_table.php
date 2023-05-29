@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notices', function (Blueprint $table) {
-            $table->id();
-            $table->string('title', 50);
-            $table->string('body', 300);
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (!Schema::hasTable('notices')) {
+            Schema::create('notices', function (Blueprint $table) {
+                $table->id();
+                $table->string('title', 50);
+                $table->string('body', 300);
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

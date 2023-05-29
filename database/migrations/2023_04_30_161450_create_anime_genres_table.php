@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('anime_genres', function (Blueprint $table) {
-            $table->foreignId('anime_id')->constrained();
-            $table->foreignId('genre_id')->constrained();
-            $table->timestamps();
-            $table->softDeletes();
-            $table->primary(['anime_id', 'genre_id']);
-        });
+        if (!Schema::hasTable('anime_genres')) {
+            Schema::create('anime_genres', function (Blueprint $table) {
+                $table->foreignId('anime_id')->constrained();
+                $table->foreignId('genre_id')->constrained();
+                $table->timestamps();
+                $table->softDeletes();
+                $table->primary(['anime_id', 'genre_id']);
+            });
+        }
     }
 
     /**

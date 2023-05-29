@@ -44,6 +44,14 @@ Route::controller(AnimeController::class)->middleware(['auth'])->group(function(
     Route::post('/edit', 'edit_post')->name('animes.edit_post');
     Route::get('/detail/{anime}', 'detail')->name('animes.detail');
     Route::delete('/detail/{anime}', 'delete')->name('animes.delete');
+    Route::get('/edit_like/{anime}', 'edit_like')->name('animes.edit_like');
+    Route::get('/edit_unlike/{anime}', 'edit_unlike')->name('animes.edit_unlike');
+    Route::get('/detail_like/{anime}', 'detail_like')->name('animes.detail_like');
+    Route::get('/detail_unlike/{anime}', 'detail_unlike')->name('animes.detail_unlike');
+    Route::get('/index_like/{anime}', 'index_like')->name('animes.index_like');
+    Route::get('/index_unlike/{anime}', 'index_unlike')->name('animes.index_unlike');
+    Route::get('/search_like/{anime}', 'search_like')->name('animes.search_like');
+    Route::get('/search_unlike/{anime}', 'search_unlike')->name('animes.search_unlike');
 });
 
 Route::get('Auth/login', [AuthenticatedSessionController::class, "guestLogin"])->name('login.guest');

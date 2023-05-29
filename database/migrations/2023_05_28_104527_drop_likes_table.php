@@ -13,14 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('genres')) {
-            Schema::create('genres', function (Blueprint $table) {
-                $table->id();
-                $table->String('name', 30);
-                $table->timestamps();
-                $table->softDeletes();
-            });
-        }
+        Schema::dropIfExists('likes');
     }
 
     /**
@@ -30,6 +23,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genres');
+        Schema::create('table_name', function (Blueprint $table) {
+            // テーブルの再作成に関するスキーマ定義を記述することもできる
+        });
     }
 };

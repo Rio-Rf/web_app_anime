@@ -14,15 +14,17 @@ return new class extends Migration
     public function up()
     {
         //Schema::disableForeignKeyConstraints();
-        Schema::create('animes', function (Blueprint $table) {
-            $table->id();
-            $table->String('title', 50)->unique();
-            $table->String('on_air_season', 20);
-            $table->String('img_path', 200);
-            $table->String('official_url', 200);
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (!Schema::hasTable('animes')) {
+            Schema::create('animes', function (Blueprint $table) {
+                $table->id();
+                $table->String('title', 50)->unique();
+                $table->String('on_air_season', 20);
+                $table->String('img_path', 200);
+                $table->String('official_url', 200);
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

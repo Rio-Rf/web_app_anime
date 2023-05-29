@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        if (!Schema::hasTable('anime_voice_actors')) {
         Schema::create('anime_voice_actors', function (Blueprint $table) {
             $table->foreignId('anime_id')->constrained();
             $table->foreignId('voice_actor_id')->constrained();
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->primary(['anime_id', 'voice_actor_id']);
         });
+        }
     }
 
     /**

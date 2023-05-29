@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
-            $table->foreignId('anime_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->timestamps();
-            $table->primary(['anime_id', 'user_id']);
+        Schema::table('anime_users', function (Blueprint $table) {
+            $table->integer('like')->default(0);
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        Schema::table('anime_users', function (Blueprint $table) {
+            //
+        });
     }
 };

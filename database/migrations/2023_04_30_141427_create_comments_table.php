@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('board_id')->constrained();
-            $table->String('view_name', 20);
-            $table->String('comment', 500);
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (!Schema::hasTable('comments')) {
+            Schema::create('comments', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('board_id')->constrained();
+                $table->String('view_name', 20);
+                $table->String('comment', 500);
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

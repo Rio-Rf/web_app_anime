@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('voice_actors', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('anime_id')->constrained();
-            $table->String('first_name', 10);
-            $table->String('last_name', 10);
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (!Schema::hasTable('voice_actors')) {
+            Schema::create('voice_actors', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('anime_id')->constrained();
+                $table->String('first_name', 10);
+                $table->String('last_name', 10);
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**

@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('board_genres', function (Blueprint $table) {
-            $table->foreignId('board_id')->constrained();
-            $table->foreignId('genre_id')->constrained();
-            $table->timestamps();
-            $table->softDeletes();
-            $table->primary(['board_id', 'genre_id']);
-        });
+        if (!Schema::hasTable('board_genres')) {
+            Schema::create('board_genres', function (Blueprint $table) {
+                $table->foreignId('board_id')->constrained();
+                $table->foreignId('genre_id')->constrained();
+                $table->timestamps();
+                $table->softDeletes();
+                $table->primary(['board_id', 'genre_id']);
+            });
+        }
     }
 
     /**

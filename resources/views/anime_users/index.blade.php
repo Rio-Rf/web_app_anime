@@ -6,8 +6,47 @@
             <title>AnimeNavi</title>
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+            <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&family=Yusei+Magic&display=swap" rel="stylesheet">
         </head>
         <body>
+            <style>
+            table, td, th {
+                border: 1px solid black; /* 枠線のスタイルを設定 */
+                border-collapse: collapse; /* セルの境界線を結合 */
+                padding: 10px;
+            }
+            td:last-child {
+                text-align: right; /* 最後のセル内のテキストを右寄せにする */
+                background-color: #F5F5F5;
+            }
+            .image {
+                border: 1px solid #000000;
+            }
+            .like-btn {
+                 width:28px;
+                 height: 34px;
+                 font-size: 28px;
+                 color: #808080; 
+                 margin-left: 11px;
+             }
+            .unlike-btn {
+                 width: 28px;
+                 height: 34px;
+                 font-size: 28px;
+                 color: #e54747;
+                 margin-left: 11px;
+            }
+            .icon {
+                 width: 35px;
+                 height: 42px;
+                 font-size: 35px;
+                 color: #e54747;
+                 margin-top: 10px;
+            }
+            </style>
             <header>
                 <!--<a href="/">アニメナビ</a>
                 <a href="{{route('animes.search_get')}}">検索</a>
@@ -16,159 +55,336 @@
             </header>
             <div class='myanimes'>
                 <div class='myanimes'>
-                    <style>
-                      table, td, th {
-                        border: 1px solid black; /* 枠線のスタイルを設定 */
-                        border-collapse: collapse; /* セルの境界線を結合 */
-                        padding: 10px;
-                      }
-                      td:last-child {
-                        text-align: right; /* 最後のセル内のテキストを右寄せにする */
-                        background-color: #F5F5F5;
-                      }
-                      .image {
-                        border: 1px solid #000000;
-                      }
-                    </style>
+                    
                     <table style="margin-top: 30px; margin-right: 15px; margin-left: 15px;">
                         <tbody>
                             <tr style="overflow-x: auto;">
-                                <th style="background-color: #E5CCFF;">月</th>
+                                <th style="background-color: #E5CCFF; font-size: 30px;">月</th>
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_mon as $anime_mon)
-                                    <div style="display: inline-block; margin-right: 10px;">
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_mon) }}">
-                                            <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_mon->img_path, now()->addDay()) }}" alt = "Image">
+                                            <div style="position: relative; float: left;">
+                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_mon->img_path, now()->addDay()) }}" alt = "Image">
+                                                
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
+                                                @php
+                                                    $liked = null;
+                                                    $liked = $anime_users->contains('anime_id', $anime_mon->id);
+                                                    $anime = $anime_mon;
+                                                @endphp
+                                                
+                                                @if($liked)
+                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="far fa-heart like-btn"></i>
+                                                    </a>
+                                                @endif
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                            </div>
                                         </a>
                                     </div>
                                     @empty
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap;">追加する</a>
+                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr style="overflow-x: auto;">
-                                <th style="background-color: #FFCC99;">火</th>
+                                <th style="background-color: #FFCC99; font-size: 30px;">火</th>
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_tue as $anime_tue)
-                                    <div style="display: inline-block; margin-right: 10px;">
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_tue) }}">
-                                            <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_tue->img_path, now()->addDay()) }}" alt = "Image">
+                                            <div style="position: relative; float: left;">
+                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_tue->img_path, now()->addDay()) }}" alt = "Image">
+                                                
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
+                                                @php
+                                                    $liked = null;
+                                                    $liked = $anime_users->contains('anime_id', $anime_tue->id);
+                                                    $anime = $anime_tue;
+                                                @endphp
+                                                
+                                                @if($liked)
+                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="far fa-heart like-btn"></i>
+                                                    </a>
+                                                @endif
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                            </div>
                                         </a>
                                     </div>
                                     @empty
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap;">追加する</a>
+                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr>
                             <tr style="overflow-x: auto;">
-                                <th style="background-color: #99FFFF;">水</th>
+                                <th style="background-color: #99FFFF; font-size: 30px;">水</th>
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_wed as $anime_wed)
-                                    <div style="display: inline-block; margin-right: 10px;">
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_wed) }}">
-                                            <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_wed->img_path, now()->addDay()) }}" alt = "Image">
+                                            <div style="position: relative; float: left;">
+                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_wed->img_path, now()->addDay()) }}" alt = "Image">
+                                                
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
+                                                @php
+                                                    $liked = null;
+                                                    $liked = $anime_users->contains('anime_id', $anime_wed->id);
+                                                    $anime = $anime_wed;
+                                                @endphp
+                                                
+                                                @if($liked)
+                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="far fa-heart like-btn"></i>
+                                                    </a>
+                                                @endif
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                            </div>
                                         </a>
                                     </div>
                                     @empty
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap;">追加する</a>
+                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr>
                             <tr style="overflow-x: auto;">
-                                <th style="background-color: #99FF99;">木</th>
+                                <th style="background-color: #99FF99; font-size: 30px;">木</th>
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_thu as $anime_thu)
-                                    <div style="display: inline-block; margin-right: 10px;">
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_thu) }}">
-                                            <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_thu->img_path, now()->addDay()) }}" alt = "Image">
+                                            <div style="position: relative; float: left;">
+                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_thu->img_path, now()->addDay()) }}" alt = "Image">
+                                                
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
+                                                @php
+                                                    $liked = null;
+                                                    $liked = $anime_users->contains('anime_id', $anime_thu->id);
+                                                    $anime = $anime_thu;
+                                                @endphp
+                                                
+                                                @if($liked)
+                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="far fa-heart like-btn"></i>
+                                                    </a>
+                                                @endif
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                            </div>
                                         </a>
                                     </div>
                                     @empty
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap;">追加する</a>
+                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr style="overflow-x: auto;">
-                                <th style="background-color: #FFFF99;">金</th>
+                                <th style="background-color: #FFFF99; font-size: 30px;">金</th>
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_fri as $anime_fri)
-                                    <div style="display: inline-block; margin-right: 10px;">
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_fri) }}">
-                                            <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_fri->img_path, now()->addDay()) }}" alt = "Image">
+                                            <div style="position: relative; float: left;">
+                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_fri->img_path, now()->addDay()) }}" alt = "Image">
+                                                
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
+                                                @php
+                                                    $liked = null;
+                                                    $liked = $anime_users->contains('anime_id', $anime_fri->id);
+                                                    $anime = $anime_fri;
+                                                @endphp
+                                                
+                                                @if($liked)
+                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="far fa-heart like-btn"></i>
+                                                    </a>
+                                                @endif
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                            </div>
                                         </a>
                                     </div>
                                     @empty
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap;">追加する</a>
+                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr style="overflow-x: auto;">
-                                <th style="background-color: #DEB887;">土</th>
+                                <th style="background-color: #DEB887; font-size: 30px;">土</th>
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_sat as $anime_sat)
-                                    <div style="display: inline-block; margin-right: 10px;">
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_sat) }}">
-                                            <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_sat->img_path, now()->addDay()) }}" alt = "Image">
+                                            <div style="position: relative; float: left;">
+                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_sat->img_path, now()->addDay()) }}" alt = "Image">
+                                                
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
+                                                @php
+                                                    $liked = null;
+                                                    $liked = $anime_users->contains('anime_id', $anime_sat->id);
+                                                    $anime = $anime_sat;
+                                                @endphp
+                                                
+                                                @if($liked)
+                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="far fa-heart like-btn"></i>
+                                                    </a>
+                                                @endif
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                            </div>
                                         </a>
                                     </div>
                                     @empty
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap;">追加する</a>
+                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr style="overflow-x: auto;">
-                                <th style="background-color: #FFCCE5;">日</th>
+                                <th style="background-color: #FFCCE5; font-size: 30px;">日</th>
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_sun as $anime_sun)
-                                    <div style="display: inline-block; margin-right: 10px;">
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_sun) }}">
-                                            <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_sun->img_path, now()->addDay()) }}" alt = "Image">
+                                            <div style="position: relative; float: left;">
+                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_sun->img_path, now()->addDay()) }}" alt = "Image">
+                                                
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
+                                                @php
+                                                    $liked = null;
+                                                    $liked = $anime_users->contains('anime_id', $anime_sun->id);
+                                                    $anime = $anime_sun;
+                                                @endphp
+                                                
+                                                @if($liked)
+                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="far fa-heart like-btn"></i>
+                                                    </a>
+                                                @endif
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                            </div>
                                         </a>
                                     </div>
                                     @empty
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap;">追加する</a>
+                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr style="overflow-x: auto;">
                                 <th style="background-color: #FFFFFF; white-space: nowrap;">視聴中</th>
                                 <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_non as $anime_non)
-                                    <div style="display: inline-block; margin-right: 10px;">
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_non) }}">
-                                            <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_non->img_path, now()->addDay()) }}" alt = "Image">
+                                            <div style="position: relative; float: left;">
+                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_non->img_path, now()->addDay()) }}" alt = "Image">
+                                                
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
+                                                @php
+                                                    $liked = null;
+                                                    $liked = $anime_users->contains('anime_id', $anime_non->id);
+                                                    $anime = $anime_non;
+                                                @endphp
+                                                
+                                                @if($liked)
+                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="far fa-heart like-btn"></i>
+                                                    </a>
+                                                @endif
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                            </div>
                                         </a>
                                     </div>
                                     @empty
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap;">追加する</a>
+                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
-                            <tr>
-                                <th style="background-color: #FFFFFF;">💗</th>
-                                <td style="background-color: #FFFFFF;"></td>
+                            <tr style="overflow-x: auto;">
+                                <th style="background-color: #FFFFFF; white-space: nowrap;"><i class="fas fa-heart icon"></i></th>
+                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                    @forelse($animes_like as $anime_like )
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
+                                        <a href="{{ route('animes.detail' , $anime_like) }}">
+                                            <div style="position: relative; float: left; ">
+                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_like->img_path, now()->addDay()) }}" alt = "Image">
+                                                
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
+                                                @php
+                                                    $liked = null;
+                                                    $liked = $anime_users->contains('anime_id', $anime_like->id);
+                                                    $anime = $anime_like;
+                                                @endphp
+                                                
+                                                @if($liked)
+                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                                        <i class="far fa-heart like-btn"></i>
+                                                    </a>
+                                                @endif
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                            </div>
+                                            
+                                        </a>
+                                    </div>
+                                    @empty
+                                    @endforelse
+                                </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}">追加する</a>
+                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                         </tbody>
-                     </table>
+                     </table><br><br>
                 </div>
             </div>
         </body>
