@@ -20,16 +20,16 @@
               border: 1px solid #000000;
           }
           .like-btn {
-               width:28px;
-               height: 34px;
-               font-size: 28px;
+               width:60px;
+               height: 72px;
+               font-size: 60px;
                color: #808080; 
                margin-left: 11px;
            }
           .unlike-btn {
-               width: 28px;
-               height: 34px;
-               font-size: 28px;
+               width: 60px;
+               height: 70px;
+               font-size: 60px;
                color: #e54747;
                margin-left: 11px;
           }
@@ -96,11 +96,11 @@
                               @endphp
                               
                               @if($liked)
-                                  <a href="{{ route('animes.search_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                  <a href="{{ route('animes.search_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
                                       <i class="fas fa-heart unlike-btn"></i>
                                   </a>
                               @else
-                                  <a href="{{ route('animes.search_like', ['anime'=>$anime])}}" style="position: absolute; top: 205px; right: 10px;">
+                                  <a href="{{ route('animes.search_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
                                       <i class="far fa-heart like-btn"></i>
                                   </a>
                               @endif

@@ -20,16 +20,16 @@
                 background-color: #FFFFFF;
             }
             .like-btn {
-                 width:50px;
-                 height: 60px;
-                 font-size: 50px;
+                 width:85px;
+                 height: 102px;
+                 font-size: 85px;
                  color: #808080; 
                  margin-left: 20px;
              }
             .unlike-btn {
-                 width: 50px;
-                 height: 60px;
-                 font-size: 50px;
+                 width: 85px;
+                 height: 102px;
+                 font-size: 85px;
                  color: #e54747;
                  margin-left: 20px;
             }
@@ -41,14 +41,14 @@
                 <div style="position: relative; float: left; margin-right: 30px; margin-left: 5px;">
                     <img width = "300", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"　align="left" style="float: left; margin-right: 50px; margin-left: 30px; border: 1px solid #000000;">
                     @if($anime_user->like == 1)
-                    <a href="{{ route('animes.detail_unlike' , ['anime'=>$anime])}}" style="position: absolute; bottom: 0; right: 60px;">
+                    <a href="{{ route('animes.detail_unlike' , ['anime'=>$anime])}}" style="position: absolute; top: 305px; right: 60px;">
                         <i class="fas fa-heart unlike-btn"></i>
-                        <span style="font-size: 50px; color: white;">{{$like_count}}</span>
+                        <span style="font-size: 82px; color: white;">{{$like_count}}</span>
                     </a>
                     @else
-                    <a href="{{ route('animes.detail_like' , ['anime'=>$anime])}}" style="position: absolute; bottom: 0; right: 60px;">
+                    <a href="{{ route('animes.detail_like' , ['anime'=>$anime])}}" style="position: absolute; top: 305px; right: 60px;">
                         <i class="far fa-heart like-btn"></i>
-                        <span style="font-size: 50px; color: white;">{{$like_count}}</span>
+                        <span style="font-size: 82px; color: white;">{{$like_count}}</span>
                     </a>
                     @endif
                 </div>
