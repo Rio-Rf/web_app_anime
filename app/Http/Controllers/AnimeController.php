@@ -143,7 +143,7 @@ class AnimeController extends Controller
         $animeRanks = Anime::select('animes.*', DB::raw('SUM(anime_users.like) AS like_count'))
             ->leftJoin('anime_users', 'animes.id', '=', 'anime_users.anime_id')
             ->groupBy('animes.id', 'animes.title', 'animes.on_air_season', 'animes.img_path', 'animes.official_url', 'animes.created_at', 'animes.updated_at', 'animes.deleted_at') // グループ化する列
-            ->orderBy('like_count', 'desc')
+            ->orderByRaw('like_count DESC')
             ->paginate(10);
         //dd($animeRanks);
         
@@ -189,7 +189,7 @@ class AnimeController extends Controller
         $animeRanks = Anime::select('animes.*', DB::raw('SUM(anime_users.like) AS like_count'))
             ->leftJoin('anime_users', 'animes.id', '=', 'anime_users.anime_id')
             ->groupBy('animes.id', 'animes.title', 'animes.on_air_season', 'animes.img_path', 'animes.official_url', 'animes.created_at', 'animes.updated_at', 'animes.deleted_at') // グループ化する列
-            ->orderBy('like_count', 'desc')
+            ->orderByRaw('like_count DESC')
             ->paginate(10);
         //dd($animeRanks);
         
@@ -212,7 +212,7 @@ class AnimeController extends Controller
         $animeRanks = Anime::select('animes.*', DB::raw('SUM(anime_users.like) AS like_count'))
             ->leftJoin('anime_users', 'animes.id', '=', 'anime_users.anime_id')
             ->groupBy('animes.id', 'animes.title', 'animes.on_air_season', 'animes.img_path', 'animes.official_url', 'animes.created_at', 'animes.updated_at', 'animes.deleted_at') // グループ化する列
-            ->orderBy('like_count', 'desc')
+            ->orderByRaw('like_count DESC')
             ->paginate(10);
         //dd($animeRanks);
         
