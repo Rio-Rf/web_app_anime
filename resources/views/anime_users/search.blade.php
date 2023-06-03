@@ -25,6 +25,7 @@
                font-size: 60px;
                color: #808080; 
                margin-left: 11px;
+               animation: bounce 0.5s infinite;
            }
           .unlike-btn {
                width: 60px;
@@ -32,13 +33,18 @@
                font-size: 60px;
                color: #e54747;
                margin-left: 11px;
+               animation: bounce 0.5s infinite;
           }
-          .icon {
-               width: 35px;
-               height: 42px;
-               font-size: 35px;
-               color: #e54747;
-               margin-top: 10px;
+          @keyframes bounce {
+              0% {
+                  transform: translateY(0);
+              }
+              50% {
+                  transform: translateY(-2.5px);
+              }
+              100% {
+                  transform: translateY(0);
+              }
           }
           .custom-button {
             /* ボタンのスタイルを指定 */

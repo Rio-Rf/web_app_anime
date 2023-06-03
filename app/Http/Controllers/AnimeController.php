@@ -137,9 +137,94 @@ class AnimeController extends Controller
         //d($anime_user);
         return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like'));
     }
-    public function ranking()
+    public function ranking(Request $request)
     {
-        return view('anime_users/ranking');
+        $likeCounts = Anime_user::select('anime_id', DB::raw('IFNULL(SUM(`like`), 0) AS like_count'))
+                    ->groupBy('anime_id');//likeカラムの合計値を計算
+    
+        $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
+            $join->on('animes.id', '=', 'sub.anime_id');//onメソッドで結合条件を指定
+        })
+        ->orderBy('sub.like_count', 'desc')
+        ->paginate(10);//ページネーションインスタンスとして取り出す
+        //dd($animeRanks);
+        $user_id = $request->user()->id;
+        $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
+        
+        $before_like_count = $request->query('before_like_count');//前ページの変数を継承
+        $count = $request->query('count');//前ページの順位の変数を継承
+            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count'));
+    }
+    public function ranking_like(Request $request, Anime $anime)
+    {
+        $anime_id = $anime->id;
+        $user_id = $request->user()->id;
+        $user = User::find($user_id);
+        //dd($anime);
+        $check = $anime->users()
+                ->newPivotQuery()
+                ->where('anime_id', $anime_id)
+                ->where('user_id', $user_id)
+                ->get('*');
+        //dd($check);
+        if($check->isEmpty()){//該当のanime_userレコードが存在しないときはlike=1で初期化
+            $anime->users()->attach($user->id, [
+                'edit_title' => 'none', 
+                'edit_on_air_season' => 'none', 
+                'edit_img_path' => 'none', 
+                'day_of_week' => 'none', 
+                'hours' => 0, 
+                'minutes' => 0, 
+                'medium' => 'none', 
+                'official_url' => 'none', 
+                'created_at' => now(), 
+                'updated_at' => now(),
+                'like' => 1
+                ]);
+        }else{        
+            Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
+                        ->where('user_id', $user_id)
+                        ->update(['like' => 1]);
+        }
+        $likeCounts = Anime_user::select('anime_id', DB::raw('IFNULL(SUM(`like`), 0) AS like_count'))
+                    ->groupBy('anime_id');//likeカラムの合計値を計算
+    
+        $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
+            $join->on('animes.id', '=', 'sub.anime_id');//onメソッドで結合条件を指定
+        })
+        ->orderBy('sub.like_count', 'desc')
+        ->paginate(10);//ページネーションインスタンスとして取り出す
+        //dd($animeRanks);
+        
+        $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
+        
+        $before_like_count = $request->query('before_like_count');//前ページの変数を継承
+        $count = $request->query('count');//前ページの順位の変数を継承
+            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count'));
+    }
+    public function ranking_unlike(Request $request, Anime $anime)
+    {
+        $anime_id = $anime->id;
+        $user_id = $request->user()->id;
+        //dd($anime);
+        Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
+                    ->where('user_id', $user_id)
+                    ->update(['like' => 0]);
+        $likeCounts = Anime_user::select('anime_id', DB::raw('IFNULL(SUM(`like`), 0) AS like_count'))
+                    ->groupBy('anime_id');//likeカラムの合計値を計算
+    
+        $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
+            $join->on('animes.id', '=', 'sub.anime_id');//onメソッドで結合条件を指定
+        })
+        ->orderBy('sub.like_count', 'desc')
+        ->paginate(10);//ページネーションインスタンスとして取り出す
+        //dd($animeRanks);
+        
+        $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
+        
+        $before_like_count = $request->query('before_like_count');//前ページの変数を継承
+        $count = $request->query('count');//前ページの順位の変数を継承
+            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count'));
     }
     public function board()
     {

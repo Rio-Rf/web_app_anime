@@ -10,8 +10,6 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
-        </head>
-        <body>
             <style>
             table, td, th {
                 border: 1px solid black; /* 枠線のスタイルを設定 */
@@ -25,6 +23,7 @@
                  font-size: 85px;
                  color: #808080; 
                  margin-left: 20px;
+                 animation: bounce 0.5s infinite;
              }
             .unlike-btn {
                  width: 85px;
@@ -32,8 +31,22 @@
                  font-size: 85px;
                  color: #e54747;
                  margin-left: 20px;
+                 animation: bounce 0.5s infinite;
+            }
+            @keyframes bounce {
+              0% {
+                  transform: translateY(0);
+              }
+              50% {
+                  transform: translateY(-2.5px);
+              }
+              100% {
+                  transform: translateY(0);
+              }
             }
             </style>
+        </head>
+        <body>
             <header>
             </header>
             <div>
