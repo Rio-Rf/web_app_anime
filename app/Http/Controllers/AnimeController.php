@@ -186,7 +186,7 @@ class AnimeController extends Controller
                         ->where('user_id', $user_id)
                         ->update(['like' => 1]);
         }
-        $likeCounts = Anime_user::select('anime_id', DB::raw('IFNULL(SUM(`like`), 0) AS like_count'))
+        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM("like"), 0) AS like_count'))
                     ->groupBy('anime_id');//likeカラムの合計値を計算
     
         $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
@@ -210,7 +210,7 @@ class AnimeController extends Controller
         Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
-        $likeCounts = Anime_user::select('anime_id', DB::raw('IFNULL(SUM(`like`), 0) AS like_count'))
+        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM("like"), 0) AS like_count'))
                     ->groupBy('anime_id');//likeカラムの合計値を計算
     
         $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
