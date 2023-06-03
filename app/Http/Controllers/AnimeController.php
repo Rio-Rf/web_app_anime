@@ -139,7 +139,7 @@ class AnimeController extends Controller
     }
     public function ranking(Request $request)
     {
-        $likeCounts = Anime_user::select('anime_id', DB::raw('IFNULL(SUM(`like`), 0) AS like_count'))
+        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM("like"), 0) AS like_count'))//IFNULLからpostgres仕様に変更
                     ->groupBy('anime_id');//likeカラムの合計値を計算
     
         $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
@@ -151,8 +151,8 @@ class AnimeController extends Controller
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         
-        $before_like_count = $request->query('before_like_count');//前ページの変数を継承
-        $count = $request->query('count');//前ページの順位の変数を継承
+        $before_like_count = $request->query('before_like_count');//前ページのURLからの変数を継承
+        $count = $request->query('count');//前ページの順位のURLからの変数を継承
             return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count'));
     }
     public function ranking_like(Request $request, Anime $anime)
