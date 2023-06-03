@@ -142,7 +142,7 @@ class AnimeController extends Controller
         //likeカラムの合計値をlike_countカラムに保存, 実在するanime_usersテーブルを直接指定して操作している
         $animeRanks = Anime::select('animes.*', DB::raw('SUM(anime_users.like) AS like_count'))
             ->leftJoin('anime_users', 'animes.id', '=', 'anime_users.anime_id')
-            ->groupBy('animes.id', 'animes.title', 'animes.on_air_season', 'img_path', 'official_url', 'created_at', 'updated_at', 'deleted_at') // グループ化する列
+            ->groupBy('animes.id', 'animes.title', 'animes.on_air_season', 'animes.img_path', 'animes.official_url', 'animes.created_at', 'animes.updated_at', 'animes.deleted_at') // グループ化する列
             ->orderByDesc('like_count')
             ->paginate(10);
         //dd($animeRanks);
@@ -211,7 +211,7 @@ class AnimeController extends Controller
         //likeカラムの合計値をlike_countカラムに保存，実在するanime_usersテーブルを直接指定して操作している
         $animeRanks = Anime::select('animes.*', DB::raw('SUM(anime_users.like) AS like_count'))
             ->leftJoin('anime_users', 'animes.id', '=', 'anime_users.anime_id')
-            ->groupBy('animes.id', 'animes.title', 'animes.on_air_season', 'img_path', 'official_url', 'created_at', 'updated_at', 'deleted_at') // グループ化する列
+            ->groupBy('animes.id', 'animes.title', 'animes.on_air_season', 'animes.img_path', 'animes.official_url', 'animes.created_at', 'animes.updated_at', 'animes.deleted_at') // グループ化する列
             ->orderByDesc('like_count')
             ->paginate(10);
         //dd($animeRanks);
