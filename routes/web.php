@@ -52,6 +52,8 @@ Route::controller(AnimeController::class)->middleware(['auth'])->group(function(
     Route::get('/index_unlike/{anime}', 'index_unlike')->name('animes.index_unlike');
     Route::get('/search_like/{anime}', 'search_like')->name('animes.search_like');
     Route::get('/search_unlike/{anime}', 'search_unlike')->name('animes.search_unlike');
+    Route::get('/ranking_like/{anime}', 'ranking_like')->name('animes.ranking_like');
+    Route::get('/ranking_unlike/{anime}', 'ranking_unlike')->name('animes.ranking_unlike');
 });
 
 Route::get('Auth/login', [AuthenticatedSessionController::class, "guestLogin"])->name('login.guest');

@@ -88,5 +88,63 @@ class AnimeSeeder extends Seeder
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
         ]);
+        DB::table('animes')->insert([
+            'title'=>'僕の心のヤバイやつ',
+            'on_air_season'=>'2023年春アニメ',
+            'img_path'=>'bokunokokoro.jpg',
+            'official_url'=>'https://bokuyaba-anime.com/',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
+        ]);
+        DB::table('animes')->insert([
+            'title'=>'地獄楽',
+            'on_air_season'=>'2023年春アニメ',
+            'img_path'=>'jigokuraku.jpg',
+            'official_url'=>'https://www.jigokuraku.com/',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
+        ]);
+        DB::table('animes')->insert([
+            'title'=>'無職転生 ～異世界行ったら本気だす～',
+            'on_air_season'=>'2021年冬アニメ',
+            'img_path'=>'musyokutensei.jpg',
+            'official_url'=>'https://mushokutensei.jp/',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
+        ]);
+        DB::table('animes')->insert([
+            'title'=>'無職転生 ～異世界行ったら本気だす～ 第2クール',
+            'on_air_season'=>'2021年秋アニメ',
+            'img_path'=>'musyokutensei2.jpg',
+            'official_url'=>'https://mushokutensei.jp/',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
+        ]);
+        DB::table('animes')->insert([
+            'title'=>'チェンソーマン',
+            'on_air_season'=>'2022年秋アニメ',
+            'img_path'=>'chainsawman.webp',
+            'official_url'=>'https://chainsawman.dog/',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
+        ]);
+        DB::table('animes')->insert([
+            'title'=>'転生したら剣でした',
+            'on_air_season'=>'2022年秋アニメ',
+            'img_path'=>'kendeshita.webp',
+            'official_url'=>'https://tenken-anime.com/',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
+        ]);
     }
 }
+/*
+DB::table('animes')->insert([
+            'title'=>'',
+            'on_air_season'=>'20年アニメ',
+            'img_path'=>'',
+            'official_url'=>'',
+            'created_at'=>new $now(),
+            'updated_at'=>new $now(),
+        ]);
+*/

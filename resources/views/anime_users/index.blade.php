@@ -31,6 +31,7 @@
                  font-size: 60px;
                  color: #808080; 
                  margin-left: 11px;
+                 animation: bounce 0.5s infinite;
              }
             .unlike-btn {
                  width: 60px;
@@ -38,6 +39,18 @@
                  font-size: 60px;
                  color: #e54747;
                  margin-left: 11px;
+                 animation: bounce 0.5s infinite;
+            }
+            @keyframes bounce {
+                0% {
+                     transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-2.5px);
+                }
+                100% {
+                    transform: translateY(0);
+                }
             }
             .icon {
                  width: 35px;
@@ -60,7 +73,7 @@
                         <tbody>
                             <tr style="overflow-x: auto;">
                                 <th style="background-color: #E5CCFF; font-size: 30px;">月</th>
-                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
                                     @forelse($animes_mon as $anime_mon)
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_mon) }}">
