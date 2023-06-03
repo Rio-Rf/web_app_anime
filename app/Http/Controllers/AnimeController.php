@@ -139,7 +139,7 @@ class AnimeController extends Controller
     }
     public function ranking(Request $request)
     {
-        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM("like"), 0) AS like_count'))//IFNULLからpostgres仕様に変更
+        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM(`like`), 0) AS like_count'))//IFNULLからpostgres仕様に変更
                     ->groupBy('anime_id');//likeカラムの合計値を計算
     
         $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
@@ -186,7 +186,7 @@ class AnimeController extends Controller
                         ->where('user_id', $user_id)
                         ->update(['like' => 1]);
         }
-        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM("like"), 0) AS like_count'))
+        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM(`like`), 0) AS like_count'))
                     ->groupBy('anime_id');//likeカラムの合計値を計算
     
         $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
@@ -210,7 +210,7 @@ class AnimeController extends Controller
         Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
-        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM("like"), 0) AS like_count'))
+        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM(`like`), 0) AS like_count'))
                     ->groupBy('anime_id');//likeカラムの合計値を計算
     
         $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
@@ -448,7 +448,32 @@ class AnimeController extends Controller
     {
         $anime_id = $anime->id;
         $user_id = $request->user()->id;
+        $user = User::find($user_id);
+        $check = $anime->users()
+                ->newPivotQuery()
+                ->where('anime_id', $anime_id)
+                ->where('user_id', $user_id)
+                ->get('*');
+        //dd($check);
+        if($check->isEmpty()){//該当のanime_userレコードが存在しないときはlike=1で初期化
+            $anime->users()->attach($user->id, [
+                'edit_title' => 'none', 
+                'edit_on_air_season' => 'none', 
+                'edit_img_path' => 'none', 
+                'day_of_week' => 'none', 
+                'hours' => 0, 
+                'minutes' => 0, 
+                'medium' => 'none', 
+                'official_url' => 'none', 
+                'created_at' => now(), 
+                'updated_at' => now(),
+                'like' => 1
+                ]);
+        }else{        
+            //
+        }
         $anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();
+        //dd($anime_user);
         $anime_user = $anime_user[0];
         //dd($anime_user);
         $like_count = Anime_user::where('anime_id', $anime_id)->where('like', 1)->count();
