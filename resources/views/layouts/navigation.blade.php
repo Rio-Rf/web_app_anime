@@ -79,9 +79,29 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+        <!--<div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+        </div>-->
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')" style="font-family: 'Nico Moji', sans-serif; font-size: 50px; color: black;">
+                {{ __('アニメナビ') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('animes.search_get')" :active="request()->routeIs('animes.search_get')" style="font-size: 20px; color: black;">
+                {{ __('検索') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('ranking')" :active="request()->routeIs('ranking')" style="font-size: 20px; color: black;">
+                {{ __('ランキング') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('board')" :active="request()->routeIs('board')" style="font-size: 20px; color: black;">
+                {{ __('掲示板') }}
             </x-responsive-nav-link>
         </div>
 
@@ -94,7 +114,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('プロフィール') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -104,7 +124,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('ログアウト') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

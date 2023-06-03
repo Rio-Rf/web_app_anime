@@ -9,7 +9,7 @@
             <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&family=Yusei+Magic&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&family=Potta+One&family=Yusei+Magic&display=swap" rel="stylesheet">
             <style>
             table, td, th {
                 border: 5px solid white; /* 枠線のスタイルを設定 */
@@ -56,11 +56,12 @@
                 }
             }
             .icon {
-                 width: 35px;
-                 height: 42px;
-                 font-size: 35px;
+                 width: 100px;
+                 height: 120px;
+                 font-size: 100px;
                  color: #e54747;
                  margin-top: 10px;
+                 margin-right: 15px;
             }
             .paginate {
               display: flex;
@@ -97,6 +98,10 @@
         <body>
             <header>
             </header>
+            <div style="display: flex; justify-content: center; margin-top: 20px; background-color: #FFFFFF;">
+                <i class="fas fa-heart icon"></i>
+                <p style="font-family: 'Potta One', cursive; font-size: 80px;">数ランキング!!</p>
+            </div>
             <table style="margin-top: 30px; margin-right: 15px; margin-left: 15px;">
                 <tbody>
                     <!--<tr>
