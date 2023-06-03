@@ -139,15 +139,21 @@ class AnimeController extends Controller
     }
     public function ranking(Request $request)
     {
-        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM(`like`), 0) AS like_count'))//IFNULLからpostgres仕様に変更
-                    ->groupBy('anime_id');//likeカラムの合計値を計算
-    
-        $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
-            $join->on('animes.id', '=', 'sub.anime_id');//onメソッドで結合条件を指定
-        })
-        ->orderBy('sub.like_count', 'desc')
-        ->paginate(10);//ページネーションインスタンスとして取り出す
+        //一時テーブルでlikeカラムの合計値をlike_countに保存
+        DB::statement("
+            CREATE TEMPORARY TABLE temp_like_counts
+            SELECT anime_id, SUM(`like`) AS like_count
+            FROM anime_users
+            GROUP BY anime_id
+        ");
+        // アニメテーブルと一時テーブルを結合し、like_countで降順に並び替えて結果を取得する
+        $animeRanks = Anime::leftJoin('temp_like_counts', 'animes.id', '=', 'temp_like_counts.anime_id')
+            ->orderBy('temp_like_counts.like_count', 'desc')
+            ->paginate(10);
+        // 一時テーブルを削除する
+        DB::statement("DROP TEMPORARY TABLE IF EXISTS temp_like_counts");
         //dd($animeRanks);
+        
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         
@@ -186,14 +192,19 @@ class AnimeController extends Controller
                         ->where('user_id', $user_id)
                         ->update(['like' => 1]);
         }
-        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM(`like`), 0) AS like_count'))
-                    ->groupBy('anime_id');//likeカラムの合計値を計算
-    
-        $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
-            $join->on('animes.id', '=', 'sub.anime_id');//onメソッドで結合条件を指定
-        })
-        ->orderBy('sub.like_count', 'desc')
-        ->paginate(10);//ページネーションインスタンスとして取り出す
+        //一時テーブルでlikeカラムの合計値をlike_countに保存
+        DB::statement("
+            CREATE TEMPORARY TABLE temp_like_counts
+            SELECT anime_id, SUM(`like`) AS like_count
+            FROM anime_users
+            GROUP BY anime_id
+        ");
+        // アニメテーブルと一時テーブルを結合し、like_countで降順に並び替えて結果を取得する
+        $animeRanks = Anime::leftJoin('temp_like_counts', 'animes.id', '=', 'temp_like_counts.anime_id')
+            ->orderBy('temp_like_counts.like_count', 'desc')
+            ->paginate(10);
+        // 一時テーブルを削除する
+        DB::statement("DROP TEMPORARY TABLE IF EXISTS temp_like_counts");
         //dd($animeRanks);
         
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
@@ -210,14 +221,19 @@ class AnimeController extends Controller
         Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
-        $likeCounts = Anime_user::select('anime_id', DB::raw('COALESCE(SUM(`like`), 0) AS like_count'))
-                    ->groupBy('anime_id');//likeカラムの合計値を計算
-    
-        $animeRanks = Anime::leftJoinSub($likeCounts, 'sub', function ($join) {//Animeモデルに一時テーブル$likeCountsを左結合
-            $join->on('animes.id', '=', 'sub.anime_id');//onメソッドで結合条件を指定
-        })
-        ->orderBy('sub.like_count', 'desc')
-        ->paginate(10);//ページネーションインスタンスとして取り出す
+        //一時テーブルでlikeカラムの合計値をlike_countに保存
+        DB::statement("
+            CREATE TEMPORARY TABLE temp_like_counts
+            SELECT anime_id, SUM(`like`) AS like_count
+            FROM anime_users
+            GROUP BY anime_id
+        ");
+        // アニメテーブルと一時テーブルを結合し、like_countで降順に並び替えて結果を取得する
+        $animeRanks = Anime::leftJoin('temp_like_counts', 'animes.id', '=', 'temp_like_counts.anime_id')
+            ->orderBy('temp_like_counts.like_count', 'desc')
+            ->paginate(10);
+        // 一時テーブルを削除する
+        DB::statement("DROP TEMPORARY TABLE IF EXISTS temp_like_counts");
         //dd($animeRanks);
         
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
@@ -467,7 +483,7 @@ class AnimeController extends Controller
                 'official_url' => 'none', 
                 'created_at' => now(), 
                 'updated_at' => now(),
-                'like' => 1
+                'like' => 0
                 ]);
         }else{        
             //
