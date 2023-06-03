@@ -64,7 +64,7 @@
           <header>
           </header>
           <div>
-            <div style="margin-top: 30px; margin-left: 25px;">
+            <div style="margin-top: 30px; margin-left: 25px; width: 100%">
                 <form action="{{ route('animes.search_post') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   @if($keyword=="タイトルを入力してください．")
