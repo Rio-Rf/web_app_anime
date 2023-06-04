@@ -14,10 +14,11 @@
         <body>
             <style>
             table, td, th {
-                border: 1px solid black; /* 枠線のスタイルを設定 */
+                border: 2px solid black; /* 枠線のスタイルを設定 */
                 border-collapse: collapse; /* セルの境界線を結合 */
                 padding: 10px;
             }
+            
             td:last-child {
                 text-align: right; /* 最後のセル内のテキストを右寄せにする */
                 background-color: #F5F5F5;
@@ -71,9 +72,9 @@
                     
                     <table style="margin-top: 30px; margin-right: 15px; margin-left: 15px;">
                         <tbody>
-                            <tr style="overflow-x: auto;">
+                            <tr>
                                 <th style="background-color: #E5CCFF; font-size: 30px;">月</th>
-                                <td style="width: 100%; white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
                                     @forelse($animes_mon as $anime_mon)
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_mon) }}">
@@ -96,7 +97,7 @@
                                                         <i class="far fa-heart like-btn"></i>
                                                     </a>
                                                 @endif
-                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; max-width: 170px; white-space: normal;"><!--white-space: normalでタイトルを自動改行-->{{ $anime->title }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -107,9 +108,9 @@
                                     <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
-                            <tr style="overflow-x: auto;">
+                            <tr>
                                 <th style="background-color: #FFCC99; font-size: 30px;">火</th>
-                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
                                     @forelse($animes_tue as $anime_tue)
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_tue) }}">
@@ -132,7 +133,7 @@
                                                         <i class="far fa-heart like-btn"></i>
                                                     </a>
                                                 @endif
-                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; max-width: 170px; white-space: normal;"><!--white-space: normalでタイトルを自動改行-->{{ $anime->title }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -143,9 +144,9 @@
                                     <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr>
-                            <tr style="overflow-x: auto;">
+                            <tr>
                                 <th style="background-color: #99FFFF; font-size: 30px;">水</th>
-                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
                                     @forelse($animes_wed as $anime_wed)
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_wed) }}">
@@ -168,7 +169,7 @@
                                                         <i class="far fa-heart like-btn"></i>
                                                     </a>
                                                 @endif
-                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; max-width: 170px; white-space: normal;"><!--white-space: normalでタイトルを自動改行-->{{ $anime->title }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -179,9 +180,9 @@
                                     <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr>
-                            <tr style="overflow-x: auto;">
+                            <tr>
                                 <th style="background-color: #99FF99; font-size: 30px;">木</th>
-                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
                                     @forelse($animes_thu as $anime_thu)
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_thu) }}">
@@ -204,7 +205,7 @@
                                                         <i class="far fa-heart like-btn"></i>
                                                     </a>
                                                 @endif
-                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; max-width: 170px; white-space: normal;"><!--white-space: normalでタイトルを自動改行-->{{ $anime->title }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -215,9 +216,9 @@
                                     <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
-                            <tr style="overflow-x: auto;">
+                            <tr>
                                 <th style="background-color: #FFFF99; font-size: 30px;">金</th>
-                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
                                     @forelse($animes_fri as $anime_fri)
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_fri) }}">
@@ -240,7 +241,7 @@
                                                         <i class="far fa-heart like-btn"></i>
                                                     </a>
                                                 @endif
-                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; max-width: 170px; white-space: normal;"><!--white-space: normalでタイトルを自動改行-->{{ $anime->title }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -251,9 +252,9 @@
                                     <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
-                            <tr style="overflow-x: auto;">
+                            <tr>
                                 <th style="background-color: #DEB887; font-size: 30px;">土</th>
-                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
                                     @forelse($animes_sat as $anime_sat)
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_sat) }}">
@@ -276,7 +277,7 @@
                                                         <i class="far fa-heart like-btn"></i>
                                                     </a>
                                                 @endif
-                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; max-width: 170px; white-space: normal;"><!--white-space: normalでタイトルを自動改行-->{{ $anime->title }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -287,9 +288,9 @@
                                     <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
-                            <tr style="overflow-x: auto;">
+                            <tr>
                                 <th style="background-color: #FFCCE5; font-size: 30px;">日</th>
-                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
                                     @forelse($animes_sun as $anime_sun)
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_sun) }}">
@@ -312,7 +313,7 @@
                                                         <i class="far fa-heart like-btn"></i>
                                                     </a>
                                                 @endif
-                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; max-width: 170px; white-space: normal;"><!--white-space: normalでタイトルを自動改行-->{{ $anime->title }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -323,9 +324,9 @@
                                     <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
-                            <tr style="overflow-x: auto;">
+                            <tr>
                                 <th style="background-color: #FFFFFF; white-space: nowrap;">視聴中</th>
-                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
                                     @forelse($animes_non as $anime_non)
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_non) }}">
@@ -348,7 +349,7 @@
                                                         <i class="far fa-heart like-btn"></i>
                                                     </a>
                                                 @endif
-                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; max-width: 170px; white-space: normal;"><!--white-space: normalでタイトルを自動改行-->{{ $anime->title }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -359,14 +360,14 @@
                                     <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
-                            <tr style="overflow-x: auto;">
+                            <tr>
                                 <th style="background-color: #FFFFFF; white-space: nowrap;"><i class="fas fa-heart icon"></i></th>
-                                <td style="white-space: nowrap; overflow: auto; background-color: #FFFFFF;">
+                                <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;"><!--overflow: autoであふれたときにスクロールバー表示-->
                                     @forelse($animes_like as $anime_like )
-                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
+                                    <div style="display: inline-block; margin-right: 10px; vertical-align: top;"><!--inlineで横並び-->
                                         <a href="{{ route('animes.detail' , $anime_like) }}">
-                                            <div style="position: relative; float: left; ">
-                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_like->img_path, now()->addDay()) }}" alt = "Image">
+                                            <div style="position: relative; float: left;">
+                                                <img class="image" width = "170" src="{{ Storage::disk('s3')->temporaryUrl($anime_like->img_path, now()->addDay()) }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -384,9 +385,11 @@
                                                         <i class="far fa-heart like-btn"></i>
                                                     </a>
                                                 @endif
-                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; overflow-wrap: break-word; width: 170px; white-space: normal;">{{ $anime->title }}</div>
+                                                <!--white-space: normalでタイトルを自動改行,overflow-wrap: break-word;を含んでいたためスクロールバーが表示されなかった-->
+                                                <div class="anime-title" style="font-family: 'Kaisei Decol', serif; max-width: 170px; white-space: normal;">
+                                                    {{ $anime->title }}
+                                                </div>
                                             </div>
-                                            
                                         </a>
                                     </div>
                                     @empty
