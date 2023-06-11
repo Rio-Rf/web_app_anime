@@ -4,8 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        
+        <!--app.blade.phpと同格-->
+        @hasSection('title')<!--変更_sectionがあればsectionで定義されたタイトルを用いる-->
+            <button title=""></button>
+            <title>@yield('title')</title>
+        @else
+            <button title=""></button>
+            <title>{{ config('app.name') }}</title>
+        @endif
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

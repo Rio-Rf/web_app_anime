@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @section('title', '新規アカウント登録 | アニメナビ')
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
