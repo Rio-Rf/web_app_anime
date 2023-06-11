@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\Anime_userController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\GoogleLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +61,7 @@ Route::get('Auth/login', [AuthenticatedSessionController::class, "guestLogin"])-
 
 require __DIR__.'/auth.php';
 
+// googleへのリダイレクト
+Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle']);
+// 認証後の処理_リダイレクトURIと一致
+Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
