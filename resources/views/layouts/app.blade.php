@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <!--ファビコン-->
+        <link href="{{Storage::disk('s3')->temporaryUrl('logo.png', now()->addDay())}}" rel="icon" sizes="48x48">
+        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
