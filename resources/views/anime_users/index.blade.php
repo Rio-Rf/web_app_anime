@@ -63,7 +63,7 @@
             </style>
             <header>
                 <!--<a href="/">アニメナビ</a>
-                <a href="{{route('animes.search_get')}}">検索</a>
+                <a href="{{route('animes.search_get', ['day_of_week' => 'mon'])}}">検索</a>
                 <a href="/ranking">ランキング</a>
                 <a href="/board">掲示板</a>-->
             </header>
@@ -104,8 +104,8 @@
                                     @empty
                                     @endforelse
                                 </td>
-                                <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
+                                <td><!--クエリパラメータで曜日を指定-->
+                                    <a href="{{route('animes.search_get', ['day_of_week' => 'mon'])}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr>
@@ -141,7 +141,7 @@
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
+                                    <a href="{{route('animes.search_get', ['day_of_week' => 'tue'])}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr>
                             <tr>
@@ -177,7 +177,7 @@
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
+                                    <a href="{{route('animes.search_get', ['day_of_week' => 'wed'])}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr>
                             <tr>
@@ -213,7 +213,7 @@
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
+                                    <a href="{{route('animes.search_get', ['day_of_week' => 'thu'])}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr>
@@ -249,7 +249,7 @@
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
+                                    <a href="{{route('animes.search_get', ['day_of_week' => 'fri'])}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr>
@@ -285,7 +285,7 @@
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
+                                    <a href="{{route('animes.search_get', ['day_of_week' => 'sat'])}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr>
@@ -321,7 +321,7 @@
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
+                                    <a href="{{route('animes.search_get', ['day_of_week' => 'sun'])}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr>
@@ -357,7 +357,7 @@
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
+                                    <a href="{{route('animes.search_get', ['day_of_week' => 'non'])}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                             <tr>
@@ -396,7 +396,7 @@
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="{{route('animes.search_get')}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
+                                    <a href="{{route('animes.search_get', ['day_of_week' => 'non'])}}" style="white-space: nowrap; font-size: 25px; font-family: 'Yusei Magic', sans-serif;">追加する</a>
                                 </td>
                             </tr> 
                         </tbody>

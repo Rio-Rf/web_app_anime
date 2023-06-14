@@ -151,7 +151,7 @@ class AnimeController extends Controller
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         
         $before_like_count = $request->query('before_like_count');//前ページのURLからの変数を継承
-        $count = $request->query('count');//前ページの順位のURLからの変数を継承
+        $count = $request->query('count');//前ページの順位をクエリパラメータで継承
             return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count'));
     }
     public function ranking_like(Request $request, Anime $anime)
