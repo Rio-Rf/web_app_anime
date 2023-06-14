@@ -93,6 +93,14 @@
                                         <option value = "fri"{{ $anime_user->day_of_week == 'fri' ? 'selected' : '' }}>金曜日</option>
                                         <option value = "sat"{{ $anime_user->day_of_week == 'sat' ? 'selected' : '' }}>土曜日</option>
                                         <option value = "sun"{{ $anime_user->day_of_week == 'sun' ? 'selected' : '' }}>日曜日</option>
+                                        <option value = "non"{{ request('day_of_week')=='non' ? 'selected' : '' }}>指定なし</option><!--クエリパラメータを優先するために2重で記述-->
+                                        <option value = "mon"{{ request('day_of_week')=='mon' ? 'selected' : '' }}>月曜日</option><!--クエリパラメータがあれば曜日を初期値として指定-->
+                                        <option value = "tue"{{ request('day_of_week')=='tue' ? 'selected' : '' }}>火曜日</option>
+                                        <option value = "wed"{{ request('day_of_week')=='wed' ? 'selected' : '' }}>水曜日</option>
+                                        <option value = "thu"{{ request('day_of_week')=='thu' ? 'selected' : '' }}>木曜日</option>
+                                        <option value = "fri"{{ request('day_of_week')=='fri' ? 'selected' : '' }}>金曜日</option>
+                                        <option value = "sat"{{ request('day_of_week')=='sat' ? 'selected' : '' }}>土曜日</option>
+                                        <option value = "sun"{{ request('day_of_week')=='sun' ? 'selected' : '' }}>日曜日</option>
                                     </select>
                                 </td>
                             </tr> 
@@ -134,9 +142,9 @@
                 </form>
                 </div>
                 <br clear="both"><!-- 回り込みの解除 -->
-                <div style="margin-top: 50px; margin-left: 30px;">
+                <!--<div style="margin-top: 50px; margin-left: 30px;">
                     <a href="{{route('search.session')}}" style="background-color: black; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">戻る</a>
-                </div>
+                </div>-->
             </div>
         </body>
     </html>

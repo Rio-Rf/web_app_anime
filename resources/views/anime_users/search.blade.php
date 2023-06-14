@@ -90,7 +90,7 @@
                       <td>
                       @forelse($animes as $anime)
                       <div style="display: inline-block; margin-right: 10px; vertical-align: top;"><!--改行しない,右に10px,上側でそろえる -->
-                        <a href="{{ route('animes.edit' , $anime) }}">
+                        <a href="{{ route('animes.edit' , ['anime'=>$anime, 'day_of_week'=>request('day_of_week')]) }}"><!--クエリパラメータをバケツリレー-->
                           <div style="position: relative; float: left;">
                               <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image">
                               
