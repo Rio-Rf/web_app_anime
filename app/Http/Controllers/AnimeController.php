@@ -50,7 +50,7 @@ class AnimeController extends Controller
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         //d($anime_user);
-        return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like'));
+        return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like', 'anime_users_non', 'anime_users_mon', 'anime_users_tue', 'anime_users_wed', 'anime_users_thu', 'anime_users_fri', 'anime_users_sat', 'anime_users_sun', 'anime_users_like'));
     }
     public function index_like(Request $request, Anime $anime)
     {
@@ -93,7 +93,7 @@ class AnimeController extends Controller
         
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         //d($anime_user);
-        return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like'));
+        return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like', 'anime_users_non', 'anime_users_mon', 'anime_users_tue', 'anime_users_wed', 'anime_users_thu', 'anime_users_fri', 'anime_users_sat', 'anime_users_sun', 'anime_users_like'));
     }
     public function index_unlike(Request $request, Anime $anime)
     {
@@ -136,7 +136,7 @@ class AnimeController extends Controller
         
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         //d($anime_user);
-        return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like'));
+        return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like', 'anime_users_non', 'anime_users_mon', 'anime_users_tue', 'anime_users_wed', 'anime_users_thu', 'anime_users_fri', 'anime_users_sat', 'anime_users_sun', 'anime_users_like'));
     }
     public function ranking(Request $request)
     {
@@ -150,10 +150,11 @@ class AnimeController extends Controller
         
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
+        $anime_users_all = Anime_user::where('user_id', $user_id)->get();
         
         $before_like_count = $request->query('before_like_count');//前ページのURLからの変数を継承
         $count = $request->query('count');//前ページの順位をクエリパラメータで継承
-            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count'));
+            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count', 'anime_users_all'));
     }
     public function ranking_like(Request $request, Anime $anime)
     {
@@ -281,10 +282,13 @@ class AnimeController extends Controller
         $keyword = "タイトルを入力してください．";
         $query = Anime::query();
         $animes = $query->get();//検索ボックスが空の時にはすべてを表示する．
+        
+        
         $user_id = $request->user()->id;
+        $anime_users_all = Anime_user::where('user_id', $user_id)->get();//ログイン中のuser_idのレコードを取得
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         
-        return view('anime_users/search', compact('keyword', 'animes', 'anime_users'));
+        return view('anime_users/search', compact('keyword', 'animes', 'anime_users', 'anime_users_all'));
     }
     public function search_post(Request $request)
     {
@@ -304,7 +308,8 @@ class AnimeController extends Controller
         //dd($animes);
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
-        return view('anime_users/search', compact('keyword', 'animes', 'anime_users'));
+        $anime_users_all = Anime_user::where('user_id', $user_id)->get();//ログイン中のuser_idのレコードを取得
+        return view('anime_users/search', compact('keyword', 'animes', 'anime_users', 'anime_users_all'));
     }
     public function search_session(Request $request)
     {
@@ -336,7 +341,8 @@ class AnimeController extends Controller
         //dd($keyword);
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
-        return view('anime_users/search', compact('keyword', 'animes', 'anime_users'));
+        $anime_users_all = Anime_user::where('user_id', $user_id)->get();//ログイン中のuser_idのレコードを取得
+        return view('anime_users/search', compact('keyword', 'animes', 'anime_users', 'anime_users_all'));
     }
     public function search_like(Request $request, Anime $anime)
     {
@@ -374,7 +380,8 @@ class AnimeController extends Controller
         $animes = $query->get();//検索ボックスが空の時にはすべてを表示する．
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
-        return view('anime_users/search', compact('keyword', 'animes', 'anime_users'));
+        $anime_users_all = Anime_user::where('user_id', $user_id)->get();//ログイン中のuser_idのレコードを取得
+        return view('anime_users/search', compact('keyword', 'animes', 'anime_users', 'anime_users_all'));
     }
     public function search_unlike(Request $request, Anime $anime)
     {
@@ -389,7 +396,8 @@ class AnimeController extends Controller
         $animes = $query->get();//検索ボックスが空の時にはすべてを表示する．
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
-        return view('anime_users/search', compact('keyword', 'animes', 'anime_users'));
+        $anime_users_all = Anime_user::where('user_id', $user_id)->get();//ログイン中のuser_idのレコードを取得
+        return view('anime_users/search', compact('keyword', 'animes', 'anime_users', 'anime_users_all'));
     }
     public function edit_post(Request $request)
     {
@@ -475,7 +483,7 @@ class AnimeController extends Controller
         $user_id = $request->user()->id;
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         
-        return view('anime_users/index', compact('anime_users', 'animes_like', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun'));
+        return view('anime_users/index', compact('anime_users', 'animes_like', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'anime_users_non', 'anime_users_mon', 'anime_users_tue', 'anime_users_wed', 'anime_users_thu', 'anime_users_fri', 'anime_users_sat', 'anime_users_sun', 'anime_users_like'));
     }
     public function detail(Anime $anime, Request $request)
     {

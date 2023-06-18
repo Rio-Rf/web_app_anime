@@ -44,6 +44,17 @@
                   transform: translateY(0);
               }
             }
+            .medium-logo {
+                 width:100px;
+                 height: 51px;
+                 background-color: #FFFFFF;
+                 margin-left: 15px;
+                 border: 3px solid #000000;
+                 border-radius: 4px;
+                 padding: 1px 2px;
+                 font-size: 14px;
+                 cursor: pointer;
+             }
             </style>
         </head>
         <body>
@@ -63,6 +74,61 @@
                         <i class="far fa-heart like-btn"></i>
                         <span style="font-size: 82px; color: white;">{{$like_count}}</span>
                     </a>
+                    @endif
+                    
+                    @if($anime_user->medium == "amazon")
+                    <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "netflix")
+                    <a href="https://www.netflix.com" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "u-next")
+                    <a href="https://video.unext.jp" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "danime")
+                    <a href="https://animestore.docomo.ne.jp" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "abema")
+                    <a href="https://abema.tv/video/genre/animation" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "dazn")
+                    <a href="https://www.dazn.com" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "disney")
+                    <a href="https://disneyplus.disney.co.jp" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "hulu")
+                    <a href="https://www.hulu.jp" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "dTV")
+                    <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "hikari")
+                    <a href="https://www.hikaritv.net" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "anitere")
+                    <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "bandai")
+                    <a href="https://www.b-ch.com" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @elseif($anime_user->medium == "FOD")
+                    <a href="https://fod.fujitv.co.jp" target="_blank">
+                        <img class="medium-logo" style="position: absolute; top: 7px; right: 242px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                    </a>
+                    @else
                     @endif
                 </div>
                 <table>
@@ -84,23 +150,25 @@
                             <tr>
                                 <th>曜日</th>
                                 <td>
-                                    <select name = "day_of_week">
-                                        <option value = "non"{{ $anime_user->day_of_week == 'non' ? 'selected' : '' }}>指定なし</option><!--day_of_weekがnonだったらselected属性を追加-->
-                                        <option value = "mon"{{ $anime_user->day_of_week == 'mon' ? 'selected' : '' }}>月曜日</option>
-                                        <option value = "tue"{{ $anime_user->day_of_week == 'tue' ? 'selected' : '' }}>火曜日</option>
-                                        <option value = "wed"{{ $anime_user->day_of_week == 'wed' ? 'selected' : '' }}>水曜日</option>
-                                        <option value = "thu"{{ $anime_user->day_of_week == 'thu' ? 'selected' : '' }}>木曜日</option>
-                                        <option value = "fri"{{ $anime_user->day_of_week == 'fri' ? 'selected' : '' }}>金曜日</option>
-                                        <option value = "sat"{{ $anime_user->day_of_week == 'sat' ? 'selected' : '' }}>土曜日</option>
-                                        <option value = "sun"{{ $anime_user->day_of_week == 'sun' ? 'selected' : '' }}>日曜日</option>
-                                        <option value = "non"{{ request('day_of_week')=='non' ? 'selected' : '' }}>指定なし</option><!--クエリパラメータを優先するために2重で記述-->
-                                        <option value = "mon"{{ request('day_of_week')=='mon' ? 'selected' : '' }}>月曜日</option><!--クエリパラメータがあれば曜日を初期値として指定-->
-                                        <option value = "tue"{{ request('day_of_week')=='tue' ? 'selected' : '' }}>火曜日</option>
-                                        <option value = "wed"{{ request('day_of_week')=='wed' ? 'selected' : '' }}>水曜日</option>
-                                        <option value = "thu"{{ request('day_of_week')=='thu' ? 'selected' : '' }}>木曜日</option>
-                                        <option value = "fri"{{ request('day_of_week')=='fri' ? 'selected' : '' }}>金曜日</option>
-                                        <option value = "sat"{{ request('day_of_week')=='sat' ? 'selected' : '' }}>土曜日</option>
-                                        <option value = "sun"{{ request('day_of_week')=='sun' ? 'selected' : '' }}>日曜日</option>
+                                    <!--まず、request day_of_week の値を取得し、存在しない場合は $anime_user->day_of_week の値を代入-->
+                                    @php
+                                        $daysOfWeek = [
+                                            'non' => '指定なし',
+                                            'mon' => '月曜日',
+                                            'tue' => '火曜日',
+                                            'wed' => '水曜日',
+                                            'thu' => '木曜日',
+                                            'fri' => '金曜日',
+                                            'sat' => '土曜日',
+                                            'sun' => '日曜日',
+                                        ];
+                                        $selectedValue = request('day_of_week') ?: $anime_user->day_of_week;
+                                    @endphp
+                                    
+                                    <select name="day_of_week">
+                                        @foreach($daysOfWeek as $value => $label)
+                                            <option value="{{ $value }}"{{ $selectedValue == $value ? ' selected' : '' }}>{{ $label }}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                             </tr> 
