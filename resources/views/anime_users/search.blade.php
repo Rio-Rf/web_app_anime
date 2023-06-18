@@ -58,6 +58,11 @@
             font-size: 16px; /* フォントサイズ */
             cursor: pointer; /* カーソルの形状をポインターに */
           }
+          .day_of_week_choose{
+            color: red;
+            margin-top: 5px;
+            margin-left: 20px;
+          }
           </style>
       </head>
       <body>
@@ -65,7 +70,7 @@
           </header>
           <div>
             <div style="margin-top: 30px; margin-left: 25px; width: 100%">
-                <form action="{{ route('animes.search_post') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('animes.search_post', ['day_of_week'=>request('day_of_week')]) }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   @if($keyword=="タイトルを入力してください．")
                   <input type="text" name="keyword" placeholder= {{$keyword}} >
@@ -84,6 +89,23 @@
                 {!! Form::close()!!}
                 @endforelse
             </div>
+            <div>
+              @if(request('day_of_week') == 'mon')
+              <p class="day_of_week_choose">＊月曜日を選択しています</p>
+              @elseif(request('day_of_week') == 'tue')
+              <p class="day_of_week_choose">＊火曜日を選択しています</p>
+              @elseif(request('day_of_week') == 'wed')
+              <p class="day_of_week_choose">＊水曜日を選択しています</p>
+              @elseif(request('day_of_week') == 'thu')
+              <p class="day_of_week_choose">＊木曜日を選択しています</p>
+              @elseif(request('day_of_week') == 'fri')
+              <p class="day_of_week_choose">＊金曜日を選択しています</p>
+              @elseif(request('day_of_week') == 'sat')
+              <p class="day_of_week_choose">＊土曜日を選択しています</p>
+              @elseif(request('day_of_week') == 'sun')
+              <p class="day_of_week_choose">＊日曜日を選択しています</p>
+              @else
+              @endif
             <div class="table-responsive">
               <table class="table" style="margin-left: 15px;">
                     <tr>
@@ -102,11 +124,11 @@
                               @endphp
                               
                               @if($liked)
-                                  <a href="{{ route('animes.search_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
+                                  <a href="{{ route('animes.search_unlike', ['anime'=>$anime, 'day_of_week'=>request('day_of_week')])}}" style="position: absolute; top: 175px; right: 5px;">
                                       <i class="fas fa-heart unlike-btn"></i>
                                   </a>
                               @else
-                                  <a href="{{ route('animes.search_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
+                                  <a href="{{ route('animes.search_like', ['anime'=>$anime, 'day_of_week'=>request('day_of_week')])}}" style="position: absolute; top: 175px; right: 5px;">
                                       <i class="far fa-heart like-btn"></i>
                                   </a>
                               @endif
