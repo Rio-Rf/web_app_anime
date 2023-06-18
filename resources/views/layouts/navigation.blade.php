@@ -28,6 +28,12 @@
                     <!--<x-nav-link :href="route('board')" :active="request()->routeIs('board')" style="font-size: 20px">
                         {{ __('掲示板') }}
                     </x-nav-link>-->
+                    @if(auth()->user()->id == 2)
+                    <x-nav-link :href="route('upload')" :active="request()->routeIs('upload')" style="font-size: 20px">
+                        {{ __('登録') }}
+                    </x-nav-link>
+                    @else
+                    @endif
                 </div>
             </div>
 
@@ -104,6 +110,14 @@
                 {{ __('掲示板') }}
             </x-responsive-nav-link>
         </div>-->
+        @if(auth()->user()->id == 2)
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')" style="font-size: 20px; color: black;">
+                {{ __('登録') }}
+            </x-responsive-nav-link>
+        </div>
+        @else
+        @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

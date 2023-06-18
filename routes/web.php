@@ -37,6 +37,8 @@ Route::controller(AnimeController::class)->middleware(['auth'])->group(function(
     Route::get('/', 'index')->name('index');
     Route::get('/ranking', 'ranking')->name('ranking');
     Route::get('/board', 'board')->name('board');
+    Route::get('/upload', 'upload')->name('upload');
+    Route::post('/upload/post', 'upload_post')->name('animes.upload_post');
     Route::get('/search', 'search_get')->name('animes.search_get');
     Route::post('/search', 'search_post')->name('animes.search_post');
     Route::get('/search/re', 'search_session')->name('search.session');

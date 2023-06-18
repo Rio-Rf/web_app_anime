@@ -10,6 +10,7 @@ use App\Models\Like;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class AnimeController extends Controller
@@ -226,6 +227,41 @@ class AnimeController extends Controller
     public function board()
     {
         return view('anime_users/board');
+    }
+    public function upload()
+    {
+        return view('anime_users/upload');
+    }
+    public function upload_post(Request $request)
+    {
+        $title = $request->title;
+        $on_air_season = $request->on_air_season;
+        $official_url = $request->official_url;
+        $visual = $request->file('visual');
+        $originalFilename = $visual->getClientOriginalName();
+        //dd($originalFilename);
+        $path = Storage::disk('s3')->putFileAs('', $visual, $originalFilename, 'private');//画像をs3に保存，ファイル名を$pathに代入,privateにすることでエラー解消, putfileAsにすることで任意のファイル名を指定できた
+        $now = new \DateTime();
+        
+        $count = Anime::where('title', $title)->count();//同じタイトルのレコードを数える
+        if($count >= 1){
+            $anime = Anime::where('title', $title)->get();
+            $id = $anime->pluck('id')->first();
+            Anime_user::where('anime_id', $id)->delete();
+            Anime::where('title', $title)->delete();
+        }else{
+            //
+        }
+        DB::table('animes')->insert([
+            'title' => $title,
+            'on_air_season' => $on_air_season,
+            'img_path' => $path,
+            'official_url' => $official_url,
+            'created_at' => new $now(),
+            'updated_at'=>new $now(),
+        ]);
+        //dd($path);
+        return view('anime_users/upload');
     }
     public function edit(Anime $anime, Request $request)
     {

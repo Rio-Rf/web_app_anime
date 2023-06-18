@@ -151,7 +151,7 @@
                             </tr> 
                             <tr>
                                 <th>公式サイト</th>
-                                <td><a href = {{$anime->official_url}}>{{$anime->official_url}}</a></td>
+                                <td><a href = {{$anime->official_url}} target="_blank">{{$anime->official_url}}</a></td>
                             </tr> 
                         </tbody>
                     </table>
