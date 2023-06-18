@@ -86,10 +86,9 @@
                             <tr>
                                 <th style="background-color: #E5CCFF; font-size: 30px;">月</th>
                                 <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
-                                    <!--$animes_monと$anime_user_monの周期を同じにする-->
-                                    @forelse($animes_mon as $key => $anime_mon)
+                                    @forelse($animes_mon as $anime_mon)
                                     @php
-                                        $anime_user_mon = $anime_users_mon[$key] ?? null;
+                                        $anime_user_mon = $anime_users_mon->where('anime_id', $anime_mon->id)->first();
                                     @endphp
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_mon) }}">
@@ -182,9 +181,9 @@
                             <tr>
                                 <th style="background-color: #FFCC99; font-size: 30px;">火</th>
                                 <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
-                                    @forelse($animes_tue as $key => $anime_tue)
+                                    @forelse($animes_tue as $anime_tue)
                                     @php
-                                        $anime_user_tue = $anime_users_tue[$key] ?? null;
+                                        $anime_user_tue = $anime_users_tue->where('anime_id', $anime_tue->id)->first();
                                     @endphp
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_tue) }}">
@@ -276,9 +275,9 @@
                             <tr>
                                 <th style="background-color: #99FFFF; font-size: 30px;">水</th>
                                 <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
-                                    @forelse($animes_wed as $key => $anime_wed)
+                                    @forelse($animes_wed as $anime_wed)
                                     @php
-                                        $anime_user_wed = $anime_users_wed[$key] ?? null;
+                                        $anime_user_wed = $anime_users_wed->where('anime_id', $anime_wed->id)->first();
                                     @endphp
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_wed) }}">
@@ -370,9 +369,9 @@
                             <tr>
                                 <th style="background-color: #99FF99; font-size: 30px;">木</th>
                                 <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
-                                    @forelse($animes_thu as $key => $anime_thu)
+                                    @forelse($animes_thu as $anime_thu)
                                     @php
-                                        $anime_user_thu = $anime_users_thu[$key] ?? null;
+                                        $anime_user_thu = $anime_users_thu->where('anime_id', $anime_thu->id)->first();
                                     @endphp
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_thu) }}">
@@ -464,9 +463,9 @@
                             <tr>
                                 <th style="background-color: #FFFF99; font-size: 30px;">金</th>
                                 <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
-                                    @forelse($animes_fri as $key => $anime_fri)
+                                    @forelse($animes_fri as $anime_fri)
                                     @php
-                                        $anime_user_fri = $anime_users_fri[$key] ?? null;
+                                        $anime_user_fri = $anime_users_fri->where('anime_id', $anime_fri->id)->first();
                                     @endphp
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_fri) }}">
@@ -558,9 +557,9 @@
                             <tr>
                                 <th style="background-color: #DEB887; font-size: 30px;">土</th>
                                 <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
-                                    @forelse($animes_sat as $key => $anime_sat)
+                                    @forelse($animes_sat as $anime_sat)
                                     @php
-                                        $anime_user_sat = $anime_users_sat[$key] ?? null;
+                                        $anime_user_sat = $anime_users_sat->where('anime_id', $anime_sat->id)->first();
                                     @endphp
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_sat) }}">
@@ -652,9 +651,9 @@
                             <tr>
                                 <th style="background-color: #FFCCE5; font-size: 30px;">日</th>
                                 <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
-                                    @forelse($animes_sun as $key => $anime_sun)
+                                    @forelse($animes_sun as $anime_sun)
                                     @php
-                                        $anime_user_sun = $anime_users_sun[$key] ?? null;
+                                        $anime_user_sun = $anime_users_sun->where('anime_id', $anime_sun->id)->first();
                                     @endphp
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_sun) }}">
@@ -746,9 +745,9 @@
                             <tr>
                                 <th style="background-color: #FFFFFF; white-space: nowrap;">視聴中</th>
                                 <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;">
-                                    @forelse($animes_non as $key => $anime_non)
+                                    @forelse($animes_non as $anime_non)
                                     @php
-                                        $anime_user_non = $anime_users_non[$key] ?? null;
+                                        $anime_user_non = $anime_users_non->where('anime_id', $anime_non->id)->first();
                                     @endphp
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_non) }}">
@@ -840,9 +839,9 @@
                             <tr>
                                 <th style="background-color: #FFFFFF; white-space: nowrap;"><i class="fas fa-heart icon"></i></th>
                                 <td style="width: 100%; overflow-x: auto; white-space: nowrap; background-color: #FFFFFF;"><!--overflow: autoであふれたときにスクロールバー表示-->
-                                    @forelse($animes_like as $key => $anime_like)
+                                    @forelse($animes_like as $anime_like)
                                     @php
-                                        $anime_user_like = $anime_users_like[$key] ?? null;
+                                        $anime_user_like = $anime_users_like->where('anime_id', $anime_like->id)->first();
                                     @endphp
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;"><!--inlineで横並び-->
                                         <a href="{{ route('animes.detail' , $anime_like) }}">
