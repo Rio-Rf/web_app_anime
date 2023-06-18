@@ -146,7 +146,7 @@
                         </th>
                         <td style="background-color: #000000;">
                             <div>
-                                <a href="{{ route('animes.detail' , $animeRank) }}">
+                                <a href="{{ route('animes.edit' , $animeRank) }}">
                                     <div style="position: relative; width: 200px;">
                                         <img class="image" width = "200", src="{{ Storage::disk('s3')->temporaryUrl($animeRank->img_path, now()->addDay()) }}" alt = "Image">
                                         
@@ -177,7 +177,7 @@
                             </div>
                         </td>
                         <td>
-                            <a href="{{ route('animes.detail' , $animeRank) }}">
+                            <a href="{{ route('animes.edit' , $animeRank) }}">
                                 <div class="anime-title">{{ $anime->title }}</div>
                             </a>
                         </td>

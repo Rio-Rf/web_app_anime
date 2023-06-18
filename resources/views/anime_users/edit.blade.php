@@ -107,27 +107,45 @@
                             <tr>
                                 <th>時刻</th>
                                 <td>
-                                    <input type ="time" name = "time"　id="time" value="00:00">
+                                    <!--2桁のゼロパディング形式で時刻を表す_1ではなく01-->
+                                    @php
+                                    $hours = sprintf("%02d", $anime_user->hours);
+                                    $minutes = sprintf("%02d", $anime_user->minutes);
+                                    @endphp
+                                    <input type="time" name="time" id="time" value="{{ $hours }}:{{ $minutes }}">
+                                    <script>
+                                        window.addEventListener('DOMContentLoaded', function() {// ページのロードが完了したら実行
+                                            var timeInput = document.getElementById('time');//id 属性が "time" である要素を取得
+                                            var parts = timeInput.value.split(':');//timeInput の value 属性の値を取得し":"を区切り文字として文字列を分割,入力された時刻の「時」部分と「分」部分が parts 配列に格納
+                                            var hour = parseInt(parts[0]);//parts 配列の要素を整数に変換し、それぞれ hour と minute 変数に格納
+                                            var minute = parseInt(parts[1]);
+                                            //必要に応じて先頭にゼロを追加，slice(-2)で文字列の最後の2文字を取得
+                                            var formattedValue = ('0' + hour).slice(-2) + ':' + ('0' + minute).slice(-2);
+                                            
+                                            timeInput.value = formattedValue;
+                                        });
+                                    </script>
                                 </td>
+                        
                             </tr> 
                             <tr>
                                 <th>視聴媒体</th>
                                 <td>
                                     <select name = "medium">
-                                        <option value = "none">指定なし</option>
-                                        <option value = "amazon">Amazon Prime Video</option>
-                                        <option value = "netflix">Netflix</option>
-                                        <option value = "u-next">U-NEXT</option>
-                                        <option value = "danime">dアニメストア</option>
-                                        <option value = "abema">ABEMA</option>
-                                        <option value = "dazn">DAZN</option>
-                                        <option value = "disney">Disney+</option>
-                                        <option value = "hulu">Hulu</option>
-                                        <option value = "dTV">dTV</option>
-                                        <option value = "hikari">ひかりTV</option>
-                                        <option value = "anitere">あにてれ</option>
-                                        <option value = "bandai">バンダイチャンネル</option>
-                                        <option value = "FOD">FODプレミアム</option>
+                                        <option value = "none"{{ $anime_user->medium == 'none' ? 'selected' : '' }}>指定なし</option>
+                                        <option value = "amazon"{{ $anime_user->medium == 'amazon' ? 'selected' : '' }}>Amazon Prime Video</option>
+                                        <option value = "netflix"{{ $anime_user->medium == 'netflix' ? 'selected' : '' }}>Netflix</option>
+                                        <option value = "u-next"{{ $anime_user->medium == 'u-next' ? 'selected' : '' }}>U-NEXT</option>
+                                        <option value = "danime"{{ $anime_user->medium == 'danime' ? 'selected' : '' }}>dアニメストア</option>
+                                        <option value = "abema"{{ $anime_user->medium == 'abema' ? 'selected' : '' }}>ABEMA</option>
+                                        <option value = "dazn"{{ $anime_user->medium == 'dazn' ? 'selected' : '' }}>DAZN</option>
+                                        <option value = "disney"{{ $anime_user->medium == 'disney' ? 'selected' : '' }}>Disney+</option>
+                                        <option value = "hulu"{{ $anime_user->medium == 'hulu' ? 'selected' : '' }}>Hulu</option>
+                                        <option value = "dTV"{{ $anime_user->medium == 'dTV' ? 'selected' : '' }}>dTV</option>
+                                        <option value = "hikari"{{ $anime_user->medium == 'hikari' ? 'selected' : '' }}>ひかりTV</option>
+                                        <option value = "anitere"{{ $anime_user->medium == 'anitere' ? 'selected' : '' }}>あにてれ</option>
+                                        <option value = "bandai"{{ $anime_user->medium == 'bandai' ? 'selected' : '' }}>バンダイチャンネル</option>
+                                        <option value = "FOD"{{ $anime_user->medium == 'FOD' ? 'selected' : '' }}>FODプレミアム</option>
                                     </select>
                                 </td>
                             </tr> 
