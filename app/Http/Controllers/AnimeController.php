@@ -195,11 +195,12 @@ class AnimeController extends Controller
             ->paginate(10);
         //dd($animeRanks);
         
+        $anime_users_all = Anime_user::where('user_id', $user_id)->get();
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         
         $before_like_count = $request->query('before_like_count');//前ページの変数を継承
         $count = $request->query('count');//前ページの順位の変数を継承
-            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count'));
+            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count', 'anime_users_all'));
     }
     public function ranking_unlike(Request $request, Anime $anime)
     {
@@ -218,12 +219,13 @@ class AnimeController extends Controller
             ->paginate(10);
         //dd($animeRanks);
         
+        $anime_users_all = Anime_user::where('user_id', $user_id)->get();
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         //dd($anime_users);
         
         $before_like_count = $request->query('before_like_count');//前ページの変数を継承
         $count = $request->query('count');//前ページの順位の変数を継承
-            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count'));
+            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count', 'anime_users_all'));
     }
     public function board()
     {
