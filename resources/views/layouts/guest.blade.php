@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-05CLXWFBKC"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-05CLXWFBKC');
+        </script>
+        
         <!--ファビコン-->
         <link href="{{Storage::disk('s3')->temporaryUrl('logo.png', now()->addDay())}}" rel="icon" sizes="48x48">
         
