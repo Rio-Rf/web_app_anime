@@ -16,7 +16,7 @@ class GoogleLoginController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    public function handleGoogleCallback()
+    public function handleGoogleCallback(Request $request)
     {
         // googleのユーザ情報を取得
         $googleUser = Socialite::driver('google')->stateless()->user();
@@ -29,6 +29,9 @@ class GoogleLoginController extends Controller
 
         // 作成したユーザでログイン処理
         Auth::login($user, true);
+        
+        // 初回ログインフラグをセッションに追加
+        $request->session()->put('firstlogin', true);
 
         // /homeにリダイレクト
         return redirect('/');
