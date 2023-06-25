@@ -29,6 +29,9 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        
+        // 初回ログインフラグをセッションに追加
+        $request->session()->put('firstlogin', true);
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -48,8 +51,11 @@ class AuthenticatedSessionController extends Controller
     }
     
     private const GUEST_USER_ID = 1;
-    public function guestLogin()
+    public function guestLogin(Request $request)
     {
+        // 初回ログインフラグをセッションに追加
+        $request->session()->put('firstlogin', true);
+
         //anime_usersテーブルのゲストユーザーのレコードを全て削除する
         Anime_user::where('user_id', self::GUEST_USER_ID)->forceDelete();//delete()だと論理削除になる．
         if(Auth::loginUsingId(self::GUEST_USER_ID)){
