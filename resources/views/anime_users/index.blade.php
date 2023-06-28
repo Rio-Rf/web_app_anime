@@ -74,6 +74,25 @@
                  font-size: 14px;
                  cursor: pointer;
              }
+             .popup {
+                width: 50%;
+                margin: auto;
+                position: relative;
+                background: #fff;
+                padding: 20px;
+            }
+            .custom-title-class {
+              font-size: 20px;
+              color: #FFFFFF;
+              margin-top: 20px;
+              margin-bottom: 50px;
+              padding-top: 30px;
+              padding-bottom: 30px;
+              padding-left: 10px;
+              padding-right: 10px;
+              background-color: #000000;
+              opacity: 0.7;
+            }
             </style>
             <header>
                 <!--<a href="/">アニメナビ</a>
