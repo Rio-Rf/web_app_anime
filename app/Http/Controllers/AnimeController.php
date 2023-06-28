@@ -337,9 +337,12 @@ class AnimeController extends Controller
                         ->update(['like' => 1]);
         }
         
+<<<<<<< HEAD
         //$anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();
         //dd($anime_user);
         
+=======
+>>>>>>> 6dd97456a19d32d098d9139b0c5e09688cb7a541
         $liked = Anime_user::where('anime_id', $anime_id)
         ->where('user_id', $user_id)
         ->where('like', 1)
@@ -519,7 +522,7 @@ class AnimeController extends Controller
         }else{
             $anime_user = $anime_user[0];
         }
-        Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
+        /*Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 1]);
         /*//dd($anime_user);
@@ -561,7 +564,7 @@ class AnimeController extends Controller
         }else{
             $anime_user = $anime_user[0];
         }
-        Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
+        /*Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
         /*$anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();//$anime_userを更新
@@ -644,7 +647,7 @@ class AnimeController extends Controller
         }else{
             $anime_user = $anime_user[0];
         }
-        Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
+        /*Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
         /*$anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();//$anime_userを更新
