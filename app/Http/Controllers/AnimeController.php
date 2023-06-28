@@ -53,48 +53,22 @@ class AnimeController extends Controller
         return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like', 'anime_users_non', 'anime_users_mon', 'anime_users_tue', 'anime_users_wed', 'anime_users_thu', 'anime_users_fri', 'anime_users_sat', 'anime_users_sun', 'anime_users_like'));
     }
     public function index_like(Request $request, Anime $anime)
-    {
-        $anime_id = $anime->id;
-        $user_id = $request->user()->id;
-        //dd($anime);
-        Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
-                    ->where('user_id', $user_id)
-                    ->update(['like' => 1]);
-        $user_id = $request->user()->id;
-        $anime_users_non = Anime_user::where('day_of_week', 'non')->where('user_id', $user_id)->get();//曜日がnonかつログイン中のuser_idのレコードを取得
-        $anime_ids_non = $anime_users_non->pluck('anime_id');//anime_idの配列を取得
-        $animes_non = Anime::whereIn('id', $anime_ids_non)->get();//animesテーブルのidが$anime_idsに一致するものを取得
-        $anime_users_mon = Anime_user::where('day_of_week', 'mon')->where('user_id', $user_id)->get();
-        $anime_ids_mon = $anime_users_mon->pluck('anime_id');
-        $animes_mon = Anime::whereIn('id', $anime_ids_mon)->get();
-        $anime_users_tue = Anime_user::where('day_of_week', 'tue')->where('user_id', $user_id)->get();
-        $anime_ids_tue = $anime_users_tue->pluck('anime_id');
-        $animes_tue = Anime::whereIn('id', $anime_ids_tue)->get();
-        $anime_users_wed = Anime_user::where('day_of_week', 'wed')->where('user_id', $user_id)->get();
-        $anime_ids_wed = $anime_users_wed->pluck('anime_id');
-        $animes_wed = Anime::whereIn('id', $anime_ids_wed)->get();
-        $anime_users_thu = Anime_user::where('day_of_week', 'thu')->where('user_id', $user_id)->get();
-        $anime_ids_thu = $anime_users_thu->pluck('anime_id');
-        $animes_thu = Anime::whereIn('id', $anime_ids_thu)->get();
-        $anime_users_fri = Anime_user::where('day_of_week', 'fri')->where('user_id', $user_id)->get();
-        $anime_ids_fri = $anime_users_fri->pluck('anime_id');
-        $animes_fri = Anime::whereIn('id', $anime_ids_fri)->get();
-        $anime_users_sat = Anime_user::where('day_of_week', 'sat')->where('user_id', $user_id)->get();
-        $anime_ids_sat = $anime_users_sat->pluck('anime_id');
-        $animes_sat = Anime::whereIn('id', $anime_ids_sat)->get();
-        $anime_users_sun = Anime_user::where('day_of_week', 'sun')->where('user_id', $user_id)->get();
-        $anime_ids_sun = $anime_users_sun->pluck('anime_id');
-        $animes_sun = Anime::whereIn('id', $anime_ids_sun)->get();
-        $anime_users_like = Anime_user::where('like', 1)->where('user_id', $user_id)->get();
-        $anime_ids_like = $anime_users_like->pluck('anime_id');
-        $animes_like = Anime::whereIn('id', $anime_ids_like)->get();
-        //dd($animes_non);
-        
-        
-        $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
-        //d($anime_user);
-        return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like', 'anime_users_non', 'anime_users_mon', 'anime_users_tue', 'anime_users_wed', 'anime_users_thu', 'anime_users_fri', 'anime_users_sat', 'anime_users_sun', 'anime_users_like'));
-    }
+{
+    $anime_id = $anime->id;
+    $user_id = $request->user()->id;
+
+    Anime_user::where('anime_id', $anime_id)
+        ->where('user_id', $user_id)
+        ->update(['like' => 1]);
+
+    // いいねの状態を取得
+    $liked = Anime_user::where('anime_id', $anime_id)
+        ->where('user_id', $user_id)
+        ->where('like', 1)
+        ->exists();
+
+    return response()->json(['like' => $liked]);
+}
     public function index_unlike(Request $request, Anime $anime)
     {
         $anime_id = $anime->id;
@@ -103,40 +77,13 @@ class AnimeController extends Controller
         Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
-        $user_id = $request->user()->id;
-        $anime_users_non = Anime_user::where('day_of_week', 'non')->where('user_id', $user_id)->get();//曜日がnonかつログイン中のuser_idのレコードを取得
-        $anime_ids_non = $anime_users_non->pluck('anime_id');//anime_idの配列を取得
-        $animes_non = Anime::whereIn('id', $anime_ids_non)->get();//animesテーブルのidが$anime_idsに一致するものを取得
-        $anime_users_mon = Anime_user::where('day_of_week', 'mon')->where('user_id', $user_id)->get();
-        $anime_ids_mon = $anime_users_mon->pluck('anime_id');
-        $animes_mon = Anime::whereIn('id', $anime_ids_mon)->get();
-        $anime_users_tue = Anime_user::where('day_of_week', 'tue')->where('user_id', $user_id)->get();
-        $anime_ids_tue = $anime_users_tue->pluck('anime_id');
-        $animes_tue = Anime::whereIn('id', $anime_ids_tue)->get();
-        $anime_users_wed = Anime_user::where('day_of_week', 'wed')->where('user_id', $user_id)->get();
-        $anime_ids_wed = $anime_users_wed->pluck('anime_id');
-        $animes_wed = Anime::whereIn('id', $anime_ids_wed)->get();
-        $anime_users_thu = Anime_user::where('day_of_week', 'thu')->where('user_id', $user_id)->get();
-        $anime_ids_thu = $anime_users_thu->pluck('anime_id');
-        $animes_thu = Anime::whereIn('id', $anime_ids_thu)->get();
-        $anime_users_fri = Anime_user::where('day_of_week', 'fri')->where('user_id', $user_id)->get();
-        $anime_ids_fri = $anime_users_fri->pluck('anime_id');
-        $animes_fri = Anime::whereIn('id', $anime_ids_fri)->get();
-        $anime_users_sat = Anime_user::where('day_of_week', 'sat')->where('user_id', $user_id)->get();
-        $anime_ids_sat = $anime_users_sat->pluck('anime_id');
-        $animes_sat = Anime::whereIn('id', $anime_ids_sat)->get();
-        $anime_users_sun = Anime_user::where('day_of_week', 'sun')->where('user_id', $user_id)->get();
-        $anime_ids_sun = $anime_users_sun->pluck('anime_id');
-        $animes_sun = Anime::whereIn('id', $anime_ids_sun)->get();
-        $anime_users_like = Anime_user::where('like', 1)->where('user_id', $user_id)->get();
-        $anime_ids_like = $anime_users_like->pluck('anime_id');
-        $animes_like = Anime::whereIn('id', $anime_ids_like)->get();
-        //dd($animes_non);
+        // いいねの状態を取得
+        $liked = Anime_user::where('anime_id', $anime_id)
+            ->where('user_id', $user_id)
+            ->where('like', 0)
+            ->exists();
         
-        
-        $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
-        //d($anime_user);
-        return view('anime_users/index', compact('anime_users', 'animes_non', 'animes_mon', 'animes_tue', 'animes_wed', 'animes_thu', 'animes_fri', 'animes_sat', 'animes_sun', 'animes_like', 'anime_users_non', 'anime_users_mon', 'anime_users_tue', 'anime_users_wed', 'anime_users_thu', 'anime_users_fri', 'anime_users_sat', 'anime_users_sun', 'anime_users_like'));
+        return response()->json(['like' => $liked]);
     }
     public function ranking(Request $request)
     {
@@ -187,7 +134,7 @@ class AnimeController extends Controller
                         ->where('user_id', $user_id)
                         ->update(['like' => 1]);
         }
-        //likeカラムの合計値をlike_countカラムに保存，実在するanime_usersテーブルを直接指定して操作している
+        /*//likeカラムの合計値をlike_countカラムに保存，実在するanime_usersテーブルを直接指定して操作している
         $animeRanks = Anime::select('animes.*', DB::raw('SUM(anime_users.like) AS like_count'))
             ->leftJoin('anime_users', 'animes.id', '=', 'anime_users.anime_id')
             ->groupBy('animes.id', 'animes.title', 'animes.on_air_season', 'animes.img_path', 'animes.official_url', 'animes.created_at', 'animes.updated_at', 'animes.deleted_at') // グループ化する列
@@ -199,8 +146,14 @@ class AnimeController extends Controller
         $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
         
         $before_like_count = $request->query('before_like_count');//前ページの変数を継承
-        $count = $request->query('count');//前ページの順位の変数を継承
-            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count', 'anime_users_all'));
+        $count = $request->query('count');//前ページの順位の変数を継承*/
+        // いいねの状態を取得
+        $liked = Anime_user::where('anime_id', $anime_id)
+            ->where('user_id', $user_id)
+            ->where('like', 1)
+            ->exists();
+    
+        return response()->json(['like' => $liked]);
     }
     public function ranking_unlike(Request $request, Anime $anime)
     {
@@ -211,7 +164,7 @@ class AnimeController extends Controller
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
                         
-        //likeカラムの合計値をlike_countカラムに保存，実在するanime_usersテーブルを直接指定して操作している
+        /*//likeカラムの合計値をlike_countカラムに保存，実在するanime_usersテーブルを直接指定して操作している
         $animeRanks = Anime::select('animes.*', DB::raw('SUM(anime_users.like) AS like_count'))
             ->leftJoin('anime_users', 'animes.id', '=', 'anime_users.anime_id')
             ->groupBy('animes.id', 'animes.title', 'animes.on_air_season', 'animes.img_path', 'animes.official_url', 'animes.created_at', 'animes.updated_at', 'animes.deleted_at') // グループ化する列
@@ -224,8 +177,14 @@ class AnimeController extends Controller
         //dd($anime_users);
         
         $before_like_count = $request->query('before_like_count');//前ページの変数を継承
-        $count = $request->query('count');//前ページの順位の変数を継承
-            return view('anime_users/ranking', compact('animeRanks', 'anime_users', 'before_like_count', 'count', 'anime_users_all'));
+        $count = $request->query('count');//前ページの順位の変数を継承*/
+        // いいねの状態を取得
+        $liked = Anime_user::where('anime_id', $anime_id)
+            ->where('user_id', $user_id)
+            ->where('like', 0)
+            ->exists();
+    
+        return response()->json(['like' => $liked]);
     }
     public function board()
     {
@@ -377,13 +336,13 @@ class AnimeController extends Controller
                         ->where('user_id', $user_id)
                         ->update(['like' => 1]);
         }
-        $keyword = "タイトルを入力してください．";
-        $query = Anime::query();
-        $animes = $query->get();//検索ボックスが空の時にはすべてを表示する．
-        $user_id = $request->user()->id;
-        $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
-        $anime_users_all = Anime_user::where('user_id', $user_id)->get();//ログイン中のuser_idのレコードを取得
-        return view('anime_users/search', compact('keyword', 'animes', 'anime_users', 'anime_users_all'));
+        
+        $liked = Anime_user::where('anime_id', $anime_id)
+        ->where('user_id', $user_id)
+        ->where('like', 1)
+        ->exists();
+
+        return response()->json(['like' => $liked]);
     }
     public function search_unlike(Request $request, Anime $anime)
     {
@@ -393,13 +352,13 @@ class AnimeController extends Controller
         Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
-        $keyword = "タイトルを入力してください．";
-        $query = Anime::query();
-        $animes = $query->get();//検索ボックスが空の時にはすべてを表示する．
-        $user_id = $request->user()->id;
-        $anime_users = Anime_user::where('user_id', $user_id)->where('like', 1)->get();
-        $anime_users_all = Anime_user::where('user_id', $user_id)->get();//ログイン中のuser_idのレコードを取得
-        return view('anime_users/search', compact('keyword', 'animes', 'anime_users', 'anime_users_all'));
+        
+        $liked = Anime_user::where('anime_id', $anime_id)
+        ->where('user_id', $user_id)
+        ->where('like', 0)
+        ->exists();
+
+        return response()->json(['like' => $liked]);
     }
     public function edit_post(Request $request)
     {
@@ -557,7 +516,7 @@ class AnimeController extends Controller
         }else{
             $anime_user = $anime_user[0];
         }
-        Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
+        /*Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 1]);
         //dd($anime_user);
@@ -565,7 +524,14 @@ class AnimeController extends Controller
         $anime_user = $anime_user[0];
         $like_count = Anime_user::where('anime_id', $anime_id)->where('like', 1)->count();
         //dd($anime_user);
-        return view('anime_users/edit', compact('anime', 'like_count', 'anime_user'));
+        */
+        
+        $liked = Anime_user::where('anime_id', $anime_id)
+            ->where('user_id', $user_id)
+            ->where('like', 1)
+            ->exists();
+    
+        return response()->json(['like' => $liked]);
     }
     public function edit_unlike(Anime $anime, Request $request)//中間テーブルを2つ作る方法はないようだ
     {
@@ -592,13 +558,20 @@ class AnimeController extends Controller
         }else{
             $anime_user = $anime_user[0];
         }
-        Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
+        /*Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
         $anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();//$anime_userを更新
         $anime_user = $anime_user[0];
         $like_count = Anime_user::where('anime_id', $anime_id)->where('like', 1)->count();
-        return view('anime_users/edit', compact('anime', 'like_count', 'anime_user'));
+        */
+        
+        $liked = Anime_user::where('anime_id', $anime_id)
+            ->where('user_id', $user_id)
+            ->where('like', 0)
+            ->exists();
+    
+        return response()->json(['like' => $liked]);
     }
     public function detail_like(Anime $anime, Request $request)//中間テーブルを2つ作る方法はないようだ
     {
@@ -631,11 +604,17 @@ class AnimeController extends Controller
                     ->where('user_id', $user_id)
                     ->update(['like' => 1]);
         //dd($anime_user);
-        $anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();//$anime_userを更新
+        /*$anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();//$anime_userを更新
         $anime_user = $anime_user[0];
         $like_count = Anime_user::where('anime_id', $anime_id)->where('like', 1)->count();
-        //dd($anime_user);
-        return view('anime_users/detail', compact('anime', 'like_count', 'anime_user'));
+        //dd($anime_user);*/
+        
+        $liked = Anime_user::where('anime_id', $anime_id)
+            ->where('user_id', $user_id)
+            ->where('like', 1)
+            ->exists();
+    
+        return response()->json(['like' => $liked]);
     }
     public function detail_unlike(Anime $anime, Request $request)//中間テーブルを2つ作る方法はないようだ
     {
@@ -662,12 +641,19 @@ class AnimeController extends Controller
         }else{
             $anime_user = $anime_user[0];
         }
-        Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
+        /*Anime_user::where('anime_id', $anime_id)//中間テーブルの操作はこの方法が適しているようだ
                     ->where('user_id', $user_id)
                     ->update(['like' => 0]);
         $anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();//$anime_userを更新
         $anime_user = $anime_user[0];
         $like_count = Anime_user::where('anime_id', $anime_id)->where('like', 1)->count();
-        return view('anime_users/detail', compact('anime', 'like_count', 'anime_user'));
+        */
+        
+        $liked = Anime_user::where('anime_id', $anime_id)
+            ->where('user_id', $user_id)
+            ->where('like', 0)
+            ->exists();
+    
+        return response()->json(['like' => $liked]);
     }
 }
