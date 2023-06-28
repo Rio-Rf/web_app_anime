@@ -945,12 +945,9 @@
                     if (unlikeBtns) {
                         unlikeBtns.forEach(function(unlikeBtn) {
                             const unheartIcon = unlikeBtn.querySelector('i');
-<<<<<<< HEAD
+
                             const indexunLikeUrl = " route('animes.index_unlike') ";
-=======
-                            const indexunLikeUrl = "{{ route('animes.index_unlike', ['anime'=>$anime]) }}";
->>>>>>> 6dd97456a19d32d098d9139b0c5e09688cb7a541
-            
+
                             unlikeBtn.addEventListener('click', function(event) {
                                 event.preventDefault();
             
@@ -987,11 +984,7 @@
                     if (likeBtns) {
                         likeBtns.forEach(function(likeBtn) {
                             const heartIcon = likeBtn.querySelector('i');
-<<<<<<< HEAD
                             const indexLikeUrl = " route('animes.index_like') ";
-=======
-                            const indexLikeUrl = "{{ route('animes.index_like', ['anime'=>$anime]) }}";
->>>>>>> 6dd97456a19d32d098d9139b0c5e09688cb7a541
             
                             likeBtn.addEventListener('click', function(event) {
                                 event.preventDefault();
