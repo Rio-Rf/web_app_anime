@@ -33,7 +33,7 @@
                  height: 83px;
                  font-size: 72px;
                  color: #808080; 
-                 margin-left: 11px;
+                 margin-left: 51px;
                  animation: bounce 0.5s infinite;
              }
             .unlike-btn {
@@ -169,19 +169,23 @@
                                         @endphp
                                         
                                         @if($liked)
-                                            <a href="{{ route('animes.ranking_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 180px; right: 6px;">
-                                                <i class="fas fa-heart unlike-btn"></i>
+                                        <div class="heart-container" style="position: absolute; top: 180px; right: 6px;">
+                                            <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}">
+                                                <i class="fas fa-heart"></i>
                                                 <span style="font-size: 82px; color: white;">{{$animeRank->like_count}}</span>
                                             </a>
+                                        </div>
                                         @else
-                                            <a href="{{ route('animes.ranking_like', ['anime'=>$anime])}}" style="position: absolute; top: 180px; right: 6px;">
-                                                <i class="far fa-heart like-btn"></i>
+                                        <div class="heart-container" style="position: absolute; top: 180px; right: 6px;">
+                                            <a href="#" class="like-btn" data-anime="{{ $anime->id }}">
+                                                <i class="far fa-heart"></i>
                                                 @if($animeRank->like_count != null)
                                                 <span style="font-size: 82px; color: white;">{{$animeRank->like_count}}</span>
                                                 @else
                                                 <span style="font-size: 82px; color: white;">0</span>
                                                 @endif
                                             </a>
+                                        </div>
                                         @endif
                                         
                                         @php
@@ -260,6 +264,97 @@
             <div class='paginate' >
             {{ $animeRanks->appends(['before_like_count' => $before_like_count, 'count' => $count ])->links('vendor.pagination.tailwind2') }} <!--'vendor.pagination.tailwind2'の設定を使用-->
             </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const unlikeBtns = document.querySelectorAll('.unlike-btn');
+            
+                if (unlikeBtns) {
+                  unlikeBtns.forEach(function(unlikeBtn) {
+                    const unheartIcon = unlikeBtn.querySelector('i');
+                    const spanElement = unlikeBtn.querySelector('span');
+                    const indexunLikeUrl = "route('animes.ranking_unlike')";
+            
+                    unlikeBtn.addEventListener('click', function(event) {
+                      event.preventDefault();
+            
+                      const animeId = unlikeBtn.dataset.anime;
+            
+                      fetch(`/ranking_unlike/${animeId}`)
+                        .then(function(response) {
+                          if (response.ok) {
+                            return response.json();
+                          } else {
+                            throw new Error('Network response was not ok.');
+                          }
+                        })
+                        .then(function(data) {
+                          // ハートアイコンのクラスを切り替える
+                          unheartIcon.classList.toggle('fas');
+                          unheartIcon.classList.toggle('far');
+                          unlikeBtn.classList.toggle('unlike-btn');
+                          unlikeBtn.classList.toggle('like-btn');
+            
+                          // spanの値を更新して表示
+                          const currentValue = parseInt(spanElement.innerText);
+                          if (unlikeBtn.classList.contains('like-btn')) {
+                            spanElement.innerText = currentValue - 1;
+                          } else {
+                            spanElement.innerText = Math.max(currentValue + 1, 0);
+                          }
+                        })
+                        .catch(function(error) {
+                          console.log('Error:', error);
+                        });
+                    });
+                  });
+                }
+              });
+            
+              document.addEventListener('DOMContentLoaded', function() {
+                const likeBtns = document.querySelectorAll('.like-btn');
+            
+                if (likeBtns) {
+                  likeBtns.forEach(function(likeBtn) {
+                    const heartIcon = likeBtn.querySelector('i');
+                    const spanElement = likeBtn.querySelector('span');
+                    const indexLikeUrl = "route('animes.ranking_like')";
+            
+                    likeBtn.addEventListener('click', function(event) {
+                      event.preventDefault();
+            
+                      const animeId = likeBtn.dataset.anime;
+            
+                      fetch(`/ranking_like/${animeId}`)
+                        .then(function(response) {
+                          if (response.ok) {
+                            return response.json();
+                          } else {
+                            throw new Error('Network response was not ok.');
+                          }
+                        })
+                        .then(function(data) {
+                          // ハートアイコンのクラスを切り替える
+                          heartIcon.classList.toggle('far');
+                          heartIcon.classList.toggle('fas');
+                          likeBtn.classList.toggle('like-btn');
+                          likeBtn.classList.toggle('unlike-btn');
+            
+                          // spanの値を更新して表示
+                          const currentValue = parseInt(spanElement.innerText);
+                          if (likeBtn.classList.contains('unlike-btn')) {
+                            spanElement.innerText = currentValue + 1;
+                          } else {
+                            spanElement.innerText = currentValue - 1;
+                          }
+                        })
+                        .catch(function(error) {
+                          console.log('Error:', error);
+                        });
+                    });
+                  });
+                }
+              });
+            </script>
         </body>
     </html>
 </x-app-layout>

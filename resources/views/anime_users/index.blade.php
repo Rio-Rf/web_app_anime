@@ -10,10 +10,7 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&family=Yusei+Magic&display=swap" rel="stylesheet">
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!--jQueryの読み込み-->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
-        </head> 
+        </head>
         <body>
             <style>
             table, td, th {
@@ -74,25 +71,6 @@
                  font-size: 14px;
                  cursor: pointer;
              }
-             .popup {
-                width: 50%;
-                margin: auto;
-                position: relative;
-                background: #fff;
-                padding: 20px;
-            }
-            .custom-title-class {
-              font-size: 20px;
-              color: #FFFFFF;
-              margin-top: 20px;
-              margin-bottom: 50px;
-              padding-top: 30px;
-              padding-bottom: 30px;
-              padding-left: 10px;
-              padding-right: 10px;
-              background-color: #000000;
-              opacity: 0.7;
-            }
             </style>
             <header>
                 <!--<a href="/">アニメナビ</a>
@@ -103,94 +81,6 @@
             <div class='myanimes'>
                 <div class='myanimes'>
                     
-                    <!--<div id="test" class="popup mfp-hide">
-                    </div>
-                    <a href="#test" class="open">ポップアップ表示</a>-->
-                    @if (session('firstlogin'))
-                    @php
-                    session(['firstlogin' => false]);
-                    $t0 = Storage::disk('s3')->temporaryUrl('tutorial/0.PNG', now()->addDay());
-                    $t1 = Storage::disk('s3')->temporaryUrl('tutorial/1.PNG', now()->addDay());
-                    $t2 = Storage::disk('s3')->temporaryUrl('tutorial/2.PNG', now()->addDay());
-                    $t3 = Storage::disk('s3')->temporaryUrl('tutorial/3.PNG', now()->addDay());
-                    $t4 = Storage::disk('s3')->temporaryUrl('tutorial/4.PNG', now()->addDay());
-                    $t5 = Storage::disk('s3')->temporaryUrl('tutorial/5.PNG', now()->addDay());
-                    $t6 = Storage::disk('s3')->temporaryUrl('tutorial/6.PNG', now()->addDay());
-                    $t7 = Storage::disk('s3')->temporaryUrl('tutorial/7.PNG', now()->addDay());
-                    $t8 = Storage::disk('s3')->temporaryUrl('tutorial/8.PNG', now()->addDay());
-                    @endphp
-                    <div id="0" data-t0="{{ $t0 }}"></div>
-                    <div id="1" data-t1="{{ $t1 }}"></div>
-                    <div id="2" data-t2="{{ $t2 }}"></div>
-                    <div id="3" data-t3="{{ $t3 }}"></div>
-                    <div id="4" data-t4="{{ $t4 }}"></div>
-                    <div id="5" data-t5="{{ $t5 }}"></div>
-                    <div id="6" data-t6="{{ $t6 }}"></div>
-                    <div id="7" data-t7="{{ $t7 }}"></div>
-                    <div id="8" data-t8="{{ $t8 }}"></div>
-                    <script>
-                      $(document).ready(function() {
-                      var t0 = $('#0').data('t0');
-                      var t1 = $('#1').data('t1');
-                      var t2 = $('#2').data('t2');
-                      var t3 = $('#3').data('t3');
-                      var t4 = $('#4').data('t4');
-                      var t5 = $('#5').data('t5');
-                      var t6 = $('#6').data('t6');
-                      var t7 = $('#7').data('t7');
-                      var t8 = $('#8').data('t8');
-                        $.magnificPopup.open({
-                          items: [
-                          {
-                            src: t0,
-                            title: '<span class="popup-title">アニメナビの使い方について紹介します！！！アニメナビは視聴しているアニメを管理するWebアプリです！</span>'
-                          },
-                          {
-                            src: t1,
-                            title: '<span class="popup-title">TOP画面から「検索」タブか各曜日の「追加する」ボタンを押します！追加したい曜日が決まっている場合には追加するボタンを使用します！</span>'
-                          },
-                          {
-                            src: t2,
-                            title: '<span class="popup-title">検索バーに登録したいアニメのタイトルを入力し、「検索」ボタンを押します！検索せずにアニメを登録することもできます！</span>'
-                          },
-                          {
-                            src: t3,
-                            title: '<span class="popup-title">検索結果一覧から登録したいアニメを選択します！</span>'
-                          },
-                          {
-                            src: t4,
-                            title: '<span class="popup-title">ユーザさんが視聴する曜日，時刻，視聴媒体を選択して「登録する」ボタンを押します！</span>'
-                          },
-                          {
-                            src: t5,
-                            title: '<span class="popup-title">TOP画面に登録した内容が反映されます！画像左上のアイコンを押すとそのページに遷移します！次に、登録したアニメを選択します！</span>'
-                          },
-                          {
-                            src: t6,
-                            title: '<span class="popup-title">「編集する」ボタンを押すと登録内容を変更できます！「削除する」ボタンを押すと登録した内容を削除できます！</span>'
-                          },
-                          {
-                            src: t7,
-                            title: '<span class="popup-title">ハートボタンを押すとお気に入り登録されます．このページでは全ユーザのお気に入り数のランキングを見ることができます！</span>'
-                          },
-                          {
-                            src: t8,
-                            title: '<span class="popup-title">ここまで読んでいただきありがとうございます！よいアニメライフを！！！</span>'
-                          }
-                        ],
-                        gallery: {
-                          enabled: true
-                        },
-                        type: 'image', // this is a default type
-                        callbacks: {//cssとつなげる
-                            markupParse: function(template, values, item) {
-                                template.find('.mfp-title').addClass('custom-title-class');
-                            }
-                        }
-                        });
-                      });
-                    </script>
-                    @endif
                     <table style="margin-top: 30px; margin-right: 15px; margin-left: 15px;">
                         <tbody>
                             <tr>
@@ -213,12 +103,12 @@
                                                 @endphp
                                                 
                                                 @if($liked)
-                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="fas fa-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="far fa-heart like-btn"></i>
+                                                    <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="far fa-heart"></i>
                                                     </a>
                                                 @endif
                                 
@@ -308,12 +198,12 @@
                                                 @endphp
                                                 
                                                 @if($liked)
-                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="fas fa-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="far fa-heart like-btn"></i>
+                                                    <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="far fa-heart"></i>
                                                     </a>
                                                 @endif
                                                 
@@ -402,12 +292,12 @@
                                                 @endphp
                                                 
                                                 @if($liked)
-                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="fas fa-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="far fa-heart like-btn"></i>
+                                                    <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="far fa-heart"></i>
                                                     </a>
                                                 @endif
                                                 
@@ -496,12 +386,12 @@
                                                 @endphp
                                                 
                                                 @if($liked)
-                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="fas fa-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="far fa-heart like-btn"></i>
+                                                    <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="far fa-heart"></i>
                                                     </a>
                                                 @endif
                                                 
@@ -590,12 +480,12 @@
                                                 @endphp
                                                 
                                                 @if($liked)
-                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="fas fa-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="far fa-heart like-btn"></i>
+                                                    <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="far fa-heart"></i>
                                                     </a>
                                                 @endif
                                                 
@@ -684,12 +574,12 @@
                                                 @endphp
                                                 
                                                 @if($liked)
-                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="fas fa-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="far fa-heart like-btn"></i>
+                                                    <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="far fa-heart"></i>
                                                     </a>
                                                 @endif
                                                 
@@ -778,12 +668,12 @@
                                                 @endphp
                                                 
                                                 @if($liked)
-                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="fas fa-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="far fa-heart like-btn"></i>
+                                                    <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="far fa-heart"></i>
                                                     </a>
                                                 @endif
                                                 
@@ -864,7 +754,7 @@
                                             <div style="position: relative; float: left;">
                                                 <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_non->img_path, now()->addDay()) }}" alt = "Image">
                                                 
-                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初��化しないとエラー-->
+                                                <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
                                                     $liked = null;
                                                     $liked = $anime_users->contains('anime_id', $anime_non->id);
@@ -872,14 +762,15 @@
                                                 @endphp
                                                 
                                                 @if($liked)
-                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="fas fa-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="far fa-heart like-btn"></i>
+                                                    <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="far fa-heart"></i>
                                                     </a>
                                                 @endif
+                                                
                                                 
                                                 @if($anime_user_non->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
@@ -966,12 +857,12 @@
                                                 @endphp
                                                 
                                                 @if($liked)
-                                                    <a href="{{ route('animes.index_unlike', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="fas fa-heart unlike-btn"></i>
+                                                    <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="fas fa-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="{{ route('animes.index_like', ['anime'=>$anime])}}" style="position: absolute; top: 175px; right: 5px;">
-                                                        <i class="far fa-heart like-btn"></i>
+                                                    <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                                        <i class="far fa-heart"></i>
                                                     </a>
                                                 @endif
                                                 
@@ -1047,7 +938,81 @@
                      </table><br><br>
                 </div>
             </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const unlikeBtns = document.querySelectorAll('.unlike-btn');
             
+                    if (unlikeBtns) {
+                        unlikeBtns.forEach(function(unlikeBtn) {
+                            const unheartIcon = unlikeBtn.querySelector('i');
+                            const indexunLikeUrl = " route('animes.index_unlike') ";
+            
+                            unlikeBtn.addEventListener('click', function(event) {
+                                event.preventDefault();
+            
+                                const animeId = unlikeBtn.dataset.anime;
+            
+                                fetch(`/index_unlike/${animeId}`)
+                                    .then(function(response) {
+                                        if (response.ok) {
+                                            return response.json();
+                                        } else {
+                                            throw new Error('Network response was not ok.');
+                                        }
+                                    })
+                                    .then(function(data) {
+                                        // ハートアイコンのクラスを切り替える
+                                        unheartIcon.classList.toggle('fas');
+                                        unheartIcon.classList.toggle('far');
+                                        unlikeBtn.classList.toggle('unlike-btn');
+                                        unlikeBtn.classList.toggle('like-btn');
+                                    })
+                                    .catch(function(error) {
+                                        console.log('Error:', error);
+                                    });
+                            });
+                        });
+                    }
+                });
+            </script>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const likeBtns = document.querySelectorAll('.like-btn');
+            
+                    if (likeBtns) {
+                        likeBtns.forEach(function(likeBtn) {
+                            const heartIcon = likeBtn.querySelector('i');
+                            const indexLikeUrl = " route('animes.index_like') ";
+            
+                            likeBtn.addEventListener('click', function(event) {
+                                event.preventDefault();
+            
+                                const animeId = likeBtn.dataset.anime;
+            
+                                fetch(`/index_like/${animeId}`)
+                                    .then(function(response) {
+                                        if (response.ok) {
+                                            return response.json();
+                                        } else {
+                                            throw new Error('Network response was not ok.');
+                                        }
+                                    })
+                                    .then(function(data) {
+                                        // ハートアイコンのクラスを切り替える
+                                        heartIcon.classList.toggle('far');
+                                        heartIcon.classList.toggle('fas');
+                                        likeBtn.classList.toggle('like-btn');
+                                        likeBtn.classList.toggle('unlike-btn');
+                                    })
+                                    .catch(function(error) {
+                                        console.log('Error:', error);
+                                    });
+                            });
+                        });
+                    }
+                });
+            </script>
         </body>
     </html>
 </x-app-layout>

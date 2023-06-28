@@ -135,12 +135,12 @@
                               @endphp
                               
                               @if($liked)
-                                  <a href="{{ route('animes.search_unlike', ['anime'=>$anime, 'day_of_week'=>request('day_of_week')])}}" style="position: absolute; top: 175px; right: 5px;">
-                                      <i class="fas fa-heart unlike-btn"></i>
+                                  <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                      <i class="fas fa-heart"></i>
                                   </a>
                               @else
-                                  <a href="{{ route('animes.search_like', ['anime'=>$anime, 'day_of_week'=>request('day_of_week')])}}" style="position: absolute; top: 175px; right: 5px;">
-                                      <i class="far fa-heart like-btn"></i>
+                                  <a href="#" class="like-btn" data-anime="{{ $anime->id }}" style="position: absolute; top: 165px; right: 5px;">
+                                      <i class="far fa-heart"></i>
                                   </a>
                               @endif
                               <!--firstでレコードを返すように指定-->
@@ -216,6 +216,81 @@
               </table>
             </div>
           </div>
+          <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const unlikeBtns = document.querySelectorAll('.unlike-btn');
+            
+                    if (unlikeBtns) {
+                        unlikeBtns.forEach(function(unlikeBtn) {
+                            const unheartIcon = unlikeBtn.querySelector('i');
+                            const indexunLikeUrl = "route('animes.search_unlike')";
+            
+                            unlikeBtn.addEventListener('click', function(event) {
+                                event.preventDefault();
+            
+                                const animeId = unlikeBtn.dataset.anime;
+            
+                                fetch(`/search_unlike/${animeId}`)#ここをindexから変えていなかったのでserchに遷移していなかった
+                                    .then(function(response) {
+                                        if (response.ok) {
+                                            return response.json();
+                                        } else {
+                                            throw new Error('Network response was not ok.');
+                                        }
+                                    })
+                                    .then(function(data) {
+                                        // ハートアイコンのクラスを切り替える
+                                        unheartIcon.classList.toggle('fas');
+                                        unheartIcon.classList.toggle('far');
+                                        unlikeBtn.classList.toggle('unlike-btn');
+                                        unlikeBtn.classList.toggle('like-btn');
+                                    })
+                                    .catch(function(error) {
+                                        console.log('Error:', error);
+                                    });
+                            });
+                        });
+                    }
+                });
+            </script>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const likeBtns = document.querySelectorAll('.like-btn');
+            
+                    if (likeBtns) {
+                        likeBtns.forEach(function(likeBtn) {
+                            const heartIcon = likeBtn.querySelector('i');
+                            const indexLikeUrl = "route('animes.search_like')";
+            
+                            likeBtn.addEventListener('click', function(event) {
+                                event.preventDefault();
+            
+                                const animeId = likeBtn.dataset.anime;
+            
+                                fetch(`/search_like/${animeId}`)
+                                    .then(function(response) {
+                                        if (response.ok) {
+                                            return response.json();
+                                        } else {
+                                            throw new Error('Network response was not ok.');
+                                        }
+                                    })
+                                    .then(function(data) {
+                                        // ハートアイコンのクラスを切り替える
+                                        heartIcon.classList.toggle('far');
+                                        heartIcon.classList.toggle('fas');
+                                        likeBtn.classList.toggle('like-btn');
+                                        likeBtn.classList.toggle('unlike-btn');
+                                    })
+                                    .catch(function(error) {
+                                        console.log('Error:', error);
+                                    });
+                            });
+                        });
+                    }
+                });
+            </script>
       </body>
   </html>
 </x-app-layout>

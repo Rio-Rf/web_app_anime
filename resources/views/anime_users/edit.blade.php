@@ -65,15 +65,19 @@
                 <div style="position: relative; float: left; margin-right: 30px; margin-left: 5px;">
                     <img width = "300", src="{{ Storage::disk('s3')->temporaryUrl($anime->img_path, now()->addDay()) }}" alt = "Image"　align="left" style="float: left; margin-right: 50px; margin-left: 30px; border: 1px solid #000000;">
                     @if($anime_user->like == 1)
-                    <a href="{{ route('animes.edit_unlike' , ['anime'=>$anime])}}" style="position: absolute; top: 315px; right: 60px;">
-                        <i class="fas fa-heart unlike-btn"></i>
-                        <span style="font-size: 82px; color: white;">{{$like_count}}</span>
-                    </a>
+                    <div class="heart-container" style="position: absolute; top: 290px; right: 60px;">
+                        <a href="#" class="unlike-btn" data-anime="{{ $anime->id }}">
+                            <i class="fas fa-heart"></i>
+                            <span style="font-size: 100px; color: white;">{{$like_count}}</span>
+                        </a>
+                    </div>
                     @else
-                    <a href="{{ route('animes.edit_like' , ['anime'=>$anime])}}" style="position: absolute; top: 315px; right: 60px;">
-                        <i class="far fa-heart like-btn"></i>
-                        <span style="font-size: 82px; color: white;">{{$like_count}}</span>
-                    </a>
+                    <div class="heart-container" style="position: absolute; top: 290px; right: 60px;">
+                        <a href="#" class="like-btn" data-anime="{{ $anime->id }}">
+                            <i class="far fa-heart"></i>
+                            <span style="font-size: 100px; color: white;">{{$like_count}}</span>
+                        </a>
+                    </div>
                     @endif
                     
                     @if($anime_user->medium == "amazon")
@@ -232,6 +236,97 @@
                     <a href="{{route('search.session')}}" style="background-color: black; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">戻る</a>
                 </div>-->
             </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const unlikeBtns = document.querySelectorAll('.unlike-btn');
+            
+                if (unlikeBtns) {
+                  unlikeBtns.forEach(function(unlikeBtn) {
+                    const unheartIcon = unlikeBtn.querySelector('i');
+                    const spanElement = unlikeBtn.querySelector('span');
+                    const indexunLikeUrl = "route('animes.detail_unlike') ";
+            
+                    unlikeBtn.addEventListener('click', function(event) {
+                      event.preventDefault();
+            
+                      const animeId = unlikeBtn.dataset.anime;
+            
+                      fetch(`/edit_unlike/${animeId}`)
+                        .then(function(response) {
+                          if (response.ok) {
+                            return response.json();
+                          } else {
+                            throw new Error('Network response was not ok.');
+                          }
+                        })
+                        .then(function(data) {
+                          // ハートアイコンのクラスを切り替える
+                          unheartIcon.classList.toggle('fas');
+                          unheartIcon.classList.toggle('far');
+                          unlikeBtn.classList.toggle('unlike-btn');
+                          unlikeBtn.classList.toggle('like-btn');
+            
+                          // spanの値を更新して表示
+                          const currentValue = parseInt(spanElement.innerText);
+                          if (unlikeBtn.classList.contains('like-btn')) {
+                            spanElement.innerText = currentValue - 1;
+                          } else {
+                            spanElement.innerText = Math.max(currentValue + 1, 0);
+                          }
+                        })
+                        .catch(function(error) {
+                          console.log('Error:', error);
+                        });
+                    });
+                  });
+                }
+              });
+            
+              document.addEventListener('DOMContentLoaded', function() {
+                const likeBtns = document.querySelectorAll('.like-btn');
+            
+                if (likeBtns) {
+                  likeBtns.forEach(function(likeBtn) {
+                    const heartIcon = likeBtn.querySelector('i');
+                    const spanElement = likeBtn.querySelector('span');
+                    const indexLikeUrl = "route('animes.detail_like') ";
+            
+                    likeBtn.addEventListener('click', function(event) {
+                      event.preventDefault();
+            
+                      const animeId = likeBtn.dataset.anime;
+            
+                      fetch(`/edit_like/${animeId}`)
+                        .then(function(response) {
+                          if (response.ok) {
+                            return response.json();
+                          } else {
+                            throw new Error('Network response was not ok.');
+                          }
+                        })
+                        .then(function(data) {
+                          // ハートアイコンのクラスを切り替える
+                          heartIcon.classList.toggle('far');
+                          heartIcon.classList.toggle('fas');
+                          likeBtn.classList.toggle('like-btn');
+                          likeBtn.classList.toggle('unlike-btn');
+            
+                          // spanの値を更新して表示
+                          const currentValue = parseInt(spanElement.innerText);
+                          if (likeBtn.classList.contains('unlike-btn')) {
+                            spanElement.innerText = currentValue + 1;
+                          } else {
+                            spanElement.innerText = currentValue - 1;
+                          }
+                        })
+                        .catch(function(error) {
+                          console.log('Error:', error);
+                        });
+                    });
+                  });
+                }
+              });
+            </script>
         </body>
     </html>
 </x-app-layout>
