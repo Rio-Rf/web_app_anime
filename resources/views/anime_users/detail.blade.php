@@ -236,14 +236,22 @@
                   unlikeBtns.forEach(function(unlikeBtn) {
                     const unheartIcon = unlikeBtn.querySelector('i');
                     const spanElement = unlikeBtn.querySelector('span');
+<<<<<<< HEAD
+                    const indexunLikeUrl = "route('animes.detail_unlike')";
+=======
                     const indexunLikeUrl = "{{ route('animes.detail_unlike', ['anime'=>$anime]) }}";
+>>>>>>> 6dd97456a19d32d098d9139b0c5e09688cb7a541
             
                     unlikeBtn.addEventListener('click', function(event) {
                       event.preventDefault();
             
                       const animeId = unlikeBtn.dataset.anime;
             
+<<<<<<< HEAD
+                      fetch(`/detail_unlike/${animeId}`)
+=======
                       fetch(`/index_unlike/${animeId}`)
+>>>>>>> 6dd97456a19d32d098d9139b0c5e09688cb7a541
                         .then(function(response) {
                           if (response.ok) {
                             return response.json();
@@ -281,14 +289,22 @@
                   likeBtns.forEach(function(likeBtn) {
                     const heartIcon = likeBtn.querySelector('i');
                     const spanElement = likeBtn.querySelector('span');
+<<<<<<< HEAD
+                    const indexLikeUrl = "route('animes.detail_like')";
+=======
                     const indexLikeUrl = "{{ route('animes.detail_like', ['anime'=>$anime]) }}";
+>>>>>>> 6dd97456a19d32d098d9139b0c5e09688cb7a541
             
                     likeBtn.addEventListener('click', function(event) {
                       event.preventDefault();
             
                       const animeId = likeBtn.dataset.anime;
             
+<<<<<<< HEAD
+                      fetch(`/detail_like/${animeId}`)
+=======
                       fetch(`/index_like/${animeId}`)
+>>>>>>> 6dd97456a19d32d098d9139b0c5e09688cb7a541
                         .then(function(response) {
                           if (response.ok) {
                             return response.json();
