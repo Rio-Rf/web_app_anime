@@ -337,12 +337,10 @@ class AnimeController extends Controller
                         ->update(['like' => 1]);
         }
         
-<<<<<<< HEAD
+
         //$anime_user = Anime_user::where('anime_id', $anime_id)->where('user_id', $user_id)->get();
         //dd($anime_user);
         
-=======
->>>>>>> 6dd97456a19d32d098d9139b0c5e09688cb7a541
         $liked = Anime_user::where('anime_id', $anime_id)
         ->where('user_id', $user_id)
         ->where('like', 1)
