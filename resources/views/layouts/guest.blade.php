@@ -48,6 +48,7 @@
                     </style>
                     <h1>アニメナビ</h1>
                 </a>
+                <p></p>
             </div>
 
             <div class="w-full sm:max-w-xl mt-4 px-6 py-6 bg-white shadow-md overflow-hidden sm:rounded-lg">
