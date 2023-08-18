@@ -9,6 +9,9 @@
 1. https://animenavi.herokuapp.com/ にアクセスします。
 1. ログイン画面が表示されるのでユーザの新規登録 or Googleアカウントでログイン or ゲストアカウントでログインをします。
 1. ログイン後に使い方説明用のポップアップが表示されます。
+## 使用技術
+HTML, CSS, tailwind, JavaScript, PHP(Laravel), MariaDB, S3, GCP(OAurh2.0), Ajax
+## 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
