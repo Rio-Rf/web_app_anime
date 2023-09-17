@@ -64,6 +64,6 @@ Route::post('Auth/login', [AuthenticatedSessionController::class, "guestLogin"])
 require __DIR__.'/auth.php';
 
 // googleへのリダイレクト
-Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle']);
+Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('login.google');
 // 認証後の処理_リダイレクトURIと一致
 Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);

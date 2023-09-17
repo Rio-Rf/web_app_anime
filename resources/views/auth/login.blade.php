@@ -58,11 +58,22 @@
                 </a>
             @endif
         </div>
-        
-        <!--googleログインボタンを追加-->
-        
+    </form>
+    <br>
+    <!-- ゲストログインフォーム -->
+    <form method="POST" action="{{ route('login.guest') }}">
+        @csrf
+        <div>
+            <x-primary-button class="w-full">
+                    ゲストとしてログイン
+            </x-primary-button>
+        </div>
+    </form>
+    <!--googleログインフォーム-->
+    <form method="GET" action="{{ route('login.google') }}">
+        @csrf
         <x-primary-button class="w-full mt-3" style="justify-content: space-around; background-color: #FFFFFF; color: #000000; border: 1px solid #000000; text-transform: none;">
-            <a href="#" style="display: flex; align-items: center; text-decoration: none; color: inherit;" onclick="window.location.assign('/auth/google'); return true;"><!--onclickでポップアップに邪魔されてもログインの指示が無視されない-->
+            <a href="#" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
                 <svg aria-hidden="true" class="native svg-icon iconGoogle" width="18" height="18" viewBox="0 0 18 18">
                     <path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 002.38-5.88c0-.57-.05-.66-.15-1.18z" fill="#4285F4"></path>
                     <path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 01-7.18-2.54H1.83v2.07A8 8 0 008.98 17z" fill="#34A853"></path>
@@ -72,14 +83,5 @@
                 <span style="margin-left: 0.5rem;">Googleアカウントでログイン</span>
             </a>
         </x-primary-button>
-    </form>
-    <!-- ゲストログインフォーム -->
-    <form method="POST" action="{{ route('login.guest') }}">
-        @csrf
-        <div>
-            <x-primary-button class="w-full">
-                    ゲストとしてログイン
-            </x-primary-button>
-        </div>
     </form>
 </x-guest-layout>
