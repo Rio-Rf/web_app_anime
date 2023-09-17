@@ -58,14 +58,6 @@
                 </a>
             @endif
         </div>
-        <br>
-        <div>
-            <x-primary-button class="w-full">
-                <a href="#" onclick="window.location.assign('{{ route('login.guest') }}'); return true;"><!--onclickでポップアップに邪魔されてもログインの指示が無視されない-->
-                    ゲストとしてログイン
-                </a>
-            </x-primary-button>
-        </div>
         
         <!--googleログインボタンを追加-->
         
@@ -80,7 +72,14 @@
                 <span style="margin-left: 0.5rem;">Googleアカウントでログイン</span>
             </a>
         </x-primary-button>
-
-        
+    </form>
+    <!-- ゲストログインフォーム -->
+    <form method="POST" action="{{ route('login.guest') }}">
+        @csrf
+        <div>
+            <x-primary-button class="w-full">
+                    ゲストとしてログイン
+            </x-primary-button>
+        </div>
     </form>
 </x-guest-layout>

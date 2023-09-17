@@ -223,14 +223,17 @@
                     if (unlikeBtns) {
                         unlikeBtns.forEach(function(unlikeBtn) {
                             const unheartIcon = unlikeBtn.querySelector('i');
+
                             const indexunLikeUrl = "route('animes.search_unlike')";
-            
+
                             unlikeBtn.addEventListener('click', function(event) {
                                 event.preventDefault();
             
                                 const animeId = unlikeBtn.dataset.anime;
             
+
                                 fetch(`/search_unlike/${animeId}`)#ここをindexから変えていなかったのでserchに遷移していなかった
+
                                     .then(function(response) {
                                         if (response.ok) {
                                             return response.json();
@@ -261,6 +264,7 @@
                     if (likeBtns) {
                         likeBtns.forEach(function(likeBtn) {
                             const heartIcon = likeBtn.querySelector('i');
+
                             const indexLikeUrl = "route('animes.search_like')";
             
                             likeBtn.addEventListener('click', function(event) {
@@ -268,7 +272,9 @@
             
                                 const animeId = likeBtn.dataset.anime;
             
+
                                 fetch(`/search_like/${animeId}`)
+
                                     .then(function(response) {
                                         if (response.ok) {
                                             return response.json();

@@ -59,7 +59,7 @@ Route::controller(AnimeController::class)->middleware(['auth'])->group(function(
     Route::get('/ranking_unlike/{anime}', 'ranking_unlike')->name('animes.ranking_unlike');
 });
 
-Route::get('Auth/login', [AuthenticatedSessionController::class, "guestLogin"])->name('login.guest');
+Route::post('Auth/login', [AuthenticatedSessionController::class, "guestLogin"])->name('login.guest');
 
 require __DIR__.'/auth.php';
 

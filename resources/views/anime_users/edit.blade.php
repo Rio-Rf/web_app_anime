@@ -244,14 +244,17 @@
                   unlikeBtns.forEach(function(unlikeBtn) {
                     const unheartIcon = unlikeBtn.querySelector('i');
                     const spanElement = unlikeBtn.querySelector('span');
+
                     const indexunLikeUrl = "route('animes.detail_unlike') ";
-            
+
                     unlikeBtn.addEventListener('click', function(event) {
                       event.preventDefault();
             
                       const animeId = unlikeBtn.dataset.anime;
             
+
                       fetch(`/edit_unlike/${animeId}`)
+
                         .then(function(response) {
                           if (response.ok) {
                             return response.json();
@@ -289,13 +292,14 @@
                   likeBtns.forEach(function(likeBtn) {
                     const heartIcon = likeBtn.querySelector('i');
                     const spanElement = likeBtn.querySelector('span');
+
                     const indexLikeUrl = "route('animes.detail_like') ";
             
                     likeBtn.addEventListener('click', function(event) {
                       event.preventDefault();
             
                       const animeId = likeBtn.dataset.anime;
-            
+
                       fetch(`/edit_like/${animeId}`)
                         .then(function(response) {
                           if (response.ok) {

@@ -272,6 +272,7 @@
                   unlikeBtns.forEach(function(unlikeBtn) {
                     const unheartIcon = unlikeBtn.querySelector('i');
                     const spanElement = unlikeBtn.querySelector('span');
+
                     const indexunLikeUrl = "route('animes.ranking_unlike')";
             
                     unlikeBtn.addEventListener('click', function(event) {
@@ -279,7 +280,9 @@
             
                       const animeId = unlikeBtn.dataset.anime;
             
+
                       fetch(`/ranking_unlike/${animeId}`)
+
                         .then(function(response) {
                           if (response.ok) {
                             return response.json();
@@ -317,6 +320,7 @@
                   likeBtns.forEach(function(likeBtn) {
                     const heartIcon = likeBtn.querySelector('i');
                     const spanElement = likeBtn.querySelector('span');
+
                     const indexLikeUrl = "route('animes.ranking_like')";
             
                     likeBtn.addEventListener('click', function(event) {
@@ -324,7 +328,9 @@
             
                       const animeId = likeBtn.dataset.anime;
             
+
                       fetch(`/ranking_like/${animeId}`)
+
                         .then(function(response) {
                           if (response.ok) {
                             return response.json();

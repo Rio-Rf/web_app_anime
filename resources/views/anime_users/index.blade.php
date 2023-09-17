@@ -1054,8 +1054,9 @@
                     if (unlikeBtns) {
                         unlikeBtns.forEach(function(unlikeBtn) {
                             const unheartIcon = unlikeBtn.querySelector('i');
+
                             const indexunLikeUrl = " route('animes.index_unlike') ";
-            
+
                             unlikeBtn.addEventListener('click', function(event) {
                                 event.preventDefault();
             
