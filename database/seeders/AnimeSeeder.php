@@ -27,7 +27,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'鬼滅の刃刀鍛冶の里偏',
             'on_air_season'=>'2023年春アニメ',
-            'img_path'=>'img_katanakaji.jpg',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1X7WT1OFCH1WtRa1jnXSwlmIrMJJ1bava',
             'official_url'=>'https://kimetsu.com/anime/katanakajinosatohen/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -35,7 +35,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'推しの子',
             'on_air_season'=>'2023年春アニメ',
-            'img_path'=>'oshinoko.webp',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-41UswhX_bnue1v1bFIhwblj-dhlMeC1',
             'official_url'=>'https://ichigoproduction.com/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -43,7 +43,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'久保さんは僕を許さない',
             'on_air_season'=>'2023年春アニメ',
-            'img_path'=>'kubosan.webp',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-9of4v6M_8fegH3DSihhlnvsU_Ee2eh9',
             'official_url'=>'https://kubosan-anime.jp/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -51,7 +51,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'この素晴らしい世界に爆焔を！',
             'on_air_season'=>'2023年春アニメ',
-            'img_path'=>'konosuba_bakuen.png',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-86O71be7j-1bGQuoqMKyWa3_7mo-RmO',
             'official_url'=>'http://konosuba.com/bakuen/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -59,7 +59,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'天国大魔境',
             'on_air_season'=>'2023年春アニメ',
-            'img_path'=>'tengokudaimakyou.jfif',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-OnPnrVRE9nehei9C3EMYKdOwYYu99Uu',
             'official_url'=>'https://tdm-anime.com/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -67,7 +67,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'機動戦士ガンダム 水星の魔女 Season2',
             'on_air_season'=>'2023年春アニメ',
-            'img_path'=>'suiseinomajo_2.jfif',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-cD6zGZnMblDwwWUpx9H6H0zNytr14qB',
             'official_url'=>'https://g-witch.net/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -75,7 +75,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'スパイ教室',
             'on_air_season'=>'2023年冬アニメ',
-            'img_path'=>'supaikyousitsu.jpg',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-L8P_PwBkV4yx2T_Iet3BK8DI0KAtkx2',
             'official_url'=>'https://spyroom-anime.com/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -83,7 +83,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'機動戦士ガンダム 水星の魔女',
             'on_air_season'=>'2022年秋アニメ',
-            'img_path'=>'suiseinomajo.jpg',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-UrHCRV_-yJ7XojeAJL6qSfZnLOg6EOi',
             'official_url'=>'https://g-witch.net/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -91,7 +91,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'僕の心のヤバイやつ',
             'on_air_season'=>'2023年春アニメ',
-            'img_path'=>'bokunokokoro.jpg',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-iUo24-LwV0yPcNaz7qMUyIWQdhsAdlP',
             'official_url'=>'https://bokuyaba-anime.com/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -99,7 +99,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'地獄楽',
             'on_air_season'=>'2023年春アニメ',
-            'img_path'=>'jigokuraku.jpg',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-ks2pT_lIhX_uCBeIuUWqt1TPgh8xU6D',
             'official_url'=>'https://www.jigokuraku.com/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -107,7 +107,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'無職転生 ～異世界行ったら本気だす～',
             'on_air_season'=>'2021年冬アニメ',
-            'img_path'=>'musyokutensei.jpg',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-y7IjHiTpEGRLtX2ihwgoTi76iTwQ1Oc',
             'official_url'=>'https://mushokutensei.jp/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -115,7 +115,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'無職転生 ～異世界行ったら本気だす～ 第2クール',
             'on_air_season'=>'2021年秋アニメ',
-            'img_path'=>'musyokutensei2.jpg',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-ypnFEB6QFRt9zUHx5eWOax1RV6sj8p8',
             'official_url'=>'https://mushokutensei.jp/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -123,7 +123,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'チェンソーマン',
             'on_air_season'=>'2022年秋アニメ',
-            'img_path'=>'chainsawman.webp',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-zFZEDs9kvoP22S6OzPri9VXH0thDGGh',
             'official_url'=>'https://chainsawman.dog/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
@@ -131,7 +131,7 @@ class AnimeSeeder extends Seeder
         DB::table('animes')->insert([
             'title'=>'転生したら剣でした',
             'on_air_season'=>'2022年秋アニメ',
-            'img_path'=>'kendeshita.webp',
+            'img_path'=>'https://lh3.googleusercontent.com/d/1-zIb9HVzsub_nV362z4Rd-oiTyDVXGGh',
             'official_url'=>'https://tenken-anime.com/',
             'created_at'=>new $now(),
             'updated_at'=>new $now(),
