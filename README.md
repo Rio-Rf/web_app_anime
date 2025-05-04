@@ -6,7 +6,7 @@
 - windowsOS
 - cloud9(AWS)
 ## 使い方
-1. https://animenavi.herokuapp.com/ にアクセスします。
+1. https://anime-navi.up.railway.app にアクセスします。
 1. ログイン画面が表示されるのでユーザの新規登録 or Googleアカウントでログイン or ゲストアカウントでログインをします。
 1. ログイン後に使い方説明用のポップアップが表示されます。
 ## 使用技術
