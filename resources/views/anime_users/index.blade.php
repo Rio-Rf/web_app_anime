@@ -107,20 +107,6 @@
                     <a href="#test" class="open">ポップアップ表示</a>-->
                     @if (session('firstlogin'))
                     
-                    <!--
-                    @php
-                    session(['firstlogin' => false]);
-                    $t0 = Storage::disk('s3')->temporaryUrl('tutorial/0.PNG', now()->addDay());
-                    $t1 = Storage::disk('s3')->temporaryUrl('tutorial/1.PNG', now()->addDay());
-                    $t2 = Storage::disk('s3')->temporaryUrl('tutorial/2.PNG', now()->addDay());
-                    $t3 = Storage::disk('s3')->temporaryUrl('tutorial/3.PNG', now()->addDay());
-                    $t4 = Storage::disk('s3')->temporaryUrl('tutorial/4.PNG', now()->addDay());
-                    $t5 = Storage::disk('s3')->temporaryUrl('tutorial/5.PNG', now()->addDay());
-                    $t6 = Storage::disk('s3')->temporaryUrl('tutorial/6.PNG', now()->addDay());
-                    $t7 = Storage::disk('s3')->temporaryUrl('tutorial/7.PNG', now()->addDay());
-                    $t8 = Storage::disk('s3')->temporaryUrl('tutorial/8.PNG', now()->addDay());
-                    @endphp
-                    -->
                     @php
                     session(['firstlogin' => false]);
                     $t0 = 'https://drive.google.com/uc?id=14uSDzjMV9Gz4xMxqKR0VoU8RSJ6Fm11I&export=download';
