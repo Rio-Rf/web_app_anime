@@ -12,7 +12,6 @@
         </script>
         
         <!--ファビコン-->
-        <!--<link href="{{Storage::disk('s3')->temporaryUrl('logo.png', now()->addDay())}}" rel="icon" sizes="48x48">-->
         <link href="https://drive.google.com/uc?export=view&id=10FbKZlMxQ2k2CD2LJVL3dDXubGRA34qh" rel="icon" sizes="48x48">
         
         <meta charset="utf-8">
