@@ -109,37 +109,27 @@
                     
                     @php
                     session(['firstlogin' => false]);
-                    $t0 = 'https://drive.google.com/uc?export=view&id=14uSDzjMV9Gz4xMxqKR0VoU8RSJ6Fm11I';
-                    $t1 = 'https://drive.google.com/uc?export=view&id=145IMG5eiXxJ3h0GPIfs0JdbP0UQ1WOdt';
-                    $t2 = 'https://drive.google.com/uc?export=view&id=13n4gWl6DK_ds9raUR1bIjDyxug6o7gc2';
-                    $t3 = 'https://drive.google.com/uc?export=view&id=13ipJww1rFDCtvTxRp8NBFO4qpI6LsnT4';
-                    $t4 = 'https://drive.google.com/uc?export=view&id=13gL8iBc3Bu7whMgrYrlYJVr6gU5aU1PQ';
-                    $t5 = 'https://drive.google.com/uc?export=view&id=13f9DMoJzdXYfTi2C5om9rrF2T3AKtpHG';
-                    $t6 = 'https://drive.google.com/uc?export=view&id=13b2mZxg1RokyXH6thCm_TrNuDjuhYCfN';
-                    $t7 = 'https://drive.google.com/uc?export=view&id=13WnIInslD7BnvMgGsMuDf6X9yE2DZ6CR';
-                    $t8 = 'https://drive.google.com/uc?export=view&id=146-bFoATCTxe6GKDIFHKS5SqOgCz_9c3';
+                    $t0 = 'https://lh3.googleusercontent.com/d/14uSDzjMV9Gz4xMxqKR0VoU8RSJ6Fm11I';
+                    $t1 = 'https://lh3.googleusercontent.com/d/145IMG5eiXxJ3h0GPIfs0JdbP0UQ1WOdt';
+                    $t2 = 'https://lh3.googleusercontent.com/d/13n4gWl6DK_ds9raUR1bIjDyxug6o7gc2';
+                    $t3 = 'https://lh3.googleusercontent.com/d/13ipJww1rFDCtvTxRp8NBFO4qpI6LsnT4';
+                    $t4 = 'https://lh3.googleusercontent.com/d/13gL8iBc3Bu7whMgrYrlYJVr6gU5aU1PQ';
+                    $t5 = 'https://lh3.googleusercontent.com/d/13f9DMoJzdXYfTi2C5om9rrF2T3AKtpHG';
+                    $t6 = 'https://lh3.googleusercontent.com/d/13b2mZxg1RokyXH6thCm_TrNuDjuhYCfN';
+                    $t7 = 'https://lh3.googleusercontent.com/d/13WnIInslD7BnvMgGsMuDf6X9yE2DZ6CR';
+                    $t8 = 'https://lh3.googleusercontent.com/d/146-bFoATCTxe6GKDIFHKS5SqOgCz_9c3';
                     @endphp
-                    
-                    <img src="{{ $t0 }}" alt="tutorial 0">
-                    <img src="{{ $t1 }}" alt="tutorial 1">
-                    <img src="{{ $t2 }}" alt="tutorial 2">
-                    <img src="{{ $t3 }}" alt="tutorial 3">
-                    <img src="{{ $t4 }}" alt="tutorial 4">
-                    <img src="{{ $t5 }}" alt="tutorial 5">
-                    <img src="{{ $t6 }}" alt="tutorial 6">
-                    <img src="{{ $t7 }}" alt="tutorial 7">
-                    <img src="{{ $t8 }}" alt="tutorial 8">
                     <script>
                       $(document).ready(function() {
-                      var t0 = $('#0').data('t0');
-                      var t1 = $('#1').data('t1');
-                      var t2 = $('#2').data('t2');
-                      var t3 = $('#3').data('t3');
-                      var t4 = $('#4').data('t4');
-                      var t5 = $('#5').data('t5');
-                      var t6 = $('#6').data('t6');
-                      var t7 = $('#7').data('t7');
-                      var t8 = $('#8').data('t8');
+                      var t0 = "{{ $t0 }}";
+                      var t1 = "{{ $t1 }}";
+                      var t2 = "{{ $t2 }}";
+                      var t3 = "{{ $t3 }}";
+                      var t4 = "{{ $t4 }}";
+                      var t5 = "{{ $t5 }}";
+                      var t6 = "{{ $t6 }}";
+                      var t7 = "{{ $t7 }}";
+                      var t8 = "{{ $t8 }}";
                         $.magnificPopup.open({
                           items: [
                           {
