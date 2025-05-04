@@ -2,3 +2,4 @@
 builder = "NIXPACKS"
 [build.nixpacks]
 language = "php"
+providers = ["php83"]
