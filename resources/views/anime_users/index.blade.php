@@ -194,7 +194,7 @@
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_mon) }}">
                                             <div style="position: relative; float: left;">
-                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_mon->img_path, now()->addDay()) }}" alt = "Image">
+                                                <img class="image" width = "170", src="{{ $anime_mon->img_path }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -215,55 +215,55 @@
                                 
                                                 @if($anime_user_mon->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10JSn2N962-fp9ALyFkA0ZIfORz5o4cu5" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "netflix")
                                                 <a href="https://www.netflix.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10Mxgx1963prERWqPIya7zPqccC_bjz8c" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "u-next")
                                                 <a href="https://video.unext.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10UuC5hsjRrNcViN6n0qJIyXNakbped5O" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "danime")
                                                 <a href="https://animestore.docomo.ne.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11LgAXh78EyvcV22FUrle1lfBapb45Yp8" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "abema")
                                                 <a href="https://abema.tv/video/genre/animation" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10do_loQCRfgS23e0m_JS2EzSSTtbjvI1" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "dazn")
                                                 <a href="https://www.dazn.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10ipNTDn59pmS2782h1fPQ1t96PMylqjc" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "disney")
                                                 <a href="https://disneyplus.disney.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10l4s1gvBTbk7ei3KGgS2dUlx8iaXdLA-" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "hulu")
                                                 <a href="https://www.hulu.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10rwW23lDdLIX8WAGPadOwLSSwqcR1kv_" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "dTV")
                                                 <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11PV_Osdgmf294R_2yf-KlBiFLtQWfD-r" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "hikari")
                                                 <a href="https://www.hikaritv.net" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11dm-0SUzoExGYLLyvP0YVk3emXdK5teX" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "anitere")
                                                 <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/12-HXv2VzWDl4sGI6Vn09uDvfIGb7ePM9" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "bandai")
                                                 <a href="https://www.b-ch.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/124mf77RxN_9xdPLKYS4BCMzhL1F8k6H7" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_mon->medium == "FOD")
                                                 <a href="https://fod.fujitv.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/126LV1lpdFe8sPlEYdWr1mWTHxmcwCw0N" alt = "Image">
                                                 </a>
                                                 @else
                                                 @endif
@@ -289,7 +289,7 @@
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_tue) }}">
                                             <div style="position: relative; float: left;">
-                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_tue->img_path, now()->addDay()) }}" alt = "Image">
+                                                <img class="image" width = "170", src="{{ $anime_tue->img_path }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -310,55 +310,55 @@
                                                 
                                                 @if($anime_user_tue->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10JSn2N962-fp9ALyFkA0ZIfORz5o4cu5" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "netflix")
                                                 <a href="https://www.netflix.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10Mxgx1963prERWqPIya7zPqccC_bjz8c" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "u-next")
                                                 <a href="https://video.unext.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10UuC5hsjRrNcViN6n0qJIyXNakbped5O" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "danime")
                                                 <a href="https://animestore.docomo.ne.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11LgAXh78EyvcV22FUrle1lfBapb45Yp8" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "abema")
                                                 <a href="https://abema.tv/video/genre/animation" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10do_loQCRfgS23e0m_JS2EzSSTtbjvI1" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "dazn")
                                                 <a href="https://www.dazn.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10ipNTDn59pmS2782h1fPQ1t96PMylqjc" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "disney")
                                                 <a href="https://disneyplus.disney.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10l4s1gvBTbk7ei3KGgS2dUlx8iaXdLA-" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "hulu")
                                                 <a href="https://www.hulu.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10rwW23lDdLIX8WAGPadOwLSSwqcR1kv_" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "dTV")
                                                 <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11PV_Osdgmf294R_2yf-KlBiFLtQWfD-r" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "hikari")
                                                 <a href="https://www.hikaritv.net" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11dm-0SUzoExGYLLyvP0YVk3emXdK5teX" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "anitere")
                                                 <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/12-HXv2VzWDl4sGI6Vn09uDvfIGb7ePM9" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "bandai")
                                                 <a href="https://www.b-ch.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/124mf77RxN_9xdPLKYS4BCMzhL1F8k6H7" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_tue->medium == "FOD")
                                                 <a href="https://fod.fujitv.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/126LV1lpdFe8sPlEYdWr1mWTHxmcwCw0N" alt = "Image">
                                                 </a>
                                                 @else
                                                 @endif
@@ -383,7 +383,7 @@
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_wed) }}">
                                             <div style="position: relative; float: left;">
-                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_wed->img_path, now()->addDay()) }}" alt = "Image">
+                                                <img class="image" width = "170", src="{{ $anime_wed->img_path }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -404,55 +404,55 @@
                                                 
                                                 @if($anime_user_wed->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10JSn2N962-fp9ALyFkA0ZIfORz5o4cu5" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "netflix")
                                                 <a href="https://www.netflix.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10Mxgx1963prERWqPIya7zPqccC_bjz8c" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "u-next")
                                                 <a href="https://video.unext.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10UuC5hsjRrNcViN6n0qJIyXNakbped5O" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "danime")
                                                 <a href="https://animestore.docomo.ne.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11LgAXh78EyvcV22FUrle1lfBapb45Yp8" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "abema")
                                                 <a href="https://abema.tv/video/genre/animation" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10do_loQCRfgS23e0m_JS2EzSSTtbjvI1" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "dazn")
                                                 <a href="https://www.dazn.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10ipNTDn59pmS2782h1fPQ1t96PMylqjc" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "disney")
                                                 <a href="https://disneyplus.disney.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10l4s1gvBTbk7ei3KGgS2dUlx8iaXdLA-" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "hulu")
                                                 <a href="https://www.hulu.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10rwW23lDdLIX8WAGPadOwLSSwqcR1kv_" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "dTV")
                                                 <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11PV_Osdgmf294R_2yf-KlBiFLtQWfD-r" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "hikari")
                                                 <a href="https://www.hikaritv.net" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11dm-0SUzoExGYLLyvP0YVk3emXdK5teX" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "anitere")
                                                 <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/12-HXv2VzWDl4sGI6Vn09uDvfIGb7ePM9" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "bandai")
                                                 <a href="https://www.b-ch.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/124mf77RxN_9xdPLKYS4BCMzhL1F8k6H7" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_wed->medium == "FOD")
                                                 <a href="https://fod.fujitv.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/126LV1lpdFe8sPlEYdWr1mWTHxmcwCw0N" alt = "Image">
                                                 </a>
                                                 @else
                                                 @endif
@@ -477,7 +477,7 @@
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_thu) }}">
                                             <div style="position: relative; float: left;">
-                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_thu->img_path, now()->addDay()) }}" alt = "Image">
+                                                <img class="image" width = "170", src="{{ $anime_thu->img_path }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -498,55 +498,55 @@
                                                 
                                                 @if($anime_user_thu->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10JSn2N962-fp9ALyFkA0ZIfORz5o4cu5" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "netflix")
                                                 <a href="https://www.netflix.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10Mxgx1963prERWqPIya7zPqccC_bjz8c" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "u-next")
                                                 <a href="https://video.unext.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10UuC5hsjRrNcViN6n0qJIyXNakbped5O" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "danime")
                                                 <a href="https://animestore.docomo.ne.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11LgAXh78EyvcV22FUrle1lfBapb45Yp8" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "abema")
                                                 <a href="https://abema.tv/video/genre/animation" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10do_loQCRfgS23e0m_JS2EzSSTtbjvI1" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "dazn")
                                                 <a href="https://www.dazn.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10ipNTDn59pmS2782h1fPQ1t96PMylqjc" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "disney")
                                                 <a href="https://disneyplus.disney.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10l4s1gvBTbk7ei3KGgS2dUlx8iaXdLA-" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "hulu")
                                                 <a href="https://www.hulu.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10rwW23lDdLIX8WAGPadOwLSSwqcR1kv_" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "dTV")
                                                 <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11PV_Osdgmf294R_2yf-KlBiFLtQWfD-r" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "hikari")
                                                 <a href="https://www.hikaritv.net" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11dm-0SUzoExGYLLyvP0YVk3emXdK5teX" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "anitere")
                                                 <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/12-HXv2VzWDl4sGI6Vn09uDvfIGb7ePM9" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "bandai")
                                                 <a href="https://www.b-ch.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/124mf77RxN_9xdPLKYS4BCMzhL1F8k6H7" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_thu->medium == "FOD")
                                                 <a href="https://fod.fujitv.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/126LV1lpdFe8sPlEYdWr1mWTHxmcwCw0N" alt = "Image">
                                                 </a>
                                                 @else
                                                 @endif
@@ -571,7 +571,7 @@
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_fri) }}">
                                             <div style="position: relative; float: left;">
-                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_fri->img_path, now()->addDay()) }}" alt = "Image">
+                                                <img class="image" width = "170", src="{{ $anime_fri->img_path }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -592,55 +592,55 @@
                                                 
                                                 @if($anime_user_fri->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10JSn2N962-fp9ALyFkA0ZIfORz5o4cu5" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "netflix")
                                                 <a href="https://www.netflix.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10Mxgx1963prERWqPIya7zPqccC_bjz8c" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "u-next")
                                                 <a href="https://video.unext.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10UuC5hsjRrNcViN6n0qJIyXNakbped5O" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "danime")
                                                 <a href="https://animestore.docomo.ne.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11LgAXh78EyvcV22FUrle1lfBapb45Yp8" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "abema")
                                                 <a href="https://abema.tv/video/genre/animation" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10do_loQCRfgS23e0m_JS2EzSSTtbjvI1" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "dazn")
                                                 <a href="https://www.dazn.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10ipNTDn59pmS2782h1fPQ1t96PMylqjc" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "disney")
                                                 <a href="https://disneyplus.disney.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10l4s1gvBTbk7ei3KGgS2dUlx8iaXdLA-" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "hulu")
                                                 <a href="https://www.hulu.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10rwW23lDdLIX8WAGPadOwLSSwqcR1kv_" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "dTV")
                                                 <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11PV_Osdgmf294R_2yf-KlBiFLtQWfD-r" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "hikari")
                                                 <a href="https://www.hikaritv.net" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11dm-0SUzoExGYLLyvP0YVk3emXdK5teX" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "anitere")
                                                 <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/12-HXv2VzWDl4sGI6Vn09uDvfIGb7ePM9" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "bandai")
                                                 <a href="https://www.b-ch.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/124mf77RxN_9xdPLKYS4BCMzhL1F8k6H7" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_fri->medium == "FOD")
                                                 <a href="https://fod.fujitv.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/126LV1lpdFe8sPlEYdWr1mWTHxmcwCw0N" alt = "Image">
                                                 </a>
                                                 @else
                                                 @endif
@@ -665,7 +665,7 @@
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_sat) }}">
                                             <div style="position: relative; float: left;">
-                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_sat->img_path, now()->addDay()) }}" alt = "Image">
+                                                <img class="image" width = "170", src="{{ $anime_sat->img_path }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -686,55 +686,55 @@
                                                 
                                                 @if($anime_user_sat->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10JSn2N962-fp9ALyFkA0ZIfORz5o4cu5" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "netflix")
                                                 <a href="https://www.netflix.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10Mxgx1963prERWqPIya7zPqccC_bjz8c" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "u-next")
                                                 <a href="https://video.unext.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10UuC5hsjRrNcViN6n0qJIyXNakbped5O" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "danime")
                                                 <a href="https://animestore.docomo.ne.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11LgAXh78EyvcV22FUrle1lfBapb45Yp8" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "abema")
                                                 <a href="https://abema.tv/video/genre/animation" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10do_loQCRfgS23e0m_JS2EzSSTtbjvI1" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "dazn")
                                                 <a href="https://www.dazn.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10ipNTDn59pmS2782h1fPQ1t96PMylqjc" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "disney")
                                                 <a href="https://disneyplus.disney.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10l4s1gvBTbk7ei3KGgS2dUlx8iaXdLA-" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "hulu")
                                                 <a href="https://www.hulu.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10rwW23lDdLIX8WAGPadOwLSSwqcR1kv_" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "dTV")
                                                 <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11PV_Osdgmf294R_2yf-KlBiFLtQWfD-r" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "hikari")
                                                 <a href="https://www.hikaritv.net" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11dm-0SUzoExGYLLyvP0YVk3emXdK5teX" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "anitere")
                                                 <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/12-HXv2VzWDl4sGI6Vn09uDvfIGb7ePM9" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "bandai")
                                                 <a href="https://www.b-ch.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/124mf77RxN_9xdPLKYS4BCMzhL1F8k6H7" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sat->medium == "FOD")
                                                 <a href="https://fod.fujitv.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/126LV1lpdFe8sPlEYdWr1mWTHxmcwCw0N" alt = "Image">
                                                 </a>
                                                 @else
                                                 @endif
@@ -759,7 +759,7 @@
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_sun) }}">
                                             <div style="position: relative; float: left;">
-                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_sun->img_path, now()->addDay()) }}" alt = "Image">
+                                                <img class="image" width = "170", src="{{ $anime_sun->img_path }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -780,55 +780,55 @@
                                                 
                                                 @if($anime_user_sun->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10JSn2N962-fp9ALyFkA0ZIfORz5o4cu5" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "netflix")
                                                 <a href="https://www.netflix.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10Mxgx1963prERWqPIya7zPqccC_bjz8c" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "u-next")
                                                 <a href="https://video.unext.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10UuC5hsjRrNcViN6n0qJIyXNakbped5O" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "danime")
                                                 <a href="https://animestore.docomo.ne.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11LgAXh78EyvcV22FUrle1lfBapb45Yp8" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "abema")
                                                 <a href="https://abema.tv/video/genre/animation" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10do_loQCRfgS23e0m_JS2EzSSTtbjvI1" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "dazn")
                                                 <a href="https://www.dazn.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10ipNTDn59pmS2782h1fPQ1t96PMylqjc" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "disney")
                                                 <a href="https://disneyplus.disney.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10l4s1gvBTbk7ei3KGgS2dUlx8iaXdLA-" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "hulu")
                                                 <a href="https://www.hulu.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10rwW23lDdLIX8WAGPadOwLSSwqcR1kv_" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "dTV")
                                                 <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11PV_Osdgmf294R_2yf-KlBiFLtQWfD-r" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "hikari")
                                                 <a href="https://www.hikaritv.net" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11dm-0SUzoExGYLLyvP0YVk3emXdK5teX" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "anitere")
                                                 <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/12-HXv2VzWDl4sGI6Vn09uDvfIGb7ePM9" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "bandai")
                                                 <a href="https://www.b-ch.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/124mf77RxN_9xdPLKYS4BCMzhL1F8k6H7" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_sun->medium == "FOD")
                                                 <a href="https://fod.fujitv.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/126LV1lpdFe8sPlEYdWr1mWTHxmcwCw0N" alt = "Image">
                                                 </a>
                                                 @else
                                                 @endif
@@ -853,7 +853,7 @@
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;">
                                         <a href="{{ route('animes.detail' , $anime_non) }}">
                                             <div style="position: relative; float: left;">
-                                                <img class="image" width = "170", src="{{ Storage::disk('s3')->temporaryUrl($anime_non->img_path, now()->addDay()) }}" alt = "Image">
+                                                <img class="image" width = "170", src="{{ $anime_non->img_path }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -875,55 +875,55 @@
                                                 
                                                 @if($anime_user_non->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10JSn2N962-fp9ALyFkA0ZIfORz5o4cu5" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "netflix")
                                                 <a href="https://www.netflix.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10Mxgx1963prERWqPIya7zPqccC_bjz8c" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "u-next")
                                                 <a href="https://video.unext.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10UuC5hsjRrNcViN6n0qJIyXNakbped5O" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "danime")
                                                 <a href="https://animestore.docomo.ne.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11LgAXh78EyvcV22FUrle1lfBapb45Yp8" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "abema")
                                                 <a href="https://abema.tv/video/genre/animation" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10do_loQCRfgS23e0m_JS2EzSSTtbjvI1" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "dazn")
                                                 <a href="https://www.dazn.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10ipNTDn59pmS2782h1fPQ1t96PMylqjc" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "disney")
                                                 <a href="https://disneyplus.disney.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10l4s1gvBTbk7ei3KGgS2dUlx8iaXdLA-" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "hulu")
                                                 <a href="https://www.hulu.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10rwW23lDdLIX8WAGPadOwLSSwqcR1kv_" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "dTV")
                                                 <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11PV_Osdgmf294R_2yf-KlBiFLtQWfD-r" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "hikari")
                                                 <a href="https://www.hikaritv.net" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11dm-0SUzoExGYLLyvP0YVk3emXdK5teX" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "anitere")
                                                 <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/12-HXv2VzWDl4sGI6Vn09uDvfIGb7ePM9" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "bandai")
                                                 <a href="https://www.b-ch.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/124mf77RxN_9xdPLKYS4BCMzhL1F8k6H7" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_non->medium == "FOD")
                                                 <a href="https://fod.fujitv.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/126LV1lpdFe8sPlEYdWr1mWTHxmcwCw0N" alt = "Image">
                                                 </a>
                                                 @else
                                                 @endif
@@ -948,7 +948,7 @@
                                     <div style="display: inline-block; margin-right: 10px; vertical-align: top;"><!--inlineで横並び-->
                                         <a href="{{ route('animes.detail' , $anime_like) }}">
                                             <div style="position: relative; float: left;">
-                                                <img class="image" width = "170" src="{{ Storage::disk('s3')->temporaryUrl($anime_like->img_path, now()->addDay()) }}" alt = "Image">
+                                                <img class="image" width = "170" src="{{ $anime_like->img_path }}" alt = "Image">
                                                 
                                                 <!--すべてのanime_idのどれかに一致するか検証，phpの内側で初期化しないとエラー-->
                                                 @php
@@ -969,55 +969,55 @@
                                                 
                                                 @if($anime_user_like->medium == "amazon")
                                                 <a href="https://www.Amazon.co.jp/primevideo" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/amazon-prime-video-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10JSn2N962-fp9ALyFkA0ZIfORz5o4cu5" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "netflix")
                                                 <a href="https://www.netflix.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/netflix-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10Mxgx1963prERWqPIya7zPqccC_bjz8c" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "u-next")
                                                 <a href="https://video.unext.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/U-NEXT_logo_black.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10UuC5hsjRrNcViN6n0qJIyXNakbped5O" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "danime")
                                                 <a href="https://animestore.docomo.ne.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/danime-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11LgAXh78EyvcV22FUrle1lfBapb45Yp8" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "abema")
                                                 <a href="https://abema.tv/video/genre/animation" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/AbemaTV_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10do_loQCRfgS23e0m_JS2EzSSTtbjvI1" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "dazn")
                                                 <a href="https://www.dazn.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dazn.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10ipNTDn59pmS2782h1fPQ1t96PMylqjc" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "disney")
                                                 <a href="https://disneyplus.disney.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Disney+_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10l4s1gvBTbk7ei3KGgS2dUlx8iaXdLA-" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "hulu")
                                                 <a href="https://www.hulu.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/Hulu_logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/10rwW23lDdLIX8WAGPadOwLSSwqcR1kv_" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "dTV")
                                                 <a href="https://video.dmkt-sp.jp/genre/genre-list/id/active_v009" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/dTV-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11PV_Osdgmf294R_2yf-KlBiFLtQWfD-r" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "hikari")
                                                 <a href="https://www.hikaritv.net" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/hikaritv-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/11dm-0SUzoExGYLLyvP0YVk3emXdK5teX" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "anitere")
                                                 <a href="https://www.tv-tokyo.co.jp/anime" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/anitere-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/12-HXv2VzWDl4sGI6Vn09uDvfIGb7ePM9" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "bandai")
                                                 <a href="https://www.b-ch.com" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/bandaichannel-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/124mf77RxN_9xdPLKYS4BCMzhL1F8k6H7" alt = "Image">
                                                 </a>
                                                 @elseif($anime_user_like->medium == "FOD")
                                                 <a href="https://fod.fujitv.co.jp" target="_blank">
-                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="{{ Storage::disk('s3')->temporaryUrl('medium_logo/fod_premium-logo.svg', now()->addDay()) }}" alt = "Image">
+                                                    <img class="medium-logo" style="position: absolute; top: 5px; right: 95px;" src="https://lh3.googleusercontent.com/d/126LV1lpdFe8sPlEYdWr1mWTHxmcwCw0N" alt = "Image">
                                                 </a>
                                                 @else
                                                 @endif
