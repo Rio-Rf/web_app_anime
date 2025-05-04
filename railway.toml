@@ -2,5 +2,3 @@
 builder = "NIXPACKS"
 [build.nixpacks]
 language = "php"
-[phases.setup]
-nixpkgsArchive = '8fff54379ca15c3f4fa2a8fc62acc1b0b0a15c31'
