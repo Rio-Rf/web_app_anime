@@ -12,7 +12,7 @@
         </script>
         
         <!--ファビコン-->
-        <link href="https://drive.google.com/uc?export=view&id=10FbKZlMxQ2k2CD2LJVL3dDXubGRA34qh" rel="icon" sizes="48x48">
+        <link href="https://drive.google.com/file/d/10FbKZlMxQ2k2CD2LJVL3dDXubGRA34qh/view?usp=sharing" rel="icon" sizes="48x48">
         
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
