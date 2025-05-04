@@ -120,15 +120,15 @@
                     $t8 = 'https://drive.google.com/uc?id=146-bFoATCTxe6GKDIFHKS5SqOgCz_9c3&export=download';
                     @endphp
                     
-                    <div id="0" data-t0="{{ $t0 }}"></div>
-                    <div id="1" data-t1="{{ $t1 }}"></div>
-                    <div id="2" data-t2="{{ $t2 }}"></div>
-                    <div id="3" data-t3="{{ $t3 }}"></div>
-                    <div id="4" data-t4="{{ $t4 }}"></div>
-                    <div id="5" data-t5="{{ $t5 }}"></div>
-                    <div id="6" data-t6="{{ $t6 }}"></div>
-                    <div id="7" data-t7="{{ $t7 }}"></div>
-                    <div id="8" data-t8="{{ $t8 }}"></div>
+                    <img src="{{ $t0 }}" alt="tutorial 0">
+                    <img src="{{ $t1 }}" alt="tutorial 1">
+                    <img src="{{ $t2 }}" alt="tutorial 2">
+                    <img src="{{ $t3 }}" alt="tutorial 3">
+                    <img src="{{ $t4 }}" alt="tutorial 4">
+                    <img src="{{ $t5 }}" alt="tutorial 5">
+                    <img src="{{ $t6 }}" alt="tutorial 6">
+                    <img src="{{ $t7 }}" alt="tutorial 7">
+                    <img src="{{ $t8 }}" alt="tutorial 8">
                     <script>
                       $(document).ready(function() {
                       var t0 = $('#0').data('t0');
