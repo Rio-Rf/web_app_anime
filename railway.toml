@@ -3,3 +3,5 @@ builder = "NIXPACKS"
 [build.nixpacks]
 language = "php"
 providers = ["php83"]
+[deploy]
+startCommand = "php -S 0.0.0.0:8080 -t public"
