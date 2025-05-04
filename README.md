@@ -1,7 +1,7 @@
 # アニメナビ
 ![スクリーンショット (336)](https://github.com/Rio-Rf/web_app_anime/assets/128685564/e343e015-445d-471d-a6ce-55ef8a7ba316)
 ## 概要
-「アニメナビ」は一目で視聴しているアニメがわかるWebアプリです。
+「アニメナビ」は一目で視聴しているアニメと視聴媒体がわかるWebアプリです。
 ## 開発環境
 - windowsOS
 - cloud9(AWS)
