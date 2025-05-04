@@ -109,15 +109,15 @@
                     
                     @php
                     session(['firstlogin' => false]);
-                    $t0 = 'https://drive.google.com/uc?id=14uSDzjMV9Gz4xMxqKR0VoU8RSJ6Fm11I&export=download';
-                    $t1 = 'https://drive.google.com/uc?id=145IMG5eiXxJ3h0GPIfs0JdbP0UQ1WOdt&export=download';
-                    $t2 = 'https://drive.google.com/uc?id=13n4gWl6DK_ds9raUR1bIjDyxug6o7gc2&export=download';
-                    $t3 = 'https://drive.google.com/uc?id=13ipJww1rFDCtvTxRp8NBFO4qpI6LsnT4&export=download';
-                    $t4 = 'https://drive.google.com/uc?id=13gL8iBc3Bu7whMgrYrlYJVr6gU5aU1PQ&export=download';
-                    $t5 = 'https://drive.google.com/uc?id=13f9DMoJzdXYfTi2C5om9rrF2T3AKtpHG&export=download';
-                    $t6 = 'https://drive.google.com/uc?id=13b2mZxg1RokyXH6thCm_TrNuDjuhYCfN&export=download';
-                    $t7 = 'https://drive.google.com/uc?id=13WnIInslD7BnvMgGsMuDf6X9yE2DZ6CR&export=download';
-                    $t8 = 'https://drive.google.com/uc?id=146-bFoATCTxe6GKDIFHKS5SqOgCz_9c3&export=download';
+                    $t0 = 'https://drive.google.com/uc?id=14uSDzjMV9Gz4xMxqKR0VoU8RSJ6Fm11I&export=view';
+                    $t1 = 'https://drive.google.com/uc?id=145IMG5eiXxJ3h0GPIfs0JdbP0UQ1WOdt&export=view';
+                    $t2 = 'https://drive.google.com/uc?id=13n4gWl6DK_ds9raUR1bIjDyxug6o7gc2&export=view';
+                    $t3 = 'https://drive.google.com/uc?id=13ipJww1rFDCtvTxRp8NBFO4qpI6LsnT4&export=view';
+                    $t4 = 'https://drive.google.com/uc?id=13gL8iBc3Bu7whMgrYrlYJVr6gU5aU1PQ&export=view';
+                    $t5 = 'https://drive.google.com/uc?id=13f9DMoJzdXYfTi2C5om9rrF2T3AKtpHG&export=view';
+                    $t6 = 'https://drive.google.com/uc?id=13b2mZxg1RokyXH6thCm_TrNuDjuhYCfN&export=view';
+                    $t7 = 'https://drive.google.com/uc?id=13WnIInslD7BnvMgGsMuDf6X9yE2DZ6CR&export=view';
+                    $t8 = 'https://drive.google.com/uc?id=146-bFoATCTxe6GKDIFHKS5SqOgCz_9c3&export=view';
                     @endphp
                     
                     <img src="{{ $t0 }}" alt="tutorial 0">
