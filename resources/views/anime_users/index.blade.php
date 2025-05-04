@@ -131,15 +131,15 @@
                     <img src="{{ $t8 }}" alt="tutorial 8">
                     <script>
                       $(document).ready(function() {
-                      var t0 = $('#0').data('t0');
-                      var t1 = $('#1').data('t1');
-                      var t2 = $('#2').data('t2');
-                      var t3 = $('#3').data('t3');
-                      var t4 = $('#4').data('t4');
-                      var t5 = $('#5').data('t5');
-                      var t6 = $('#6').data('t6');
-                      var t7 = $('#7').data('t7');
-                      var t8 = $('#8').data('t8');
+                      var t0 = "{{ $t0 }}";
+                      var t1 = "{{ $t1 }}";
+                      var t2 = "{{ $t2 }}";
+                      var t3 = "{{ $t3 }}";
+                      var t4 = "{{ $t4 }}";
+                      var t5 = "{{ $t5 }}";
+                      var t6 = "{{ $t6 }}";
+                      var t7 = "{{ $t7 }}";
+                      var t8 = "{{ $t8 }}";
                         $.magnificPopup.open({
                           items: [
                           {
