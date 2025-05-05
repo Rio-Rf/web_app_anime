@@ -199,10 +199,11 @@ class AnimeController extends Controller
         $title = $request->title;
         $on_air_season = $request->on_air_season;
         $official_url = $request->official_url;
-        $visual = $request->file('visual');
-        $originalFilename = $visual->getClientOriginalName();
+        //$visual = $request->file('visual');
+        $img_path = $request->img_path;
+        //$originalFilename = $visual->getClientOriginalName();
         //dd($originalFilename);
-        $path = Storage::disk('s3')->putFileAs('', $visual, $originalFilename, 'private');//画像をs3に保存，ファイル名を$pathに代入,privateにすることでエラー解消, putfileAsにすることで任意のファイル名を指定できた
+        //$path = Storage::disk('s3')->putFileAs('', $visual, $originalFilename, 'private');//画像をs3に保存，ファイル名を$pathに代入,privateにすることでエラー解消, putfileAsにすることで任意のファイル名を指定できた
         $now = new \DateTime();
         
         $count = Anime::where('title', $title)->count();//同じタイトルのレコードを数える
@@ -217,7 +218,7 @@ class AnimeController extends Controller
         DB::table('animes')->insert([
             'title' => $title,
             'on_air_season' => $on_air_season,
-            'img_path' => $path,
+            'img_path' => $img_path,
             'official_url' => $official_url,
             'created_at' => new $now(),
             'updated_at'=>new $now(),
