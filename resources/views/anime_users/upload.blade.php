@@ -44,9 +44,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>画像</th>
+                                <th>画像パス(https://lh3.googleusercontent.com/d/XXXXX)</th>
                                 <td>
-                                    <input type="file" name="visual">
+                                    <!--<input type="file" name="visual">-->
+                                    <input type="text" name="img_path">
                                 </td>
                             </tr>
                         </tbody>
